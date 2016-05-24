@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="4dp" />
+    <solid android:color="#ffffffff" />
+    <stroke android:width="0.5dip" android:color="#ffd7d7d7" />
+</shape><!-- From: file:/E:/android_apps/BlueMoonSDK/res/drawable/tag_normal.xml -->

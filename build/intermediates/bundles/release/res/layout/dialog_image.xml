@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@null"
+    android:gravity="center"
+    android:clickable="true"
+    android:orientation="vertical" >
+
+        <RelativeLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+            <TextView 
+                android:id="@+id/txt_load"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#999999"
+                android:textSize="@dimen/text_size_large_14"
+                android:layout_centerInParent="true"/>
+            <ImageView
+            android:id="@+id/img_pic"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="320dp"
+            android:scaleType="fitCenter"
+            android:clickable="false"
+            android:layout_centerInParent="true"
+             />
+        </RelativeLayout>
+
+</LinearLayout><!-- From: file:/E:/android_apps/BlueMoonSDK/res/layout/dialog_image.xml -->
