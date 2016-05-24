@@ -26,11 +26,6 @@ Thumbs.db
 .DS_Store
 
 # Eclipse project files
-<<<<<<< HEAD
-.classpath
-=======
->>>>>>> refs/heads/develop
-
 # Android Studio
 .iml
 .idea
