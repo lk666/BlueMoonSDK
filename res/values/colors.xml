@@ -4,7 +4,7 @@
     <!-- 其他 -->
     <color name="navpage">#FFE1E8EB</color>
     
-    <color name="white">#fefefe</color><!--白色 -->
+    <color name="white">#ffffffff</color><!--白色 -->
     <color name="gray_light">#fff2f2f2</color>
     <color name="grep">#ffe5e5e5</color>
     <color name="gray_deep">#ffdddddd</color>
