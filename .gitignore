@@ -26,7 +26,6 @@ Thumbs.db
 .DS_Store
 
 # Eclipse project files
-
 # Android Studio
 .iml
 .idea
