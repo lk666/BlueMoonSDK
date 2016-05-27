@@ -313,7 +313,11 @@ public class SlidingMenu extends RelativeLayout {
 
 		switch (slideStyle) {
 		case SLIDING_WINDOW:
-			mActionbarOverlay = true;
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+				mActionbarOverlay = true;
+			} else {
+				mActionbarOverlay = false;
+			}
 			ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
 			ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
 			// save ActionBar themes that have transparent assets
