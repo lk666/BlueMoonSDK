@@ -13,6 +13,6 @@ public abstract class JsConnectCallBack {
     public void showCustomerService(){}
     public abstract String getAppInfo();
     public void getLoaction(WebView view,String callbackName){}
-    public String getCacheSize(){return "";}
-    public void cleanCache(){}
+    public String getCacheSize(WebView view){return "";}
+    public void cleanCache(WebView view){}
 }

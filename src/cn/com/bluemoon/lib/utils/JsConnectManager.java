@@ -84,11 +84,11 @@ public class JsConnectManager {
 				}
 			}else if(VALUE_GET_CACHE.equals(map.get(KEY_METHOD))){
 				if(callBack!=null){
-					loadJavascript(view, map.get(KEY_CALLBACK),callBack.getCacheSize());
+					loadJavascript(view, map.get(KEY_CALLBACK),callBack.getCacheSize(view));
 				}
 			}else if(VALUE_CLEAN_CACHE.equals(map.get(KEY_METHOD))){
 				if(callBack!=null){
-					callBack.cleanCache();
+					callBack.cleanCache(view);
 				}
 			}
 			return true;
