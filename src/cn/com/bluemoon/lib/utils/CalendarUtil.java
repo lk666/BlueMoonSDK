@@ -73,7 +73,7 @@ public class CalendarUtil {
   
       
     public static String getWeek(String sdate) {  
-        // ��ת��Ϊʱ��  
+
         Date date = CalendarUtil.strToDate(sdate);  
         Calendar c = Calendar.getInstance();  
         c.setTime(date);  

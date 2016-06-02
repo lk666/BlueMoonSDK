@@ -28,6 +28,8 @@ public class JsConnectManager {
 	private static final String VALUE_SHOWCUSTOMERSERVICE = "showCustomerService";
 	private static final String VALUE_SETAPPINFO = "setAppInfo";
 	private static final String VALUE_GET_LOCATION = "getLocation";
+	private static final String VALUE_GET_CACHE = "getCache";
+	private static final String VALUE_CLEAN_CACHE = "cleanCache";
 
 
 	public static HashMap<String, String> getBMJSParams(String url){
@@ -79,6 +81,14 @@ public class JsConnectManager {
 			} else if (VALUE_GET_LOCATION.equals(map.get(KEY_METHOD))) {
 				if(callBack!=null){
 					callBack.getLoaction(view,map.get(KEY_CALLBACK));
+				}
+			}else if(VALUE_GET_CACHE.equals(map.get(KEY_METHOD))){
+				if(callBack!=null){
+					loadJavascript(view, map.get(KEY_CALLBACK),callBack.getCacheSize(view));
+				}
+			}else if(VALUE_CLEAN_CACHE.equals(map.get(KEY_METHOD))){
+				if(callBack!=null){
+					callBack.cleanCache(view);
 				}
 			}
 			return true;

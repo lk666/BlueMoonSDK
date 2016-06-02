@@ -7,6 +7,7 @@ public class LibCharUtil {
 
 	public static int getStrokeCount(String str)
 	{
+		
 		int size = 0;
 		if(str ==null) return size;
 		char[] chars = str.toCharArray();
