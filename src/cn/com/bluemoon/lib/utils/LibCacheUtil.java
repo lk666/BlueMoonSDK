@@ -92,15 +92,18 @@ public class LibCacheUtil {
 	  }
 	  
 
-	  public static String getWebViewCacheSize(Context context) throws Exception {
-		 
-		  File file = new File("/data/data/"
-			        + context.getPackageName()+"/app_webview");
-		  if(file.exists())
-		  {
-			  return getCacheSize(file);
+	  public static String getWebViewCacheSize(Context context) {
+
+		  try {
+			  File file = new File("/data/data/"
+					  + context.getPackageName()+"/app_webview");
+			  if(file.exists()){
+				  return getCacheSize(file);
+			  }
+		  }catch (Exception e){
+			e.printStackTrace();
 		  }
-		  return null;
+		  return "";
 	  }
 	  
 
@@ -117,6 +120,18 @@ public class LibCacheUtil {
 		  
 		  return file.length()+"";
 	  }
+
+	public static String cleanWebViewCache(String packageName)
+	{
+		File file = new File("/data/data/"
+				+ packageName + "/app_webview");
+		if(file.exists())
+		{
+			deleteFiles(file);
+		}
+
+		return file.length()+"";
+	}
 	  
 
 	  public static void deleteFiles(File dir)
