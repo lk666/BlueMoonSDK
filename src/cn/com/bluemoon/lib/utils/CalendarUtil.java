@@ -113,9 +113,9 @@ public class CalendarUtil {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
   
         Calendar lastDate = Calendar.getInstance();  
-        lastDate.set(Calendar.DATE, 1);// ��Ϊ��ǰ�µ�1��  
-        lastDate.add(Calendar.MONTH, 1);// ��һ���£���Ϊ���µ�1��  
-        lastDate.add(Calendar.DATE, -1);// ��ȥһ�죬��Ϊ�������һ��  
+        lastDate.set(Calendar.DATE, 1); 
+        lastDate.add(Calendar.MONTH, 1); 
+        lastDate.add(Calendar.DATE, -1);
   
         str = sdf.format(lastDate.getTime());  
         return str;  

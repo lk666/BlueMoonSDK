@@ -2,6 +2,10 @@ package cn.com.bluemoon.lib.utils;
 
 import java.util.regex.Pattern;
 
+import android.content.pm.PackageManager;
+import android.provider.MediaStore.Images.Thumbnails;
+import android.text.TextDirectionHeuristic;
+
 public class LibStringUtil {
 
     public static final boolean isEmpty(String str) {
@@ -115,23 +119,7 @@ public class LibStringUtil {
     }
 
 
-    public static String getStringForName(String source) {
-        String str = "";
-        source = source.replaceAll(" ", "");
-        char[] chars = source.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            String codePoint = String.valueOf(chars[i]);
-
-            if (isChinese(codePoint) || isNumeric(codePoint) || isLetter(codePoint)
-                    || "-".equalsIgnoreCase(codePoint) || "_".equalsIgnoreCase(codePoint)
-                    || "�C".equalsIgnoreCase(codePoint) || "��".equalsIgnoreCase(codePoint)) {
-                str += codePoint;
-            } else {
-                str += "";
-            }
-        }
-        return str;
-    }
+//  
 
     public static byte[] hex16StringToByte(String hex) {
         int len = (hex.length() / 2);
