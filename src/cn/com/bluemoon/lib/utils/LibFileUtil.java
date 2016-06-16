@@ -199,7 +199,7 @@ public class LibFileUtil {
 					dirSize += file.length();
 				} else if (file.isDirectory()) {
 					dirSize += file.length();
-					dirSize += getDirSize(file); // �ݹ���ü���ͳ��
+					dirSize += getDirSize(file); 
 				}
 			}
 			return dirSize;
@@ -212,7 +212,7 @@ public class LibFileUtil {
 			count = files.length;
 			for (File file : files) {
 				if (file.isDirectory()) {
-					count = count + getFileList(file);// �ݹ�
+					count = count + getFileList(file);
 					count--;
 				}
 			}
