@@ -231,9 +231,7 @@ public class CaptureActivity extends Activity implements Callback {
 		}
 	}
 
-	/**
-	 * ��beep�������������֮�����½���һ��ѹ�����
-	 */
+	
 	private final OnCompletionListener beepListener = new OnCompletionListener() {
 		public void onCompletion(MediaPlayer mediaPlayer) {
 			mediaPlayer.seekTo(0);

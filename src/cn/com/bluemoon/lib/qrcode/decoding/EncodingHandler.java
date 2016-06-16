@@ -37,7 +37,7 @@ public final class EncodingHandler {
 		int width = matrix.getWidth();
 		int height = matrix.getHeight();
 		int[] pixels = new int[width * height];
-		// ���ڰ׸���
+	
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
 				if (matrix.get(x, y)) {

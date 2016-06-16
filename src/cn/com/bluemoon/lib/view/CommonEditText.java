@@ -207,7 +207,8 @@ public class CommonEditText extends EditText {
 		{
 			if(limitMode == MODE_NAME)
 			{
-				text = LibStringUtil.getStringForName(text.toString());
+				
+				text = getStringForName(text.toString());
 			}
 			else if(limitMode == MODE_EMOJI)
 			{
@@ -284,5 +285,24 @@ public class CommonEditText extends EditText {
 		super.finalize();
 	}
 	
+	
+	  String getStringForName(String source) {
+        String str = "";
+        source = source.replaceAll(" ", "");
+        char[] chars = source.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            String codePoint = String.valueOf(chars[i]);
+
+            if (LibStringUtil.isChinese(codePoint) || LibStringUtil.isNumeric(codePoint) || LibStringUtil.isLetter(codePoint)
+                    || "-".equalsIgnoreCase(codePoint) || "_".equalsIgnoreCase(codePoint)
+                    ||getResources().getString(R.string.limit_char_1).equalsIgnoreCase(codePoint) 
+                    || getResources().getString(R.string.limit_char_2).equalsIgnoreCase(codePoint)) {
+                str += codePoint;
+            } else {
+                str += "";
+            }
+        }
+        return str;
+    }
 }
 
