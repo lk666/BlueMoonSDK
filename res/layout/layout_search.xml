@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:background="@color/gray_light"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <cn.com.bluemoon.lib.view.CommonClearEditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_search"
+            android:drawableLeft="@drawable/search_gray"
+            android:drawablePadding="10dp"
+            android:textColor="@color/black_deep"
+            android:focusableInTouchMode="true"
+            android:textSize="@dimen/text_size_15"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:ellipsize="start"
+            android:textColorHint="@color/hint"
+            android:textCursorDrawable="@null"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/txt_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="#0a85cc"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:visibility="gone"
+            android:text="@string/btn_cancel"
+            />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fefefe"
+        android:cacheColorHint="#00000000"
+        android:dividerHeight="1px"
+        android:visibility="gone"
+        android:divider="#e5e5e5"
+        android:clickable="true"
+        />
+
+</LinearLayout>

@@ -186,4 +186,11 @@
         <!--文本与背景的水平间距-->
         <attr format="dimension" name="kswTextMarginH"/>
     </declare-styleable>
+
+    <declare-styleable name="CommonSearchView">
+        <attr name="text_ok" format="string"/>
+        <attr name="text_cancel" format="string"/>
+        <attr name="text_hint" format="string"/>
+        <attr name="text_color" format="color"/>
+    </declare-styleable>
 </resources>
