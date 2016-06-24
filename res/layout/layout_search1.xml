@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray_light"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp">
+
+
+    <cn.com.bluemoon.lib.view.CommonClearEditText
+        android:id="@+id/et_search"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/edittext_search"
+        android:drawableLeft="@drawable/search_gray"
+        android:drawablePadding="10dp"
+        android:ellipsize="start"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textColor="@color/black_deep"
+        android:textColorHint="@color/hint"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/text_size_15" />
+
+    <TextView
+        android:id="@+id/txt_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/btn_cancel"
+        android:textColor="#0a85cc"
+        android:textSize="@dimen/text_size_15"
+        android:visibility="gone" />
+
+</LinearLayout>
