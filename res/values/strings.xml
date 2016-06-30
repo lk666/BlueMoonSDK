@@ -23,6 +23,7 @@
     <string name="btn_ok">确定</string>
     <string name="btn_cancel">取消</string>
     <string name="btn_call">呼叫</string>
+    <string name="btn_save">保存</string>
     <string name="btn_internet">设置网络</string>
     <string name="content_can_not_to_network_setting">无法跳转至网络设置界面,请手动设置</string>
     <string name="content_no_name">请输入中英文、数字、\"_\"、\"-\"</string>

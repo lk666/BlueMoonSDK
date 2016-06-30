@@ -325,6 +325,7 @@ public class CommonSearchView extends LinearLayout {
         emptyView.setBackgroundColor(0xfffefefe);
         emptyView.setTextColor(0xff999999);
         emptyView.setTextSize(14);
+        emptyView.setClickable(true);
         ((ViewGroup) listView.getParent()).addView(emptyView);
         listView.setEmptyView(emptyView);
     }
