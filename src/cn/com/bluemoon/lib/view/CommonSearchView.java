@@ -166,11 +166,13 @@ public class CommonSearchView extends LinearLayout {
         if(listHistory==null){
             listHistory = new ArrayList<>();
         }
-        listHistory.add(0,str);
-        for(int i=1;i<listHistory.size();i++){
-            if(i>=maxSize||listHistory.get(i).equals(str)){
-                listHistory.remove(i);
-                i--;
+        if(!StringUtils.isEmpty(str)){
+            listHistory.add(0,str);
+            for(int i=1;i<listHistory.size();i++){
+                if(i>=maxSize||listHistory.get(i).equals(str)){
+                    listHistory.remove(i);
+                    i--;
+                }
             }
         }
         return listHistory;
