@@ -18,23 +18,23 @@ import cn.com.bluemoon.lib.utils.LibPublicUtil;
 
 public class CameraView extends FrameLayout{
 	
-	private Context mContext;
-	private FrameLayout mainlayout;
+	protected Context mContext;
+	protected FrameLayout mainlayout;
 	public ViewfinderView finderView;
 	public SurfaceView surfaceView;
-	private RelativeLayout relative;
-	private RelativeLayout relativeTitle;
-	private LinearLayout linearBotton;
-	private LinearLayout linTicket;
-	private TextView tvCount;
-	private TextView tvName;
-	private TextView tvTitle;
-	private Button btnSign;
-	private ImageView btnCancel;
-	private ImageButton btnPick;
-	private ImageButton btnLight;
-	private IScanMenuListener listener;
-	private float density;
+	protected RelativeLayout relative;
+	protected RelativeLayout relativeTitle;
+	protected LinearLayout linearBotton;
+	protected LinearLayout linTicket;
+	protected TextView tvCount;
+	protected TextView tvName;
+	protected TextView tvTitle;
+	protected Button btnSign;
+	protected ImageView btnCancel;
+	protected ImageButton btnPick;
+	protected ImageButton btnLight;
+	protected IScanMenuListener listener;
+	protected float density;
 
 	public CameraView(Context context,IScanMenuListener listener) {
 		super(context);
@@ -43,7 +43,7 @@ public class CameraView extends FrameLayout{
 		initialize();
 	}
 
-	private void initialize() {
+	protected void initialize() {
 		density = mContext.getResources().getDisplayMetrics().density;
 		LayoutParams mParams = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
 		mainlayout = new FrameLayout(mContext);

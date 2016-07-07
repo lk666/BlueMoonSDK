@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import cn.com.bluemoon.lib.qrcode.CaptureActivity;
+import cn.com.bluemoon.lib.qrcode.NewCaptureActivity;
 import cn.com.bluemoon.lib.qrcode.decoding.DecodeBimap;
 import cn.com.bluemoon.lib.qrcode.decoding.EncodingHandler;
 
@@ -27,6 +28,13 @@ public class BarcodeUtil {
 	public static void openScan(Activity thisActivity, Fragment fragment,
 			int requestCode, int resultCode) {
 		Intent it_open = new Intent(thisActivity, CaptureActivity.class);
+		it_open.putExtra("resultCode", resultCode);
+		fragment.startActivityForResult(it_open, requestCode);
+	}
+
+	public static void openNewScan(Activity thisActivity, Fragment fragment,
+								int requestCode, int resultCode) {
+		Intent it_open = new Intent(thisActivity, NewCaptureActivity.class);
 		it_open.putExtra("resultCode", resultCode);
 		fragment.startActivityForResult(it_open, requestCode);
 	}

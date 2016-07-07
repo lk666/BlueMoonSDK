@@ -57,12 +57,19 @@ public final class ViewfinderView extends View {
 	private final int frameColor;
 	private final int laserColor;
 	private final int resultPointColor;
+	private int toLeft;
+	private int toTop;
 	private int scannerAlpha;
 	private Collection<ResultPoint> possibleResultPoints;
 	private Collection<ResultPoint> lastPossibleResultPoints;
 
 
 	public ViewfinderView(Context context) {
+		this(context,2,2);
+	}
+
+
+	public ViewfinderView(Context context,int left,int top) {
 		super(context);
 
 		paint = new Paint();
@@ -78,8 +85,9 @@ public final class ViewfinderView extends View {
 
 		ScreenRate = (int) (Configure.SCREEN_RATE * density);
 		CORNER_WIDTH = (int) (Configure.CORNER_WIDTH * density);
+		toLeft=left;
+		toTop=top;
 	}
-
 
 	public ViewfinderView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -107,7 +115,7 @@ public final class ViewfinderView extends View {
 				return;
 			}
 		}
-		Rect frame = CameraManager.get().getFramingRect();
+		Rect frame = CameraManager.get().getFramingRect(toLeft,toTop);
 		if (frame == null) {
 			return;
 		}

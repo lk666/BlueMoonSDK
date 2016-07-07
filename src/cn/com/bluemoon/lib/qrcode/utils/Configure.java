@@ -20,6 +20,9 @@ public class Configure {
 	 * 按钮的背景色(R.drawable.scan_black_btn)
 	 */
 	public static int BTN_DRAWABLE_BG = R.drawable.btn_blue_shape;
+
+	public static int BTN_DRAWABLE_RED_BG = R.drawable.btn_red_shape;
+
 	/**
 	 * 底部横条的背景色
 	 */

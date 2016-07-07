@@ -233,6 +233,27 @@ public final class CameraManager {
 		return framingRect;
 	}
 
+
+	public Rect getFramingRect(int toLeft,int toTop) {
+		Point screenResolution = configManager.getScreenResolution();
+		if (framingRect == null) {
+			if (camera == null || screenResolution == null) {
+				return null;
+			}
+			int width = screenResolution.x * 2 / 3;
+			int leftOffset = (screenResolution.x - width) / toLeft;
+			int topOffset = (screenResolution.y - width) / toTop;
+
+			framingRect = new Rect(leftOffset, topOffset, leftOffset + width,
+					topOffset + width);
+			// System.out.println("screen:"+screenResolution.x+":"+screenResolution.y);
+			// System.out.println("rect:"+leftOffset+":"+topOffset+":"+width+":"+width);
+			Log.d(TAG, "Calculated framing rect: " + framingRect);
+		}
+		return framingRect;
+	}
+
+
 	/**
 	 * Like {@link #getFramingRect} but coordinates are in terms of the preview
 	 * frame, not UI / screen.
