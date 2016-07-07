@@ -43,18 +43,18 @@ import com.google.zxing.client.result.ResultParser;
 @SuppressLint("NewApi")
 public class CaptureActivity extends Activity implements Callback {
 
-	private CaptureActivity main;
-	private CaptureActivityHandler handler;
-	private boolean hasSurface;
-	private Vector<BarcodeFormat> decodeFormats;
-	private String characterSet;
-	private InactivityTimer inactivityTimer;
-	private MediaPlayer mediaPlayer;
-	private boolean playBeep;
-	private static final float BEEP_VOLUME = 0.50f;
-	private static final int CHOSE_PIC_RESULT = 10;
-	private boolean vibrate;
-	private CameraView cameraview;
+	protected CaptureActivity main;
+	protected CaptureActivityHandler handler;
+	protected boolean hasSurface;
+	protected Vector<BarcodeFormat> decodeFormats;
+	protected String characterSet;
+	protected InactivityTimer inactivityTimer;
+	protected MediaPlayer mediaPlayer;
+	protected boolean playBeep;
+	protected static final float BEEP_VOLUME = 0.50f;
+	protected static final int CHOSE_PIC_RESULT = 10;
+	protected boolean vibrate;
+	protected CameraView cameraview;
 	public static boolean KEY = false;
 
 
