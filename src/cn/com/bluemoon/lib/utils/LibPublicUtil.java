@@ -46,6 +46,7 @@ import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -540,7 +541,7 @@ public class LibPublicUtil {
 
 							@Override
 							public void onClick(DialogInterface dialog,
-									int which) {
+												int which) {
 								// TODO Auto-generated method stub
 								try {
 									Intent intent = new Intent(
@@ -638,6 +639,19 @@ public class LibPublicUtil {
 
 	public static void showToastErrorData(Context context) {
 		showToast(context, context.getString(R.string.get_data_busy));
+	}
+
+	public static View getEmptyView(Context context,String content,int imgResid){
+		LayoutInflater inflater = LayoutInflater.from(context);
+		View view = inflater.inflate(R.layout.layout_empty, null);
+		((TextView) view.findViewById(R.id.txt_content)).setText(content);
+		if(imgResid!=0){
+			((ImageView)view.findViewById(R.id.img_empty)).setImageResource(imgResid);
+		}
+		AbsListView.LayoutParams params = new AbsListView.LayoutParams(
+				AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
+		view.setLayoutParams(params);
+		return view;
 	}
 
 }

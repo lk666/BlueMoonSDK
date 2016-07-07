@@ -60,7 +60,7 @@
     <string name="error_photo_path">图片地址为空</string>
     <string name="error_get_data">获取数据失败</string>
     <string name="not_found_weixin">检测不到手机上的微信，请确认是否安装</string>
-    <string name="history_no_data">暂无历史记录</string>
+    <string name="history_no_data">暂无查找历史</string>
     <string name="text_qr">二维码</string>
     <string name="text_bar_code">条形码</string>
     <string name="search_cannot_empty">搜索内容不能为空</string>

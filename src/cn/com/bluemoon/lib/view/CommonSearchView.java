@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -84,7 +85,8 @@ public class CommonSearchView extends LinearLayout {
         etSearch = (CommonClearEditText) this.findViewById(R.id.et_search);
         txtSearch = (TextView) this.findViewById(R.id.txt_search);
         listView = (ListView) this.findViewById(R.id.listView_history);
-        setHistoryEmptyView();
+        setEmptyView(LibPublicUtil.getEmptyView(context,
+                context.getString(R.string.history_no_data),R.drawable.search_history));
         etSearch.setOnKeyListener(onKeyListener);
         etSearch.setCallBack(editTextCallBack);
         if (StringUtils.isEmpty(search)) {
@@ -340,20 +342,6 @@ public class CommonSearchView extends LinearLayout {
         }
 
     }
-
-    private void setHistoryEmptyView(){
-        TextView emptyView = new TextView(context);
-        emptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        emptyView.setGravity(Gravity.CENTER);
-        emptyView.setText(context.getString(R.string.history_no_data));
-        emptyView.setBackgroundColor(0xfffefefe);
-        emptyView.setTextColor(0xff999999);
-        emptyView.setTextSize(14);
-        emptyView.setClickable(true);
-        ((ViewGroup) listView.getParent()).addView(emptyView);
-        listView.setEmptyView(emptyView);
-    }
-
 
     private void screenDefault() {
         WindowManager windowManager = (WindowManager) context
