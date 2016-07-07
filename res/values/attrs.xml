@@ -192,5 +192,6 @@
         <attr name="text_cancel" format="string"/>
         <attr name="text_hint" format="string"/>
         <attr name="text_color" format="color"/>
+        <attr name="search_empty" format="boolean"/>
     </declare-styleable>
 </resources>

@@ -26,6 +26,7 @@ import java.util.List;
 
 import cn.com.bluemoon.lib.callback.CommonEditTextCallBack;
 import cn.com.bluemoon.lib.qrcode.R;
+import cn.com.bluemoon.lib.utils.LibPublicUtil;
 import cn.com.bluemoon.lib.utils.LibViewUtil;
 
 /**
@@ -49,6 +50,7 @@ public class CommonSearchView extends LinearLayout {
     private View emptyView;
     private List<String> listHistory;
     private int maxSize = 5;
+    private boolean isSearchEmpty = true;
 
 
     public CommonSearchView(Context context) {
@@ -76,6 +78,7 @@ public class CommonSearchView extends LinearLayout {
             search = typedArray.getString(R.styleable.CommonSearchView_text_ok);
             cancel = typedArray.getString(R.styleable.CommonSearchView_text_cancel);
             hint = typedArray.getString(R.styleable.CommonSearchView_text_hint);
+            isSearchEmpty = typedArray.getBoolean(R.styleable.CommonSearchView_search_empty,true);
         }
 
         etSearch = (CommonClearEditText) this.findViewById(R.id.et_search);
@@ -136,8 +139,12 @@ public class CommonSearchView extends LinearLayout {
     }
 
     public void search(){
-        etSearch.clearFocus();
         String str = etSearch.getText().toString();
+        if(!isSearchEmpty&&StringUtils.isEmpty(str)){
+            LibPublicUtil.showToast(context,context.getString(R.string.search_cannot_empty));
+            return;
+        }
+        etSearch.clearFocus();
         if(listHistory==null){
             listHistory = new ArrayList<>();
         }
@@ -156,6 +163,10 @@ public class CommonSearchView extends LinearLayout {
         }else{
             etSearch.clearFocus();
         }
+    }
+
+    public void setSearchEmpty(boolean isSearchEmpty){
+        this.isSearchEmpty = isSearchEmpty;
     }
 
     public void setHistorySize(int maxSize){
@@ -204,20 +215,30 @@ public class CommonSearchView extends LinearLayout {
 
     }
 
+    public View getHistoryView(){
+        return listView;
+    }
+
+    private void checkSearchState(){
+        if (etSearch.getText().toString().length() > 0) {
+            if (!txtSearch.getText().toString().equals(search)) {
+                txtSearch.setText(search);
+            }
+            isSearch = true;
+        } else{
+            if (!txtSearch.getText().toString().equals(cancel)) {
+                txtSearch.setText(cancel);
+            }
+            isSearch = false;
+        }
+    }
+
     CommonEditTextCallBack editTextCallBack = new CommonEditTextCallBack() {
         @Override
         public void afterTextChanged(Editable s) {
             super.afterTextChanged(s);
-            if (etSearch.isFocused() && etSearch.getText().toString().length() > 0) {
-                if (!txtSearch.getText().toString().equals(search)) {
-                    txtSearch.setText(search);
-                }
-                isSearch = true;
-            } else if (etSearch.isFocused() && etSearch.getText().toString().length() == 0) {
-                if (!txtSearch.getText().toString().equals(cancel)) {
-                    txtSearch.setText(cancel);
-                }
-                isSearch = false;
+            if (etSearch.isFocused()){
+                checkSearchState();
             }
         }
 
@@ -230,6 +251,7 @@ public class CommonSearchView extends LinearLayout {
                     txtSearch.setAnimation(animation);
                     txtSearch.setVisibility(View.VISIBLE);
                 }
+                checkSearchState();
                 showHistoryView();
             } else {
                 LibViewUtil.hideIM(v);
