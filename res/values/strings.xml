@@ -22,6 +22,8 @@
     <string name="btn_pick_photo">从手机相册选择</string>
     <string name="btn_ok">确定</string>
     <string name="btn_cancel">取消</string>
+    <string name="btn_ok_space">确 定</string>
+    <string name="btn_cancel_space">取 消</string>
     <string name="btn_call">呼叫</string>
     <string name="btn_save">保存</string>
     <string name="btn_internet">设置网络</string>

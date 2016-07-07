@@ -88,10 +88,10 @@ public class CommonSearchView extends LinearLayout {
         etSearch.setOnKeyListener(onKeyListener);
         etSearch.setCallBack(editTextCallBack);
         if (StringUtils.isEmpty(search)) {
-            search = context.getString(R.string.btn_ok);
+            search = context.getString(R.string.btn_ok_space);
         }
         if (StringUtils.isEmpty(cancel)) {
-            cancel = context.getString(R.string.btn_cancel);
+            cancel = context.getString(R.string.btn_cancel_space);
         }
         if (!StringUtils.isEmpty(hint)) {
             etSearch.setHint(hint);
