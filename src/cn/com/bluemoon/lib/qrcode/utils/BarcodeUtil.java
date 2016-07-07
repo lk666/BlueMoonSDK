@@ -25,12 +25,20 @@ public class BarcodeUtil {
 	}
 
 
+	public static void openNewScan(Activity thisActivity, int requestCode,
+								int resultCode) {
+		Intent it_open = new Intent(thisActivity, NewCaptureActivity.class);
+		it_open.putExtra("resultCode", resultCode);
+		thisActivity.startActivityForResult(it_open, requestCode);
+	}
+
 	public static void openScan(Activity thisActivity, Fragment fragment,
 			int requestCode, int resultCode) {
 		Intent it_open = new Intent(thisActivity, CaptureActivity.class);
 		it_open.putExtra("resultCode", resultCode);
 		fragment.startActivityForResult(it_open, requestCode);
 	}
+
 
 	public static void openNewScan(Activity thisActivity, Fragment fragment,
 								int requestCode, int resultCode) {
@@ -44,6 +52,11 @@ public class BarcodeUtil {
 		thisActivity.startActivityForResult(it_open, requestCode);
 	}
 
+	public static void openNewScan(Activity thisActivity, int requestCode) {
+		Intent it_open = new Intent(thisActivity, NewCaptureActivity.class);
+		thisActivity.startActivityForResult(it_open, requestCode);
+	}
+
 
 	public static void openScan(Activity thisActivity, Fragment fragment,
 			int requestCode) {
@@ -51,6 +64,12 @@ public class BarcodeUtil {
 		fragment.startActivityForResult(it_open, requestCode);
 	}
 
+
+	public static void openNewScan(Activity thisActivity, Fragment fragment,
+								int requestCode) {
+		Intent it_open = new Intent(thisActivity, NewCaptureActivity.class);
+		fragment.startActivityForResult(it_open, requestCode);
+	}
 
 	public static Bitmap createQRCode(String str, int QRCODE_SIZE) {
 		Bitmap encodeBitmap = null;
