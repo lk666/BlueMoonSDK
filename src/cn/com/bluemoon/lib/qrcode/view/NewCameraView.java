@@ -172,9 +172,9 @@ public class NewCameraView extends CameraView {
         btnSign.setVisibility(Configure.BUTTON_VISIBILITY);
         btnSign.setBackgroundResource(Configure.BTN_DRAWABLE_RED_BG);
         btnSign.setText(Configure.BTN_CLICK_TXT);
-        btnSign.setPadding((int) (18 * density), 0, (int) (18 * density), 0);
-        btnSign.setCompoundDrawablePadding((int) (15 * density));
-        btnSign.setCompoundDrawablesWithIntrinsicBounds(R.drawable.scan_number, 0, 0, 0);
+       btnSign.setPadding((int) (18 * density), 0, (int) (18 * density), 0);
+//       btnSign.setCompoundDrawablePadding((int) (15 * density));
+//        btnSign.setCompoundDrawablesWithIntrinsicBounds(R.drawable.scan_number, 0, 0, 0);
         btnSign.setId(7);
         btnSign.setTextColor(Configure.BTN_TXT_CLICK_COLOR);
         btnSign.setTextSize(Configure.BTN_CLICK_TXT_SIZE);
