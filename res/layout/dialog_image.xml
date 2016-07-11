@@ -3,31 +3,29 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@null"
-    android:gravity="center"
     android:clickable="true"
-    android:orientation="vertical" >
+    android:gravity="center"
+    android:orientation="vertical">
 
-        <RelativeLayout 
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            >
-            <TextView 
-                android:id="@+id/txt_load"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#999999"
-                android:textSize="@dimen/text_size_14"
-                android:layout_centerInParent="true"/>
-            <ImageView
-            android:id="@+id/img_pic"
-            android:layout_width="fill_parent"
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:id="@+id/txt_load"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="320dp"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            android:clickable="false"
             android:layout_centerInParent="true"
-             />
-        </RelativeLayout>
+            android:textColor="#999999"
+            android:textSize="@dimen/text_size_14" />
+
+        <ImageView
+            android:id="@+id/img_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:clickable="false"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
 
 </LinearLayout>
