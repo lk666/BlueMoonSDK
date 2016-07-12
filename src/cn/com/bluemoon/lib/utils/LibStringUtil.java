@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.provider.MediaStore.Images.Thumbnails;
 import android.text.TextDirectionHeuristic;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class LibStringUtil {
 
     public static final boolean isEmpty(String str) {
@@ -147,6 +149,29 @@ public class LibStringUtil {
             sb.append(sTemp.toUpperCase());
         }
         return sb.toString();
+    }
+
+    public static String getStringParamsByFormat(String split,String... params){
+        String format = "%1$s"+split+"%2$s";
+        String str = "";
+        if(params==null) return str;
+        for (int i=0;i<params.length;i++){
+            if(!StringUtils.isEmpty(params[i])){
+                if(StringUtils.isEmpty(str)){
+                    str = params[i];
+                }else{
+                    str = String.format(format, str, params[i]);
+                }
+            }
+        }
+        return str;
+    }
+
+    public static String getStringByLengh(String str, int count) {
+        if (str != null && str.length() > count) {
+            return str.substring(0, count) + "...";
+        }
+        return str;
     }
 
 }

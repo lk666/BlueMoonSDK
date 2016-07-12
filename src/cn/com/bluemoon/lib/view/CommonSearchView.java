@@ -124,6 +124,10 @@ public class CommonSearchView extends LinearLayout {
         listView.setEmptyView(emptyView);
     }
 
+    public String getText(){
+        return etSearch.getText().toString().trim();
+    }
+
     public void setText(String text) {
         etSearch.setText(text);
     }
@@ -141,7 +145,7 @@ public class CommonSearchView extends LinearLayout {
     }
 
     public void search(){
-        String str = etSearch.getText().toString();
+        String str = etSearch.getText().toString().trim();
         if(!isSearchEmpty&&StringUtils.isEmpty(str)){
             LibPublicUtil.showToast(context,context.getString(R.string.search_cannot_empty));
             return;
@@ -179,7 +183,7 @@ public class CommonSearchView extends LinearLayout {
         if(listHistory==null){
             listHistory = new ArrayList<>();
         }
-        if(!StringUtils.isEmpty(str)){
+        if(!StringUtils.isEmpty(str.trim())){
             listHistory.add(0,str);
             for(int i=1;i<listHistory.size();i++){
                 if(i>=maxSize||listHistory.get(i).equals(str)){

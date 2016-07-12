@@ -71,14 +71,14 @@ public class LibViewUtil {
 		}
 	}
 	
-	public static void HideKeyboard(View v) {
+	public static void hideKeyboard(View v) {
 		InputMethodManager imm = (InputMethodManager) v.getContext()
 				.getSystemService(Context.INPUT_METHOD_SERVICE);     
         if (imm.isActive()) {     
             imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);   
         }  
     }
-	public static void ShowKeyboard(View v) {
+	public static void showKeyboard(View v) {
 		InputMethodManager imm = (InputMethodManager)v.getContext()
 				.getSystemService(Context.INPUT_METHOD_SERVICE);     
         imm.showSoftInput(v,InputMethodManager.SHOW_FORCED);    
