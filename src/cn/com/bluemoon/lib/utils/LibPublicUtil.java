@@ -52,6 +52,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.view.CommonAlertDialog;
+import cn.com.bluemoon.lib.view.CommonEmptyView;
 
 @SuppressLint("NewApi")
 public class LibPublicUtil {
@@ -639,19 +640,6 @@ public class LibPublicUtil {
 
 	public static void showToastErrorData(Context context) {
 		showToast(context, context.getString(R.string.get_data_busy));
-	}
-
-	public static View getEmptyView(Context context,String content,int imgResid){
-		LayoutInflater inflater = LayoutInflater.from(context);
-		View view = inflater.inflate(R.layout.layout_empty, null);
-		((TextView) view.findViewById(R.id.txt_content)).setText(content);
-		if(imgResid!=0){
-			((ImageView)view.findViewById(R.id.img_empty)).setImageResource(imgResid);
-		}
-		AbsListView.LayoutParams params = new AbsListView.LayoutParams(
-				AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
-		view.setLayoutParams(params);
-		return view;
 	}
 
 }

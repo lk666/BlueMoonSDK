@@ -85,8 +85,7 @@ public class CommonSearchView extends LinearLayout {
         etSearch = (CommonClearEditText) this.findViewById(R.id.et_search);
         txtSearch = (TextView) this.findViewById(R.id.txt_search);
         listView = (ListView) this.findViewById(R.id.listView_history);
-        setEmptyView(LibPublicUtil.getEmptyView(context,
-                context.getString(R.string.history_no_data),R.drawable.search_history));
+        setEmptyView(new CommonEmptyView(context).setContentText(context.getString(R.string.history_no_data)));
         etSearch.setOnKeyListener(onKeyListener);
         etSearch.setCallBack(editTextCallBack);
         if (StringUtils.isEmpty(search)) {
