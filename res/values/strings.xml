@@ -67,4 +67,6 @@
     <string name="empty_hint">暂无%s数据</string>
     <string name="empty_click_refresh">点击刷新</string>
 
+
+    <item type="id" name="tag_ori_enable">0x5678</item>
 </resources>
