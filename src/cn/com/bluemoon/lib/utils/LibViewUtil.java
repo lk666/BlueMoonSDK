@@ -88,6 +88,7 @@ public class LibViewUtil {
         imm.showSoftInput(v, InputMethodManager.SHOW_FORCED);
     }
 
+
     /**
      * 设置控件可见性
      */
