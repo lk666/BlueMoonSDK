@@ -65,6 +65,7 @@
     <string name="text_bar_code">条形码</string>
     <string name="search_cannot_empty">搜索内容不能为空</string>
     <string name="empty_hint">暂无%s数据</string>
+    <string name="empty_hint2">找不到数据</string>
     <string name="empty_click_refresh">点击刷新</string>
 
 

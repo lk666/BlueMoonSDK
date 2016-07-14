@@ -98,6 +98,16 @@ public class LibViewUtil {
     }
 
     /**
+     * 获取控件的可见性，空则不可见
+     */
+    public static int getViewVisibility(View view) {
+        if (view != null) {
+            return view.getVisibility();
+        }
+        return View.GONE;
+    }
+
+    /**
      * 递归设置子控件的enable
      */
     public static void setChildEnableRecursion(ViewGroup layout, boolean isEnable) {

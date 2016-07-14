@@ -85,7 +85,7 @@ public class CommonSearchView extends LinearLayout {
         etSearch = (CommonClearEditText) this.findViewById(R.id.et_search);
         txtSearch = (TextView) this.findViewById(R.id.txt_search);
         listView = (ListView) this.findViewById(R.id.listView_history);
-        setEmptyView(new CommonEmptyView(context).setContentText(context.getString(R.string.history_no_data)));
+//        setEmptyView(new CommonEmptyView(context).setContentText(context.getString(R.string.history_no_data)).setRefreshable(false));
         etSearch.setOnKeyListener(onKeyListener);
         etSearch.setCallBack(editTextCallBack);
         if (StringUtils.isEmpty(search)) {
@@ -204,20 +204,14 @@ public class CommonSearchView extends LinearLayout {
             adapter.notifyDataSetChanged();
         }
 
-        if (listView.getVisibility() == View.GONE
-                && listView.getEmptyView().getVisibility() == View.GONE){
-            listView.setVisibility(View.VISIBLE);
+        if(LibViewUtil.getViewVisibility(listView.getEmptyView())==View.GONE){
+            LibViewUtil.setViewVisibility(listView,View.VISIBLE);
         }
     }
 
     public void hideHistoryView() {
-        if(listView.getEmptyView().getVisibility()==View.VISIBLE){
-            listView.getEmptyView().setVisibility(View.GONE);
-        }
-        if (listView.getVisibility() == View.VISIBLE){
-            listView.setVisibility(View.GONE);
-        }
-
+        LibViewUtil.setViewVisibility(listView.getEmptyView(),View.GONE);
+        LibViewUtil.setViewVisibility(listView,View.GONE);
     }
 
     public View getHistoryView(){

@@ -369,7 +369,7 @@ public class LibImageUtil {
 			e.printStackTrace();
 			return false;
 		}
-		bitmap.compress(Bitmap.CompressFormat.PNG, 100, fOut);// 把Bitmap对象解析成流
+		bitmap.compress(CompressFormat.JPEG, 100, fOut);// 把Bitmap对象解析成流
 		try {
 			fOut.flush();
 			fOut.close();

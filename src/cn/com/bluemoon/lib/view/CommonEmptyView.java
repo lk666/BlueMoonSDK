@@ -13,6 +13,7 @@ import android.widget.TextView;
 import org.apache.commons.lang3.StringUtils;
 
 import cn.com.bluemoon.lib.qrcode.R;
+import cn.com.bluemoon.lib.utils.LibViewUtil;
 
 /**
  * Created by bm on 2016/7/12.
@@ -65,6 +66,8 @@ public class CommonEmptyView extends RelativeLayout {
             if (typedArray != null) {
                 String text = typedArray.getString(R.styleable.CommonEmptyView_text_content);
                 int icon = typedArray.getResourceId(R.styleable.CommonEmptyView_img_empty, 0);
+                boolean isRefresh = typedArray.getBoolean(R.styleable.CommonEmptyView_refreshable,false);
+                setRefreshable(isRefresh);
                 if(StringUtils.isEmpty(text)){
                     text = String.format(context.getString(R.string.empty_hint),"");
                 }
@@ -93,8 +96,20 @@ public class CommonEmptyView extends RelativeLayout {
         return this;
     }
 
+    public CommonEmptyView setRefreshable(boolean isRefresh){
+        if(isRefresh){
+            LibViewUtil.setViewVisibility(txtRefresh,View.VISIBLE);
+        }else{
+            LibViewUtil.setViewVisibility(txtRefresh, View.GONE);
+        }
+        return this;
+    }
+
     public CommonEmptyView setEmptyListener(EmptyListener listener){
         this.listener = listener;
+        if(listener!=null){
+            setRefreshable(true);
+        }
         return this;
     }
 

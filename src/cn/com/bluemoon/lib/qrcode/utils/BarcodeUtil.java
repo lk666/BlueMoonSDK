@@ -17,58 +17,58 @@ import com.google.zxing.WriterException;
 public class BarcodeUtil {
 
 
-	public static void openScan(Activity thisActivity, int requestCode,
-			int resultCode) {
+	public static void openScan(Activity thisActivity, Fragment fragment,
+								int requestCode,int resultCode) {
 		Intent it_open = new Intent(thisActivity, CaptureActivity.class);
-		it_open.putExtra("resultCode", resultCode);
-		thisActivity.startActivityForResult(it_open, requestCode);
+		if(resultCode>0){
+			it_open.putExtra("resultCode", resultCode);
+		}
+		if(fragment!=null){
+			fragment.startActivityForResult(it_open, requestCode);
+		}else {
+			thisActivity.startActivityForResult(it_open, requestCode);
+		}
 	}
 
-
-	public static void openNewScan(Activity thisActivity, int requestCode,
-								int resultCode) {
+	public static void openNewScan(Activity thisActivity, Fragment fragment,
+								int requestCode,int resultCode) {
 		Intent it_open = new Intent(thisActivity, NewCaptureActivity.class);
-		it_open.putExtra("resultCode", resultCode);
-		thisActivity.startActivityForResult(it_open, requestCode);
+		if(resultCode>0){
+			it_open.putExtra("resultCode", resultCode);
+		}
+		if(fragment!=null){
+			fragment.startActivityForResult(it_open, requestCode);
+		}else {
+			thisActivity.startActivityForResult(it_open, requestCode);
+		}
+	}
+
+	public static void openScan(Activity thisActivity, int requestCode,
+								   int resultCode) {
+		openScan(thisActivity,null,requestCode,resultCode);
 	}
 
 	public static void openScan(Activity thisActivity, Fragment fragment,
-			int requestCode, int resultCode) {
-		Intent it_open = new Intent(thisActivity, CaptureActivity.class);
-		it_open.putExtra("resultCode", resultCode);
-		fragment.startActivityForResult(it_open, requestCode);
-	}
-
-
-	public static void openNewScan(Activity thisActivity, Fragment fragment,
-								int requestCode, int resultCode) {
-		Intent it_open = new Intent(thisActivity, NewCaptureActivity.class);
-		it_open.putExtra("resultCode", resultCode);
-		fragment.startActivityForResult(it_open, requestCode);
+								int requestCode) {
+		openScan(thisActivity, fragment, requestCode, 0);
 	}
 
 	public static void openScan(Activity thisActivity, int requestCode) {
-		Intent it_open = new Intent(thisActivity, CaptureActivity.class);
-		thisActivity.startActivityForResult(it_open, requestCode);
+		openScan(thisActivity, null, requestCode, 0);
 	}
 
-	public static void openNewScan(Activity thisActivity, int requestCode) {
-		Intent it_open = new Intent(thisActivity, NewCaptureActivity.class);
-		thisActivity.startActivityForResult(it_open, requestCode);
+	public static void openNewScan(Activity thisActivity, int requestCode,
+								int resultCode) {
+		openNewScan(thisActivity, null, requestCode, resultCode);
 	}
-
-
-	public static void openScan(Activity thisActivity, Fragment fragment,
-			int requestCode) {
-		Intent it_open = new Intent(thisActivity, CaptureActivity.class);
-		fragment.startActivityForResult(it_open, requestCode);
-	}
-
 
 	public static void openNewScan(Activity thisActivity, Fragment fragment,
 								int requestCode) {
-		Intent it_open = new Intent(thisActivity, NewCaptureActivity.class);
-		fragment.startActivityForResult(it_open, requestCode);
+		openNewScan(thisActivity, fragment, requestCode, 0);
+	}
+
+	public static void openNewScan(Activity thisActivity, int requestCode) {
+		openNewScan(thisActivity, null, requestCode, 0);
 	}
 
 	public static Bitmap createQRCode(String str, int QRCODE_SIZE) {
