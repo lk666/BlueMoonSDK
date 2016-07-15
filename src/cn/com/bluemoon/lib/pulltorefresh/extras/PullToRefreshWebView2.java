@@ -80,12 +80,15 @@ public class PullToRefreshWebView2 extends PullToRefreshWebView {
 	private final AtomicBoolean mIsReadyForPullDown = new AtomicBoolean(false);
 	private final AtomicBoolean mIsReadyForPullUp = new AtomicBoolean(false);
 
+
+	@android.webkit.JavascriptInterface
 	@Override
 	protected WebView createRefreshableView(Context context, AttributeSet attrs) {
 		WebView webView = super.createRefreshableView(context, attrs);
 
 		// Need to add JS Interface so we can get the response back
 		mJsCallback = new JsValueCallback();
+
 		webView.addJavascriptInterface(mJsCallback, JS_INTERFACE_PKG);
 
 		return webView;

@@ -15,9 +15,6 @@ import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.qrcode.callback.IScanMenuListener;
 import cn.com.bluemoon.lib.qrcode.utils.Configure;
 
-/**
- * Created by allenli on 2016/7/6.
- */
 public class NewCameraView extends CameraView {
 
     ImageView imgQr;
@@ -29,39 +26,38 @@ public class NewCameraView extends CameraView {
         super(context, listener);
     }
 
-
     @Override
     protected void initialize() {
         density = mContext.getResources().getDisplayMetrics().density;
         LayoutParams mParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        mainlayout = new FrameLayout(mContext);
-        addView(mainlayout, mParams);
+        mainLayout = new FrameLayout(mContext);
+        addView(mainLayout, mParams);
 
 
         mParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         mParams.gravity = Gravity.TOP;
         surfaceView = new SurfaceView(mContext);
-        surfaceView.setId(4);
-        mainlayout.addView(surfaceView, mParams);
+
+        mainLayout.addView(surfaceView, mParams);
 
 
         mParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         mParams.gravity = Gravity.TOP;
         finderView = new ViewfinderView(mContext);
-        finderView.setId(5);
-        mainlayout.addView(finderView, mParams);
+
+        mainLayout.addView(finderView, mParams);
 
         //标题抬头RelativeLayout
         mParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         relative = new RelativeLayout(mContext);
-        relative.setId(1);
+
         relative.setGravity(Gravity.CENTER_HORIZONTAL);
-        mainlayout.addView(relative, mParams);
+        mainLayout.addView(relative, mParams);
 
         RelativeLayout.LayoutParams rParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, (int) (45 * density));
         rParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
         relativeTitle = new RelativeLayout(mContext);
-        relativeTitle.setId(2);
+
         relativeTitle.setBackgroundColor(Configure.TITLE_BG_COLOR);
         relative.addView(relativeTitle, rParams);
 
@@ -88,12 +84,12 @@ public class NewCameraView extends CameraView {
 
         rParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         rParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        linearBotton = new LinearLayout(mContext);
-        linearBotton.setId(3);
-        linearBotton.setVisibility(Configure.MENU_VISIBILITY);
-        linearBotton.setBackgroundColor(Configure.BOTTON_BG_COLOR);
-        linearBotton.setOrientation(LinearLayout.HORIZONTAL);
-        relative.addView(linearBotton, rParams);
+        linearBottom = new LinearLayout(mContext);
+
+        linearBottom.setVisibility(Configure.MENU_VISIBILITY);
+        linearBottom.setBackgroundColor(Configure.BOTTON_BG_COLOR);
+        linearBottom.setOrientation(LinearLayout.HORIZONTAL);
+        relative.addView(linearBottom, rParams);
 
         LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         lParams.weight = 1;
@@ -103,7 +99,7 @@ public class NewCameraView extends CameraView {
         btnPick.setBackgroundColor(Configure.BOTTON_BG_COLOR);
         btnPick.setImageResource(R.drawable.pick_btn_bg);
         btnPick.setOnClickListener(onclick);
-        linearBotton.addView(btnPick, lParams);
+        linearBottom.addView(btnPick, lParams);
 
         lParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         lParams.weight = 1;
@@ -113,7 +109,7 @@ public class NewCameraView extends CameraView {
         btnLight.setBackgroundColor(Configure.BOTTON_BG_COLOR);
         btnLight.setImageResource(R.drawable.scan_code_light);
         btnLight.setOnClickListener(onclick);
-        linearBotton.addView(btnLight, lParams);
+        linearBottom.addView(btnLight, lParams);
 
         rParams = new RelativeLayout.LayoutParams((int) (44 * density), (int) (44 * density));
         rParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
@@ -173,9 +169,7 @@ public class NewCameraView extends CameraView {
         btnSign.setBackgroundResource(Configure.BTN_DRAWABLE_RED_BG);
         btnSign.setText(Configure.BTN_CLICK_TXT);
        btnSign.setPadding((int) (18 * density), 0, (int) (18 * density), 0);
-//       btnSign.setCompoundDrawablePadding((int) (15 * density));
-//        btnSign.setCompoundDrawablesWithIntrinsicBounds(R.drawable.scan_number, 0, 0, 0);
-        btnSign.setId(7);
+
         btnSign.setTextColor(Configure.BTN_TXT_CLICK_COLOR);
         btnSign.setTextSize(Configure.BTN_CLICK_TXT_SIZE);
         btnSign.setOnClickListener(onclick);
@@ -184,7 +178,6 @@ public class NewCameraView extends CameraView {
         rParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         rParams.addRule(RelativeLayout.BELOW, 2);
         linTicket = new LinearLayout(mContext);
-        linTicket.setId(8);
         linTicket.setPadding((int) (10 * density), (int) (10 * density), 0, (int) (10 * density));
         linTicket.setVisibility(Configure.TICKET_TITLE_VISIBILITY);
         linTicket.setBackgroundColor(Configure.TICKET_COUNT_BG);
