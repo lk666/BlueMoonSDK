@@ -25,7 +25,7 @@
             android:background="@drawable/edittext_search"
             android:drawableLeft="@drawable/search_gray"
             android:drawablePadding="10dp"
-            android:textColor="@color/black_deep"
+            android:textColor="@color/black_light"
             android:focusableInTouchMode="true"
             android:textSize="@dimen/text_size_15"
             android:singleLine="true"

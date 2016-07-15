@@ -36,8 +36,6 @@ import cn.com.bluemoon.lib.utils.LibViewUtil;
 public class CommonSearchView extends LinearLayout {
 
     private Context context;
-    //    private int width;
-    private float density;
     private SearchViewListener listener;
     private CommonClearEditText etSearch;
     private TextView txtSearch;
@@ -72,7 +70,6 @@ public class CommonSearchView extends LinearLayout {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         layoutInflater.inflate(R.layout.layout_search, this);
-        screenDefault();
 
         if (typedArray != null) {
             textColor = typedArray.getInt(R.styleable.CommonSearchView_text_color, 0);
@@ -338,22 +335,6 @@ public class CommonSearchView extends LinearLayout {
             ImageView imgDel;
         }
 
-    }
-
-    private void screenDefault() {
-        WindowManager windowManager = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
-
-        DisplayMetrics dm = new DisplayMetrics();
-
-        windowManager.getDefaultDisplay().getMetrics(dm);
-
-        density = dm.density;
-//        width = AppContext.getInstance().getDisplayWidth();
-    }
-
-    public int getPx(int dip) {
-        return (int) (dip * density);
     }
 
     public void setSearchViewListener(final SearchViewListener listener) {
