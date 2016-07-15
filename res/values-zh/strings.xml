@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="xlistview_header_hint_normal">下拉可以刷新</string>
+    <string name="xlistview_header_hint_ready">释放立即刷新</string>
+    <string name="xlistview_header_hint_loading">正在刷新...</string>
+    <string name="data_loading">加载中&#8230;</string>
+    <string name="dialog_title">提示</string>
+    <string name="btn_save_to_photo">保存到手机</string>
+    <string name="btn_decode_qrcode">识别二维码</string>
+    <string name="decode_success">识别结果</string>
+    <string name="decode_fail">没有可识别数据</string>
+    <string name="save_success">图片已保存</string>
+    <string name="save_fail">保存失败</string>
+    <string name="btn_take_photo">拍照</string>
+    <string name="btn_pick_photo">从手机相册选择</string>
+    <string name="btn_ok">确定</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_ok_space">确 定</string>
+    <string name="btn_cancel_space">取 消</string>
+    <string name="btn_internet">设置网络</string>
+    <string name="content_can_not_to_network_setting">无法跳转至网络设置界面,请手动设置</string>
+    <string name="content_no_name">请输入中英文、数字、\"_\"、\"-\"</string>
+    <string name="content_no_emoji">限制输入此类表情字符</string>
+    <string name="get_qrcode_fail">没有检测到二维码数据，请更换清晰图片</string>
+    <string name="get_photo_too_big">图片太大，超出解析范围</string>
+    <string name="scan_failed">扫描出现异常，请重试</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="request_server_busy">服务器繁忙，请稍后再试</string>
+	<string name="request_server_overtime">连接不上服务器，请检查网络再试</string>
+	<string name="request_no_internet">网络异常，无法访问数据</string>
+	<string name="get_data_busy">获取数据超时，请重试</string>
+	<!-- qrcode -->
+	<string name="qrcode_title_txt">扫一扫</string>
+	<string name="qrcode_content_txt">请将二维码置于取景框内</string>
+
+
+    <!-- error message-->
+    <string name="error_max_limit">输入长度不能超过%s个字</string>
+    <string name= "limit_char_1">-</string>
+    <string name= "limit_char_2">——</string>
+    <string name="error_take_photo">获取图片失败,请重试</string>
+    <string name="error_photo_path">图片地址为空</string>
+    <string name="error_get_data">获取数据失败</string>
+    <string name="not_found_weixin">检测不到手机上的微信，请确认是否安装</string>
+    <string name="text_qr">二维码</string>
+    <string name="text_bar_code">条形码</string>
+    <string name="search_cannot_empty">搜索内容不能为空</string>
+
+</resources>
