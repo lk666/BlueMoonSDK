@@ -1,6 +1,5 @@
 package cn.com.bluemoon.lib.view;
 
-import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -19,12 +18,14 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.apache.commons.lang3.StringUtils;
+
 import cn.com.bluemoon.lib.callback.CodeDialogCallback;
 import cn.com.bluemoon.lib.callback.DrawableCallback;
 import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.utils.DownImageHelper;
 
-@SuppressLint("NewApi")
 public class QRCodeDialog extends DialogFragment {
 
 	private View view;
@@ -167,7 +168,7 @@ public class QRCodeDialog extends DialogFragment {
 
 	private void setTitleTxt() {
 		TextView txtTitle = (TextView) view.findViewById(R.id.title_code);
-		if (codeTitle == null) {
+		if (StringUtils.isEmpty(codeTitle)) {
 			txtTitle.setVisibility(View.GONE);
 		} else {
 			txtTitle.setVisibility(View.VISIBLE);
@@ -177,7 +178,7 @@ public class QRCodeDialog extends DialogFragment {
 
 	private void setStringTxt() {
 		TextView txtView = (TextView) view.findViewById(R.id.txt_code);
-		if (codeString == null) {
+		if (StringUtils.isEmpty(codeString)) {
 			txtView.setVisibility(View.GONE);
 		} else {
 			txtView.setVisibility(View.VISIBLE);
@@ -190,7 +191,7 @@ public class QRCodeDialog extends DialogFragment {
 	private void setContentTxt() {
 		TextView txtContent = (TextView) view.findViewById(R.id.txt_content);
 		View line = view.findViewById(R.id.line);
-		if (codeContent == null) {
+		if (StringUtils.isEmpty(codeContent)) {
 			txtContent.setVisibility(View.GONE);
 			line.setVisibility(View.GONE);
 		} else {

@@ -83,6 +83,29 @@ public class LibDateUtil {
 	}
 
 	public static boolean isToday(long timestamp){
-		return isSameDay(timestamp,System.currentTimeMillis());
+		return isSameDay(timestamp, System.currentTimeMillis());
 	}
+
+	public static long getTimeOffsetMonth(long time,int month){
+		Calendar c = Calendar.getInstance();
+		if(time!=0) c.setTimeInMillis(time);
+		c.add(Calendar.MONTH, month);
+		return c.getTimeInMillis();
+	}
+
+	public static long getTimeOffsetDay(long time,int day){
+		Calendar c = Calendar.getInstance();
+		if(time!=0) c.setTimeInMillis(time);
+		c.add(Calendar.DAY_OF_YEAR, day);
+		return c.getTimeInMillis();
+	}
+
+	public static long getTimeOffsetMonth(int month){
+		return getTimeOffsetMonth(0,month);
+	}
+
+	public static long getTimeOffsetDay(int day){
+		return getTimeOffsetDay(0,day);
+	}
+
 }

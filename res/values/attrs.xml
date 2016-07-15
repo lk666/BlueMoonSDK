@@ -194,4 +194,10 @@
         <attr name="text_color" format="color"/>
         <attr name="search_empty" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="CommonEmptyView">
+        <attr name="text_content" format="string"/>
+        <attr name="img_empty" format="reference"/>
+        <attr name="refreshable"  format="boolean"/>
+    </declare-styleable>
 </resources>
