@@ -46,6 +46,7 @@ final class DecodeFormatManager {
     ONE_D_FORMATS.add(BarcodeFormat.CODE_39);
     ONE_D_FORMATS.add(BarcodeFormat.CODE_93);
     ONE_D_FORMATS.add(BarcodeFormat.CODE_128);
+    ONE_D_FORMATS.add(BarcodeFormat.CODABAR);
     ONE_D_FORMATS.add(BarcodeFormat.ITF);
     QR_CODE_FORMATS = new Vector<BarcodeFormat>(1);
     QR_CODE_FORMATS.add(BarcodeFormat.QR_CODE);
