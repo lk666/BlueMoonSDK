@@ -18,6 +18,7 @@ package cn.com.bluemoon.lib.pulltorefresh;
 import android.annotation.TargetApi;
 import android.util.Log;
 import android.view.View;
+
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.Mode;
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.State;
 

@@ -7,8 +7,9 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import cn.com.bluemoon.lib.slidingmenu.SlidingMenu;
+
 import cn.com.bluemoon.lib.qrcode.R;
+import cn.com.bluemoon.lib.slidingmenu.SlidingMenu;
 
 public class SlidingActivityHelper {
 

@@ -1,7 +1,5 @@
 package cn.com.bluemoon.lib.view;
 
-import com.google.zxing.Result;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.Gravity;
@@ -14,6 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+
+import com.google.zxing.Result;
+
 import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.qrcode.utils.BarcodeUtil;
 import cn.com.bluemoon.lib.utils.LibImageUtil;

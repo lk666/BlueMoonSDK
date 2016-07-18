@@ -16,25 +16,24 @@
 
 package cn.com.bluemoon.lib.qrcode.view;
 
-import java.util.Collection;
-import java.util.HashSet;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.google.zxing.ResultPoint;
+
+import java.util.Collection;
+import java.util.HashSet;
+
 import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.qrcode.camera.CameraManager;
 import cn.com.bluemoon.lib.qrcode.utils.Configure;
-
-import com.google.zxing.ResultPoint;
 
 
 @SuppressLint("DrawAllocation")

@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
+
 import cn.com.bluemoon.lib.qrcode.R;
 
 public class RedpointTextView extends TextView {

@@ -1,9 +1,5 @@
 package cn.com.bluemoon.lib.swipe.menu;
 
-import cn.com.bluemoon.lib.qrcode.R;
-import cn.com.bluemoon.lib.swipe.refresh.DTListViewListener;
-import cn.com.bluemoon.lib.swipe.refresh.XListViewFooter;
-import cn.com.bluemoon.lib.swipe.refresh.XListViewHeader;
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
@@ -19,6 +15,10 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
+
+import cn.com.bluemoon.lib.qrcode.R;
+import cn.com.bluemoon.lib.swipe.refresh.DTListViewListener;
+import cn.com.bluemoon.lib.swipe.refresh.XListViewHeader;
 
 
 public class SwipeMenuListView extends ListView implements OnScrollListener {

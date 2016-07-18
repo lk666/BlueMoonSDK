@@ -1,9 +1,9 @@
 package cn.com.bluemoon.lib.swipe.refresh;
 
+import android.widget.BaseAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import android.widget.BaseAdapter;
 
 public abstract class DTBaseAdapter<T> extends BaseAdapter {
 	public ArrayList<T> mList;

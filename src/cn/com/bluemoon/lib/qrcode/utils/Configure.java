@@ -1,6 +1,7 @@
 package cn.com.bluemoon.lib.qrcode.utils;
 
 import android.view.View;
+
 import cn.com.bluemoon.lib.qrcode.R;
 
 /**

@@ -8,8 +8,6 @@
  */
 package cn.com.bluemoon.lib.view;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -25,6 +23,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
+
+import java.util.ArrayList;
 
 public class BmFragmentTabHost extends TabHost implements
 		TabHost.OnTabChangeListener {

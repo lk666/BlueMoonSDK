@@ -2,6 +2,7 @@ package cn.com.bluemoon.lib.view;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+
 import cn.com.bluemoon.lib.qrcode.R;
 
 public class CommonProgressDialog extends ProgressDialog{

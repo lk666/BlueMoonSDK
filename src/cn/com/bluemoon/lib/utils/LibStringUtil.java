@@ -1,12 +1,8 @@
 package cn.com.bluemoon.lib.utils;
 
-import java.util.regex.Pattern;
-
-import android.content.pm.PackageManager;
-import android.provider.MediaStore.Images.Thumbnails;
-import android.text.TextDirectionHeuristic;
-
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.regex.Pattern;
 
 public class LibStringUtil {
 

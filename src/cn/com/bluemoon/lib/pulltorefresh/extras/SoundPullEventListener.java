@@ -15,11 +15,12 @@
  *******************************************************************************/
 package cn.com.bluemoon.lib.pulltorefresh.extras;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.view.View;
+
+import java.util.HashMap;
+
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase;
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.Mode;
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.State;

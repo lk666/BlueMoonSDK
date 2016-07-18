@@ -1,7 +1,5 @@
 package cn.com.bluemoon.lib.qrcode.decoding;
 
-import java.util.Hashtable;
-
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -18,6 +16,8 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+
+import java.util.Hashtable;
 
 public final class EncodingHandler {
 	private static final int BLACK = 0xff000000;

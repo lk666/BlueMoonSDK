@@ -16,8 +16,6 @@
 
 package cn.com.bluemoon.lib.qrcode.decoding;
 
-import java.util.Vector;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -26,12 +24,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import cn.com.bluemoon.lib.qrcode.CaptureActivity;
-import cn.com.bluemoon.lib.qrcode.camera.CameraManager;
-import cn.com.bluemoon.lib.qrcode.view.ViewfinderResultPointCallback;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+
+import java.util.Vector;
+
+import cn.com.bluemoon.lib.qrcode.CaptureActivity;
+import cn.com.bluemoon.lib.qrcode.camera.CameraManager;
+import cn.com.bluemoon.lib.qrcode.view.ViewfinderResultPointCallback;
 
 /**
  * This class handles all the messaging which comprises the state machine for capture.

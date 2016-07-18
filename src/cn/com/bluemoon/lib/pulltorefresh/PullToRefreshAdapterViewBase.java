@@ -31,6 +31,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
+
 import cn.com.bluemoon.lib.pulltorefresh.internal.EmptyViewMethodAccessor;
 import cn.com.bluemoon.lib.pulltorefresh.internal.IndicatorLayout;
 import cn.com.bluemoon.lib.qrcode.R;

@@ -1,7 +1,5 @@
 package cn.com.bluemoon.lib.swipe.menu;
 
-import cn.com.bluemoon.lib.swipe.menu.SwipeMenuListView.OnMenuItemClickListener;
-import cn.com.bluemoon.lib.swipe.menu.SwipeMenuView.OnSwipeItemClickListener;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Color;
@@ -10,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
+
+import cn.com.bluemoon.lib.swipe.menu.SwipeMenuListView.OnMenuItemClickListener;
+import cn.com.bluemoon.lib.swipe.menu.SwipeMenuView.OnSwipeItemClickListener;
 
 /**
  * 

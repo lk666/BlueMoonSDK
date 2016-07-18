@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+
 import cn.com.bluemoon.lib.qrcode.R;
 
 public class FlowLayout extends ViewGroup {

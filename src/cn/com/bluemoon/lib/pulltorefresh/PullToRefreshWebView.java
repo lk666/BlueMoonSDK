@@ -24,6 +24,7 @@ import android.util.AttributeSet;
 import android.util.FloatMath;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+
 import cn.com.bluemoon.lib.qrcode.R;
 
 public class PullToRefreshWebView extends PullToRefreshBase<WebView> {

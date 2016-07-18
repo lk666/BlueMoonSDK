@@ -6,12 +6,13 @@
  */
 package cn.com.bluemoon.lib.swipe.refresh;
 
-import cn.com.bluemoon.lib.qrcode.R;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import cn.com.bluemoon.lib.qrcode.R;
 
 
 public class XListViewFooter extends LinearLayout {

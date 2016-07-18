@@ -1,9 +1,9 @@
 package cn.com.bluemoon.lib.utils;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import android.util.Log;
 
 
 public class LibLogUtils {

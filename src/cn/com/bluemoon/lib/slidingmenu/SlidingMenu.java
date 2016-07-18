@@ -23,11 +23,11 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import cn.com.bluemoon.lib.qrcode.R;
-
-import cn.com.bluemoon.lib.slidingmenu.CustomViewAbove.OnPageChangeListener;
 
 import java.lang.reflect.Method;
+
+import cn.com.bluemoon.lib.qrcode.R;
+import cn.com.bluemoon.lib.slidingmenu.CustomViewAbove.OnPageChangeListener;
 
 public class SlidingMenu extends RelativeLayout {
 

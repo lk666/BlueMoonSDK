@@ -2,8 +2,6 @@ package cn.com.bluemoon.lib.qrcode.callback;
 
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public interface IScanMenuListener {
 

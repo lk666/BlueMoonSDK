@@ -3,6 +3,7 @@ package cn.com.bluemoon.lib.tagview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ToggleButton;
+
 import cn.com.bluemoon.lib.qrcode.R;
 
 public class TagView extends ToggleButton {

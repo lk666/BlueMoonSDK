@@ -22,6 +22,7 @@ import android.graphics.drawable.Drawable;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView.ScaleType;
+
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.Mode;
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.Orientation;
 import cn.com.bluemoon.lib.qrcode.R;

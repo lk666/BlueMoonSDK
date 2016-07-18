@@ -2,7 +2,6 @@ package cn.com.bluemoon.lib.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 

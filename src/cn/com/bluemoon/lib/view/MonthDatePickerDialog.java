@@ -1,11 +1,12 @@
 package cn.com.bluemoon.lib.view;
 
-import cn.com.bluemoon.lib.qrcode.R;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+
+import cn.com.bluemoon.lib.qrcode.R;
 
 public class MonthDatePickerDialog extends CommonDatePickerDialog {
 

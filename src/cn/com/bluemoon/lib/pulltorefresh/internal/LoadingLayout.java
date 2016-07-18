@@ -35,6 +35,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import cn.com.bluemoon.lib.pulltorefresh.ILoadingLayout;
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.Mode;
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.Orientation;

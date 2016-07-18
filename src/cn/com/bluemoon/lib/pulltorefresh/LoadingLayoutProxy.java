@@ -1,9 +1,10 @@
 package cn.com.bluemoon.lib.pulltorefresh;
 
-import java.util.HashSet;
-
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+
+import java.util.HashSet;
+
 import cn.com.bluemoon.lib.pulltorefresh.internal.LoadingLayout;
 
 public class LoadingLayoutProxy implements ILoadingLayout {
