@@ -43,14 +43,16 @@ public class QRCodeDialog extends DialogFragment {
 	private SavePicDialog savePicDialog;
 	private boolean isDecode;
 
-	public QRCodeDialog(Context context) {
+	public QRCodeDialog() {
 		super();
+	}
+
+	public QRCodeDialog(Context context) {
 		this.context = context;
 	}
 
 
 	public QRCodeDialog(Context context, CodeDialogCallback cb) {
-		super();
 		this.context = context;
 		this.cb = cb;
 	}

@@ -38,14 +38,12 @@ public class ImageDialog extends DialogFragment {
 	private ImageDialogCallback cb;
 	private SavePicDialog savePicDialog;
 
-	public ImageDialog(Context context) {
+	public ImageDialog() {
 		super();
-		this.context = context;
 	}
 
 
 	public ImageDialog(Context context, ImageDialogCallback cb) {
-		super();
 		this.context = context;
 		this.cb = cb;
 	}

@@ -107,8 +107,8 @@ public class ListPopView extends PopupWindow {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
 
-            ViewHolder viewHolder = null;
-            if(viewHolder==null){
+            ViewHolder viewHolder ;
+            if(convertView==null){
                 viewHolder = new ViewHolder();
                 convertView = mInflater.inflate(R.layout.item_search_history, null);
                 viewHolder.txtContent = (TextView) convertView.findViewById(R.id.txt_content);
@@ -118,7 +118,7 @@ public class ListPopView extends PopupWindow {
                 viewHolder = (ViewHolder)convertView.getTag();
             }
 
-            viewHolder.txtContent.setText(list.get(position).toString());
+            viewHolder.txtContent.setText(list.get(position));
             viewHolder.imgDel.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
