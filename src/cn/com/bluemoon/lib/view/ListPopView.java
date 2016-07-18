@@ -19,7 +19,7 @@ import java.util.List;
 
 import cn.com.bluemoon.lib.qrcode.R;
 
-public class ListPopupWindow extends PopupWindow {
+public class ListPopView extends PopupWindow {
 
     private Context mContext;
     private View view;
@@ -27,7 +27,7 @@ public class ListPopupWindow extends PopupWindow {
     private HistoryListAdapter adapter;
     private ListView listView;
 
-    public ListPopupWindow(Context context,OnSelectListener listener) {
+    public ListPopView(Context context, OnSelectListener listener) {
         this.mContext = context;
         this.listener = listener;
         init();

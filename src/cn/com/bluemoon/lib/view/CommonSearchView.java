@@ -27,7 +27,7 @@ import cn.com.bluemoon.lib.utils.LibViewUtil;
 /**
  * Created by bm on 2016/6/20.
  */
-public class CommonSearchView extends LinearLayout implements ListPopupWindow.OnSelectListener {
+public class CommonSearchView extends LinearLayout implements ListPopView.OnSelectListener {
 
     private Context context;
     private SearchViewListener listener;
@@ -43,7 +43,7 @@ public class CommonSearchView extends LinearLayout implements ListPopupWindow.On
     private List<String> listHistory;
     private int maxSize = 5;
     private boolean isSearchEmpty = true;
-    private ListPopupWindow popupWindow;
+    private ListPopView popupWindow;
     private LinearLayout layoutTitle;
 
 
@@ -101,7 +101,7 @@ public class CommonSearchView extends LinearLayout implements ListPopupWindow.On
             }
         });
         if (popupWindow == null) {
-            popupWindow = new ListPopupWindow(context, this);
+            popupWindow = new ListPopView(context, this);
         }
 
     }
