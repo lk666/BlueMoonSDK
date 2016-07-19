@@ -27,8 +27,16 @@ import java.io.File;
 import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.utils.LibImageUtil;
 import cn.com.bluemoon.lib.utils.LibPublicUtil;
+import cn.com.bluemoon.lib.utils.threadhelper.ExRunable;
+import cn.com.bluemoon.lib.utils.threadhelper.Feedback;
+import cn.com.bluemoon.lib.utils.threadhelper.ThreadPool;
 
 public class TakePhotoPopView {
+
+    /**
+     * 最大图片尺寸
+     */
+    private final static int MAX_IMG_LENGTH = 600 * 800;
 
     private LinearLayout ll_popup;
     private PopupWindow pop;
@@ -47,7 +55,8 @@ public class TakePhotoPopView {
         popupInit();
     }
 
-    public TakePhotoPopView(Context context, int TAKE_PIC_RESULT, int CHOSE_PIC_RESULT, DismissListener listener) {
+    public TakePhotoPopView(Context context, int TAKE_PIC_RESULT, int CHOSE_PIC_RESULT,
+                            DismissListener listener) {
         super();
         this.context = context;
         this.TAKE_PIC_RESULT = TAKE_PIC_RESULT;
@@ -56,7 +65,8 @@ public class TakePhotoPopView {
         popupInit();
     }
 
-    public TakePhotoPopView(Context context, Fragment fragment, int TAKE_PIC_RESULT, int CHOSE_PIC_RESULT) {
+    public TakePhotoPopView(Context context, Fragment fragment, int TAKE_PIC_RESULT, int
+            CHOSE_PIC_RESULT) {
         super();
         this.context = context;
         this.fragment = fragment;
@@ -197,7 +207,8 @@ public class TakePhotoPopView {
 
     public Bitmap getTakeImageBitmap(int size) {
         if (out == null || !out.exists()) {
-            Toast.makeText(context, context.getResources().getString(R.string.error_take_photo), Toast.LENGTH_SHORT)
+            Toast.makeText(context, context.getResources().getString(R.string.error_take_photo),
+                    Toast.LENGTH_SHORT)
                     .show();
             return null;
         }
@@ -208,7 +219,8 @@ public class TakePhotoPopView {
     public Bitmap getPickImageBitmap(Intent data, int size) {
         String path_change = getPickPhotoPath(data);
         if (path_change == null) {
-            Toast.makeText(context, context.getResources().getString(R.string.error_take_photo), Toast.LENGTH_SHORT)
+            Toast.makeText(context, context.getResources().getString(R.string.error_take_photo),
+                    Toast.LENGTH_SHORT)
                     .show();
             return null;
         }
@@ -221,6 +233,55 @@ public class TakePhotoPopView {
 
     public Bitmap getPickImageBitmap(Intent data) {
         return getPickImageBitmap(data, 300);
+    }
+
+    /**
+     * 获取总大小不超过{@link #MAX_IMG_LENGTH}的选择图片的bitmap
+     *
+     * @param data     选择图片的返回intentresult
+     * @param feedback 主线程执行的获取压缩图片成功后的回调
+     * @return
+     */
+
+    public boolean getPickImageScaleBitmap(Intent data, Feedback<byte[]> feedback) {
+        final String path_change = getPickPhotoPath(data);
+        if (path_change == null) {
+            Toast.makeText(context, context.getResources().getString(R.string.error_take_photo),
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            ThreadPool.PICTURE_THREAD_POOL.execute(new ExRunable(feedback) {
+                @Override
+                public Object execute() {
+                    return LibImageUtil.getImgScale(path_change, MAX_IMG_LENGTH);
+                }
+            });
+            return true;
+        }
+    }
+
+    /**
+     * 获取总大小不超过{@link #MAX_IMG_LENGTH}的照相得到的bitmap
+     *
+     * @param feedback 主线程执行的获取压缩图片成功后的回调
+     * @return
+     */
+
+    public boolean getTakeImageScaleBitmap(Feedback<byte[]> feedback) {
+        if (out == null || !out.exists()) {
+            Toast.makeText(context, context.getResources().getString(R.string.error_take_photo),
+                    Toast.LENGTH_SHORT)
+                    .show();
+            return false;
+        } else {
+            ThreadPool.PICTURE_THREAD_POOL.execute(new ExRunable(feedback) {
+                @Override
+                public Object execute() {
+                    return LibImageUtil.getImgScale(out.getAbsolutePath(), MAX_IMG_LENGTH);
+                }
+            });
+            return true;
+        }
     }
 
     public Drawable getTakeImageDrawable(int size) {
