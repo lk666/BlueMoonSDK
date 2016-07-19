@@ -140,7 +140,7 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
         }
         etSearch.clearFocus();
         if (listHistory == null) {
-            listHistory = new ArrayList<>();
+            listHistory = new ArrayList<String>();
         }
         addHistory(str);
         if (listener != null) {
@@ -177,7 +177,7 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
 
     public List<String> addHistory(String str) {
         if (listHistory == null) {
-            listHistory = new ArrayList<>();
+            listHistory = new ArrayList<String>();
         }
         if (!StringUtils.isEmpty(str.trim())) {
             listHistory.add(0, str);
