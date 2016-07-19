@@ -1,6 +1,7 @@
 package cn.com.bluemoon.lib.view;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -39,16 +40,29 @@ public class ImageDialog extends DialogFragment {
 	private ImageDialogCallback cb;
 	private SavePicDialog savePicDialog;
 
-	public ImageDialog() {
-		super();
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		context = getActivity();
 	}
 
-
-	public ImageDialog(Context context, ImageDialogCallback cb) {
-		this.context = context;
-		this.cb = cb;
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
+		getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getDialog().getWindow().setBackgroundDrawable(
+				new ColorDrawable(Color.TRANSPARENT));
+		view = inflater.inflate(R.layout.dialog_image, container, false);
+		imgView = (ImageView) view.findViewById(R.id.img_pic);
+		txtLoad = (TextView) view.findViewById(R.id.txt_load);
+		view.setOnClickListener(onclick);
+		imgView.setOnClickListener(onclick);
+		imgView.setOnLongClickListener(onLongClick);
+		doMain();
+		return view;
 	}
-	
+
 	public void setCallback(ImageDialogCallback cb){
 		this.cb = cb;
 	}
@@ -73,26 +87,6 @@ public class ImageDialog extends DialogFragment {
 
 	public void setSavePath(String savePath) {
 		this.savePath = savePath;
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		super.onCreateView(inflater, container, savedInstanceState);
-		view = inflater.inflate(R.layout.dialog_image, container, false);
-		imgView = (ImageView) view.findViewById(R.id.img_pic);
-		txtLoad = (TextView) view.findViewById(R.id.txt_load);
-		view.setOnClickListener(onclick);
-		imgView.setOnClickListener(onclick);
-		imgView.setOnLongClickListener(onLongClick);
-
-		getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
-		getDialog().getWindow().setBackgroundDrawable(
-				new ColorDrawable(Color.TRANSPARENT));
-		if (cb != null)
-			cb.getImageView(imgView);
-		doMain();
-		return view;
 	}
 
 	OnClickListener onclick = new OnClickListener() {
