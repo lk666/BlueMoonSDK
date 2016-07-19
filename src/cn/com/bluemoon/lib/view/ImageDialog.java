@@ -19,6 +19,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import cn.com.bluemoon.lib.callback.DrawableCallback;
 import cn.com.bluemoon.lib.callback.ImageDialogCallback;
 import cn.com.bluemoon.lib.qrcode.R;

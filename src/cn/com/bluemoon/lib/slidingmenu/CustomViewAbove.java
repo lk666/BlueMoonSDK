@@ -23,11 +23,11 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
-import cn.com.bluemoon.lib.slidingmenu.SlidingMenu.OnClosedListener;
-import cn.com.bluemoon.lib.slidingmenu.SlidingMenu.OnOpenedListener;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.com.bluemoon.lib.slidingmenu.SlidingMenu.OnClosedListener;
+import cn.com.bluemoon.lib.slidingmenu.SlidingMenu.OnOpenedListener;
 //import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnCloseListener;
 //import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnOpenListener;
 

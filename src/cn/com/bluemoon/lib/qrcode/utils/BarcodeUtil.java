@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
+
+import com.google.zxing.Result;
+import com.google.zxing.WriterException;
+
 import cn.com.bluemoon.lib.qrcode.CaptureActivity;
 import cn.com.bluemoon.lib.qrcode.NewCaptureActivity;
 import cn.com.bluemoon.lib.qrcode.decoding.DecodeBimap;
 import cn.com.bluemoon.lib.qrcode.decoding.EncodingHandler;
-
-import com.google.zxing.Result;
-import com.google.zxing.WriterException;
 
 public class BarcodeUtil {
 

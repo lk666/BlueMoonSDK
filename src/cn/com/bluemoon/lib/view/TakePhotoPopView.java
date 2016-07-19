@@ -1,7 +1,5 @@
 package cn.com.bluemoon.lib.view;
 
-import java.io.File;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -23,6 +21,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.io.File;
 
 import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.utils.LibImageUtil;

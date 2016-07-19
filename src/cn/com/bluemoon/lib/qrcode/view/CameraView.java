@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.qrcode.callback.IScanMenuListener;
 import cn.com.bluemoon.lib.qrcode.utils.Configure;

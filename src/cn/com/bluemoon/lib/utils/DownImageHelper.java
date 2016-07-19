@@ -1,5 +1,11 @@
 package cn.com.bluemoon.lib.utils;
 
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.widget.ImageView;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -7,11 +13,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.widget.ImageView;
 import cn.com.bluemoon.lib.callback.DrawableCallback;
 
 public class DownImageHelper {

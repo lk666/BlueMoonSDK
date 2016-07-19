@@ -22,6 +22,7 @@ import android.os.Build.VERSION_CODES;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.GridView;
+
 import cn.com.bluemoon.lib.pulltorefresh.internal.EmptyViewMethodAccessor;
 import cn.com.bluemoon.lib.qrcode.R;
 

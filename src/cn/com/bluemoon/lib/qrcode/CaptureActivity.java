@@ -1,9 +1,5 @@
 package cn.com.bluemoon.lib.qrcode;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Vector;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -21,8 +17,16 @@ import android.view.SurfaceHolder.Callback;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.Result;
+import com.google.zxing.client.result.ParsedResult;
+import com.google.zxing.client.result.ResultParser;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Vector;
+
 import cn.com.bluemoon.lib.qrcode.callback.IScanMenuListener;
 import cn.com.bluemoon.lib.qrcode.camera.CameraManager;
 import cn.com.bluemoon.lib.qrcode.decoding.CaptureActivityHandler;
@@ -34,11 +38,6 @@ import cn.com.bluemoon.lib.qrcode.view.ViewfinderView;
 import cn.com.bluemoon.lib.utils.LibConstants;
 import cn.com.bluemoon.lib.utils.LibImageUtil;
 import cn.com.bluemoon.lib.utils.LibPublicUtil;
-
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.Result;
-import com.google.zxing.client.result.ParsedResult;
-import com.google.zxing.client.result.ResultParser;
 
 @SuppressLint("NewApi")
 public class CaptureActivity extends Activity implements Callback {

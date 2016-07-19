@@ -1,4 +1,13 @@
-package cn.com.bluemoon.lib.utils;  
+package cn.com.bluemoon.lib.utils;
+
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+import android.os.StatFs;
+import android.util.Log;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -13,15 +22,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
-import android.os.StatFs;
-import android.util.Log;
 
 
 public class LibFileUtil {

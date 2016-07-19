@@ -1,6 +1,7 @@
 package cn.com.bluemoon.lib.qrcode.utils;
 
 import android.view.View;
+
 import cn.com.bluemoon.lib.qrcode.R;
 
 /**
@@ -149,44 +150,48 @@ public class Configure {
 
 	/*********************menu visibility****************************/
 	/**
-	 * 设置扫描界面的底部菜单显示
-	 * {@value 整条菜单     }
-	 * @param int (View.VISIBLE,View.GONE)
+	 * 设置扫描界面的底部菜单显示，整条菜单
+	 * <br/>
+	 * 可设置值为:{@link View#VISIBLE},  {@link View#GONE}
 	 */
 	public static int MENU_VISIBILITY = View.VISIBLE;
 	/**
-	 * 设置扫描界面的底部菜单显示
-	 * {@value 选取相册二维码解码菜单}
-	 * @param int (View.VISIBLE,View.GONE)
+	 * 设置扫描界面的底部菜单显示，选取相册二维码解码菜单
+	 * <br/>
+	 * 可设置值为:{@link View#VISIBLE},  {@link View#GONE}
 	 */
 	public static int MENU_PICK_VISIBILITY = View.VISIBLE;
 
 	/**
-	 * 设置扫描界面的底部菜单显示
-	 * {@value 开启闪光灯菜单}
-	 * @param int (View.VISIBLE,View.GONE)
+	 * 设置扫描界面的底部菜单显示，开启闪光灯菜单
+	 * <br/>
+	 * 可设置值为:{@link View#VISIBLE},  {@link View#GONE}
 	 */
 	public static int MENU_LIGHT_VISIBILITY = View.VISIBLE;
 	/**
 	 * 设置描述文字显示
-	 * @param int (View.VISIBLE,View.GONE)
+	 * <br/>
+	 * 可设置值为:{@link View#VISIBLE},  {@link View#GONE}
 	 */
 	public static int CONTENT_VISIBILITY = View.VISIBLE;
 	/**
 	 * 设置事件按钮显示
-	 * @param int (View.VISIBLE,View.GONE)
+	 * <br/>
+	 * 可设置值为:{@link View#VISIBLE},  {@link View#GONE}
 	 */
 	public static int BUTTON_VISIBILITY = View.GONE;
 	/**
 	 * 设置顶部门票显示
-	 * @param int (View.VISIBLE,View.GONE)
+	 * <br/>
+	 * 可设置值为:{@link View#VISIBLE},  {@link View#GONE}
 	 */
 	public static int TICKET_TITLE_VISIBILITY = View.GONE;
 
 	/*********************boolean**************************/
 	/**
 	 * 设置是否持续扫描
-	 * @param int (View.VISIBLE,View.GONE)
+	 * <br/>
+	 * 可设置值为:{@link View#VISIBLE},  {@link View#GONE}
 	 */
 	public static boolean IS_KEEP_OPEN = false;
 

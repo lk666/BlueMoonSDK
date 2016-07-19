@@ -28,6 +28,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
 import cn.com.bluemoon.lib.pulltorefresh.internal.EmptyViewMethodAccessor;
 import cn.com.bluemoon.lib.pulltorefresh.internal.LoadingLayout;
 import cn.com.bluemoon.lib.qrcode.R;

@@ -3,6 +3,7 @@ package cn.com.bluemoon.lib.qrcode;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Window;
+
 import cn.com.bluemoon.lib.qrcode.camera.CameraManager;
 import cn.com.bluemoon.lib.qrcode.decoding.InactivityTimer;
 import cn.com.bluemoon.lib.qrcode.view.NewCameraView;

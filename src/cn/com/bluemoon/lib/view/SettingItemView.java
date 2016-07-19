@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import cn.com.bluemoon.lib.qrcode.R;
 
 @SuppressLint({ "InflateParams", "NewApi" })

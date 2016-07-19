@@ -2,6 +2,7 @@ package cn.com.bluemoon.lib.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+
 import cn.com.bluemoon.lib.qrcode.R;
 
 

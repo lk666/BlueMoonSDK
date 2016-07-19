@@ -16,17 +16,18 @@
 
 package cn.com.bluemoon.lib.qrcode.decoding;
 
-import java.util.Hashtable;
-import java.util.Vector;
-import java.util.concurrent.CountDownLatch;
-
 import android.os.Handler;
 import android.os.Looper;
-import cn.com.bluemoon.lib.qrcode.CaptureActivity;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.ResultPointCallback;
+
+import java.util.Hashtable;
+import java.util.Vector;
+import java.util.concurrent.CountDownLatch;
+
+import cn.com.bluemoon.lib.qrcode.CaptureActivity;
 
 
 final class DecodeThread extends Thread {

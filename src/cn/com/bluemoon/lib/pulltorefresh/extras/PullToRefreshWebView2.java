@@ -15,11 +15,12 @@
  *******************************************************************************/
 package cn.com.bluemoon.lib.pulltorefresh.extras;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.webkit.WebView;
+
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshWebView;
 
 /**

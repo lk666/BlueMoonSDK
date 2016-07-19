@@ -17,6 +17,7 @@ package cn.com.bluemoon.lib.pulltorefresh;
 
 import android.view.View;
 import android.view.animation.Interpolator;
+
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.Mode;
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.OnPullEventListener;
 import cn.com.bluemoon.lib.pulltorefresh.PullToRefreshBase.OnRefreshListener;

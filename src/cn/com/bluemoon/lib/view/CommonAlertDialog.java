@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.text.Spannable;
 import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;

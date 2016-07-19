@@ -33,6 +33,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
 import cn.com.bluemoon.lib.pulltorefresh.internal.FlipLoadingLayout;
 import cn.com.bluemoon.lib.pulltorefresh.internal.LoadingLayout;
 import cn.com.bluemoon.lib.pulltorefresh.internal.RotateLoadingLayout;

@@ -1,7 +1,6 @@
 package cn.com.bluemoon.lib.callback;
 
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public abstract class ImageDialogCallback {
 

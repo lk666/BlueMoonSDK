@@ -1,14 +1,14 @@
 package cn.com.bluemoon.lib.utils;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-
 import android.util.Log;
 import android.webkit.WebView;
 
 import com.loopj.android.http.Base64;
+
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.com.bluemoon.lib.callback.JsConnectCallBack;
 

@@ -1,13 +1,5 @@
 package cn.com.bluemoon.lib.utils;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +24,14 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.text.TextPaint;
-import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class LibImageUtil {
 
@@ -76,16 +75,15 @@ public class LibImageUtil {
 	}
 
 	/**
-	 * 获得圆角图片
+	 * 获得圆角图片，圆角大小默认为10
 	 *
-	 * @param bitmap资源
+	 * @param bitmap 资源
 	 * @param width
 	 * @param height
-	 * @param 圆角大小默认为10
+	 * @param
 	 * @return
 	 */
-	public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int width,
-												int height) {
+	public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int width, int height) {
 		return getRoundedCornerBitmap(bitmap, width, height, 10);
 	}
 
@@ -213,7 +211,7 @@ public class LibImageUtil {
 
 	/**
 	 * 通过url下载图片，并转化为bitmap
-	 * @param imgurl
+	 * @param url
 	 * @return
 	 */
 	public static Bitmap returnBitMap(String url) {
@@ -419,8 +417,6 @@ public class LibImageUtil {
 
 	/**
 	 * 调用系统选图功能
-	 * @param act
-	 * @param requestCode
 	 */
 	public static void pickPhoto(Context context,Fragment frag, int requestCode) {
 		try {
@@ -620,66 +616,36 @@ public class LibImageUtil {
 	}
 	/**
 	 * 根据宽高大小剪裁图片
-	 * @param act
-	 * @param uri
-	 * @param outputX
-	 * @param outputY
-	 * @param requestCode请求code,在result中接收
 	 */
 	public static void cropPhoto(Activity act,Uri uri,int outputX,int outputY,int requestCode) {
 		cropPhoto(act,null, uri, 1, outputY/outputX, outputX, outputY, requestCode);
 	}
 	/**
 	 * 根据宽高大小剪裁图片
-	 * @param act
-	 * @param uri
-	 * @param outputX
-	 * @param outputY
-	 * @param requestCode请求code,在result中接收
 	 */
 	public static void cropPhoto(Fragment fragment,Uri uri,int  outputX,int outputY,int requestCode) {
 		cropPhoto(null,fragment, uri, 1, outputY/outputX, outputX, outputY, requestCode);
 	}
 	/**
 	 * 根据宽高比例和宽度剪裁图片
-	 * @param act
-	 * @param uri
-	 * @param aspectX
-	 * @param aspectY
-	 * @param outputX
-	 * @param requestCode 请求code,在result中接收
 	 */
 	public static void cropPhoto(Activity act,Uri uri,int aspectX,int aspectY,int outputX,int requestCode) {
 		cropPhoto(act,null, uri, aspectX, aspectY, outputX, aspectY*outputX/aspectX, requestCode);
 	}
 	/**
 	 * 根据宽高比例和宽度剪裁图片
-	 * @param act
-	 * @param uri
-	 * @param aspectX
-	 * @param aspectY
-	 * @param outputX
-	 * @param requestCode 请求code,在result中接收
 	 */
 	public static void cropPhoto(Fragment fragment,Uri uri,int aspectX,int aspectY,int size,int requestCode) {
 		cropPhoto(null,fragment, uri, 1, 1, size, size, requestCode);
 	}
 	/**
 	 * 剪裁固定边长的正方形图片
-	 * @param act
-	 * @param uri
-	 * @param size
-	 * @param requestCode 请求code,在result中接收
 	 */
 	public static void cropPhoto(Activity act,Uri uri,int size,int requestCode) {
 		cropPhoto(act,null, uri, 1, 1, size, size, requestCode);
 	}
 	/**
 	 * 剪裁固定边长的正方形图片
-	 * @param act
-	 * @param uri
-	 * @param size
-	 * @param requestCode 请求code,在result中接收
 	 */
 	public static void cropPhoto(Fragment fragment,Uri uri,int size,int requestCode) {
 		cropPhoto(null,fragment, uri, 1, 1, size, size, requestCode);
