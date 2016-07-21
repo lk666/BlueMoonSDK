@@ -87,4 +87,6 @@
     <dimen name="space_3">3dp</dimen>
     <dimen name="space_2">2dp</dimen>
     <dimen name="space_1">1dp</dimen>
+
+    <dimen name="selector_item_height">36dp</dimen>
 </resources>

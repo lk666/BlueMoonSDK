@@ -40,6 +40,7 @@
     <string name="scan_failed">扫描出现异常，请重试</string>
     <string name="year">年</string>
     <string name="month">月</string>
+    <string name="date">日</string>
     <string name="request_server_busy">服务器繁忙，请稍后再试</string>
 	<string name="request_server_overtime">连接不上服务器，请检查网络再试</string>
 	<string name="request_no_internet">网络异常，无法访问数据</string>
