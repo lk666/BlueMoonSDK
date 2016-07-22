@@ -30,6 +30,7 @@ public class JsConnectManager {
 	private static final String VALUE_GET_LOCATION = "getLocation";
 	private static final String VALUE_GET_CACHE = "getCache";
 	private static final String VALUE_CLEAN_CACHE = "cleanCache";
+	private static final String VALUE_LOGOUT = "logout";
 
 
 	public static HashMap<String, String> getBMJSParams(String url){
@@ -48,6 +49,31 @@ public class JsConnectManager {
 			}
 		}
 		return map;
+	}
+
+	public static HashMap<String, String> getUrlParams(String url){
+		String arg = url.substring(url.indexOf("?") + 1, url.length());
+		String[] strs = arg.split("&");
+		HashMap<String, String> map = new HashMap<String, String>();
+		for(int x=0;x<strs.length;x++){
+			if(strs[x].indexOf("=") > 0){
+				String key = strs[x].substring(0,strs[x].indexOf("="));
+				String value = strs[x].substring(strs[x].indexOf("=")+1);
+				if(!StringUtils.isEmpty(key)&&value!=null){
+					Log.d("jsConnect", "result ="+key+"="+value);
+					map.put(key, value);
+				}
+			}
+		}
+		return map;
+	}
+
+	public static boolean isHideTitleByUrl(String url){
+		HashMap<String, String> map = getUrlParams(url);
+		if("true".equals(map.get("isHideTitle"))){
+			return true;
+		}
+		return false;
 	}
 
 	public static boolean jsConnect(String start,WebView view,String url,JsConnectCallBack callBack){
@@ -89,6 +115,10 @@ public class JsConnectManager {
 			}else if(VALUE_CLEAN_CACHE.equals(map.get(KEY_METHOD))){
 				if(callBack!=null){
 					callBack.cleanCache(view);
+				}
+			}else if(VALUE_LOGOUT.equals(map.get(KEY_METHOD))){
+				if(callBack!=null){
+					callBack.logout(view);
 				}
 			}
 			return true;

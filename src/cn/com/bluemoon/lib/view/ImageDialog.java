@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -45,6 +46,12 @@ public class ImageDialog extends DialogFragment {
 		super.onAttach(activity);
 		context = getActivity();
 	}
+
+	/*@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Black_NoTitleBar);
+	}*/
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
