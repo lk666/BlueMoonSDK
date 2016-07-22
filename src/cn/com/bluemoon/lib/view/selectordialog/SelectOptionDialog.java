@@ -2,6 +2,7 @@ package cn.com.bluemoon.lib.view.selectordialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -16,6 +17,70 @@ import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.view.kankan.wheel.widget.OnWheelChangedListener;
 import cn.com.bluemoon.lib.view.kankan.wheel.widget.WheelView;
 import cn.com.bluemoon.lib.view.kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
+
+// 例子：
+//SelectOptionDialog s;
+//class TextArea extends Area implements SelectOptionDialog.ISecectedItem {
+//
+//    @Override public String getShowText() {
+//        return getDcode() + "-" + getDname();
+//    }
+//}
+//if (s == null) {
+//        SelectTreeNode<TextArea> root = new SelectTreeNode<>();
+//        root.setSelectedChildIndex(2);
+//        List<SelectTreeNode<TextArea>> iList = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//        TextArea ia = new TextArea();
+//        ia.setDcode(i + "");
+//        ia.setDname(i + "I");
+//        SelectTreeNode<TextArea> is = new SelectTreeNode<>();
+//        is.setObj(ia);
+//        List<SelectTreeNode<TextArea>> jList = new ArrayList<>();
+//        for (int j = 0; j < 7; j++) {
+//        TextArea ja = new TextArea();
+//        ja.setDcode(i + "" + j);
+//        ja.setDname(j + "J");
+//        SelectTreeNode<TextArea> js = new SelectTreeNode<>();
+//        js.setObj(ja);
+//        List<SelectTreeNode<TextArea>> kList = new ArrayList<>();
+//        for (int k = 0; k < 8; k++) {
+//        TextArea ka = new TextArea();
+//        ka.setDcode(i + "" + j + "" + k);
+//        ka.setDname(k + "K");
+//        SelectTreeNode<TextArea> ks = new SelectTreeNode<>();
+//        ks.setObj(ka);
+//        kList.add(ks);
+//        }
+//        js.setChildList(kList);
+//        jList.add(js);
+//        }
+//        if (i != 3) {
+//        is.setChildList(jList);
+//        }
+//        iList.add(is);
+//        }
+//        root.setChildList(iList);
+
+//        s = new SelectOptionDialog(this, root, 3, 5, new SelectOptionDialog
+//        .OnOKButtonClickListener() {
+//@Override public void onOKButtonClick(List<SelectOptionDialog.ISecectedItem>
+//        selectedObj) {
+//        if (selectedObj !=null) {
+//        String str = "";
+//        for (SelectOptionDialog.ISecectedItem obj : selectedObj) {
+//        TextArea a = (TextArea) obj;
+//        str += a.getDname();
+//        }
+//        PublicUtil.showToast("返回：" + str);
+//        }
+//        }
+//@Override public void onClearButtonClick() {
+//        PublicUtil.showToast("点击取消");
+//        }
+//        });
+//        }
+//        s.show();
 
 /**
  * 多层级递进级联条件选择弹窗（如省市区）
@@ -86,7 +151,7 @@ public class SelectOptionDialog extends Dialog {
      * @param row                     每个可选滚轮（层级）有多少行，奇数
      * @param onOKButtonClickListener 点击确定时的回调
      */
-    public SelectOptionDialog(Context context, SelectTreeNode<ISecectedItem> parent, int depth,
+    public SelectOptionDialog(Context context, SelectTreeNode parent, int depth,
                               int row,
                               OnOKButtonClickListener onOKButtonClickListener) {
         super(context, R.style.Dialog);
@@ -138,74 +203,108 @@ public class SelectOptionDialog extends Dialog {
      * 初始化选择列表控件
      */
     private void initSelectView() {
-        SelectTreeNode<ISecectedItem> cur = parent;
-        for (int i = 0; i < depth; i++) {
-            WheelView wheelView = new WheelView(getContext());
-            LinearLayout.LayoutParams wheelLp = new LinearLayout.LayoutParams(0, ViewGroup
-                    .LayoutParams.MATCH_PARENT);
-            wheelLp.weight = 1;
-            wheelView.setLayoutParams(wheelLp);
-
-            wheelView.setWheelBackground(R.color.transparent);
-            wheelView.setWheelForeground(R.color.transparent);
-            wheelView.setShadowColor(0x00ffffff, 0x00ffffff, 0x00ffffff);
-
-            SelectListAdapter selectAdapter = new SelectListAdapter(getContext(), cur);
-            wheelView.setViewAdapter(selectAdapter);
-            wheelView.setCurrentItem(cur.getSelectedChildIndex());
-            wheelView.setTag(R.id.tag_depth, i);
-            wheelView.addChangingListener(onSelectedChangedListener);
-
-            llScroll.addView(wheelView);
-            cur = cur.getChildList().get(cur.getSelectedChildIndex());
+        if (parent == null) {
+            return;
         }
+
+        initData(0, parent);
     }
+
+    private boolean isScrollFInished = true;
 
     /**
      * 选项改变监听器
      */
-    OnWheelChangedListener onSelectedChangedListener = new OnWheelChangedListener() {
+    private OnWheelChangedListener onSelectedChangedListener = new OnWheelChangedListener() {
         @Override
         public void onChanged(WheelView wheel, int oldValue, int newValue) {
-            SelectListAdapter adapter = (SelectListAdapter) wheel.getViewAdapter();
-            ((SelectListAdapter) wheel.getViewAdapter()).changeCurrentItem(newValue);
+            if (isScrollFInished) {
+                isScrollFInished = false;
+                SelectListAdapter adapter = (SelectListAdapter) wheel.getViewAdapter();
+                adapter.changeCurrentItem(newValue);
 
-            int curDepth = (Integer) wheel.getTag(R.id.tag_depth);
-            SelectTreeNode<ISecectedItem> curParent = adapter.getParentNode();
-            reSetChild(curDepth, curParent, newValue);
+                int curDepth = (Integer) wheel.getTag(R.id.tag_depth);
+                Log.e("onChanged", curDepth + ",(" + oldValue + "->" + newValue + ")");
+                SelectTreeNode<ISecectedItem> curParent = adapter.getParentNode();
+                if (!curParent.isLeaf()) {
+                    reSetData(curDepth + 1, curParent);
+                } else {
+                    isScrollFInished = true;
+                }
+            }
         }
     };
 
     /**
-     * 父级变化时，子级全部重置
+     * 父级变化时，子级全部重置为第一项
      */
-    private void reSetChild(int curDepth, SelectTreeNode<ISecectedItem> curParent,
-                            int selectedIndex) {
+    private void reSetData(int curDepth, SelectTreeNode<ISecectedItem> curParent) {
+        if (curDepth >= depth) {
+            isScrollFInished = true;
+            return;
+        }
+
+        WheelView childWheelView = (WheelView) llScroll.getChildAt(curDepth);
+
+        if (childWheelView == null) {
+            isScrollFInished = true;
+            return;
+        }
+        SelectTreeNode<ISecectedItem> childParent = null;
+        // 无子级数据时，置空
+        if (curParent == null || curParent.isLeaf()) {
+            SelectListAdapter selectAdapter = new SelectListAdapter(getContext(), null);
+            childWheelView.setViewAdapter(selectAdapter);
+        } else {
+            childParent = curParent.getChildList()
+                    .get(curParent.getSelectedChildIndex());
+            childParent.setSelectedChildIndex(0);
+            SelectListAdapter selectAdapter = new SelectListAdapter(getContext(), childParent);
+            childWheelView.setViewAdapter(selectAdapter);
+            childWheelView.setCurrentItem(0);
+        }
+
+        reSetData(curDepth + 1, childParent);
+    }
+
+    /**
+     * 递归设置各层级数据
+     */
+    private void initData(int curDepth, SelectTreeNode<ISecectedItem> curParent) {
         if (curDepth >= depth) {
             return;
         }
-        // 有子级数据时
-        if (curParent != null && curParent.getChildList() != null) {
-            SelectTreeNode<ISecectedItem> childParent = curParent.getChildList().get(selectedIndex);
 
-            WheelView childWheelView = (WheelView) llScroll.getChildAt(curDepth + 1);
-            SelectListAdapter selectAdapter = new SelectListAdapter(getContext(), childParent);
-            childWheelView.setViewAdapter(selectAdapter);
-            childParent.setSelectedChildIndex(0);
-            childWheelView.setCurrentItem(0);
-            // TODO: lk 2016/7/21
-            selectAdapter.changeCurrentItem(0);
-//                    childWheelView.removeChangingListener(onSelectedChangedListener);
-//                    childWheelView.addChangingListener(onSelectedChangedListener);
+        WheelView wheelView = new WheelView(getContext());
+        LinearLayout.LayoutParams wheelLp = new LinearLayout.LayoutParams(0, ViewGroup
+                .LayoutParams.MATCH_PARENT);
+        wheelLp.weight = 1;
+        wheelView.setLayoutParams(wheelLp);
 
-            reSetChild(curDepth + 1, childParent, 0);
+        wheelView.setWheelBackground(R.color.transparent);
+        wheelView.setWheelForeground(R.color.transparent);
+        wheelView.setShadowColor(0x00ffffff, 0x00ffffff, 0x00ffffff);
+
+        wheelView.setTag(R.id.tag_depth, curDepth);
+        wheelView.addChangingListener(onSelectedChangedListener);
+
+        llScroll.addView(wheelView);
+
+        SelectTreeNode<ISecectedItem> childParent = null;
+
+        // 有数据列表时，才赋值
+        if (curParent != null && !curParent.isLeaf()) {
+            int curSelectedIndex = curParent.getSelectedChildIndex();
+            childParent = curParent.getChildList().get(curSelectedIndex);
+            SelectListAdapter selectAdapter = new SelectListAdapter(getContext(), curParent);
+            wheelView.setViewAdapter(selectAdapter);
+            wheelView.setCurrentItem(curSelectedIndex);
+            Log.e("initData", curDepth + ",not null");
         } else {
-            WheelView childWheelView = (WheelView) llScroll.getChildAt(curDepth + 1);
-            SelectListAdapter selectAdapter = new SelectListAdapter(getContext(), null);
-            childWheelView.setViewAdapter(selectAdapter);
-            selectAdapter.changeCurrentItem(0);
-            reSetChild(curDepth + 1, null, 0);
+            Log.e("initData", curDepth + ",null");
         }
+
+        initData(curDepth + 1, childParent);
     }
 
     /**
@@ -242,7 +341,7 @@ public class SelectOptionDialog extends Dialog {
      */
     private void getReult(List<ISecectedItem> result, int curDepth, SelectTreeNode<ISecectedItem>
             curNode) {
-        if (curDepth >= depth || curNode == null || curNode.getChildList() == null) {
+        if (curDepth >= depth || curNode == null || curNode.isLeaf()) {
             return;
         }
 
