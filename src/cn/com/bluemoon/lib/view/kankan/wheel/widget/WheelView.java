@@ -38,8 +38,6 @@ import java.util.List;
 
 import cn.com.bluemoon.lib.qrcode.R;
 import cn.com.bluemoon.lib.view.kankan.wheel.widget.adapters.WheelViewAdapter;
-import cn.com.bluemoon.lib.view.selectordialog.SelectOptionDialog;
-import cn.com.bluemoon.lib.view.selectordialog.SelectTreeNode;
 
 
 /**

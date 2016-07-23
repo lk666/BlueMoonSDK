@@ -19,8 +19,8 @@ import cn.com.bluemoon.lib.view.kankan.wheel.widget.WheelView;
 import cn.com.bluemoon.lib.view.kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
 
 // 例子：
-//SelectOptionDialog s;
-//class TextArea extends Area implements SelectOptionDialog.ISecectedItem {
+//SelectCascadeOptionsDialog s;
+//class TextArea extends Area implements ISecectedItem {
 //
 //    @Override public String getShowText() {
 //        return getDcode() + "-" + getDname();
@@ -62,13 +62,13 @@ import cn.com.bluemoon.lib.view.kankan.wheel.widget.adapters.AbstractWheelTextAd
 //        }
 //        root.setChildList(iList);
 
-//        s = new SelectOptionDialog(this, root, 3, 5, new SelectOptionDialog
+//        s = new SelectCascadeOptionsDialog(this, root, 3, 5, new SelectCascadeOptionsDialog
 //        .OnOKButtonClickListener() {
-//@Override public void onOKButtonClick(List<SelectOptionDialog.ISecectedItem>
+//@Override public void onOKButtonClick(List<ISecectedItem>
 //        selectedObj) {
 //        if (selectedObj !=null) {
 //        String str = "";
-//        for (SelectOptionDialog.ISecectedItem obj : selectedObj) {
+//        for (ISecectedItem obj : selectedObj) {
 //        TextArea a = (TextArea) obj;
 //        str += a.getDname();
 //        }
@@ -87,7 +87,7 @@ import cn.com.bluemoon.lib.view.kankan.wheel.widget.adapters.AbstractWheelTextAd
  *
  * @author Luokai
  */
-public class SelectOptionDialog extends Dialog {
+public class SelectCascadeOptionsDialog extends Dialog {
     /**
      * 确定按钮
      */
@@ -103,36 +103,9 @@ public class SelectOptionDialog extends Dialog {
     private LinearLayout llScroll;
 
     /**
-     * 传入的obj需继承此接口
-     */
-    public interface ISecectedItem {
-        /**
-         * 在滚动栏中显示的文本
-         */
-        String getShowText();
-    }
-
-    /**
      * 点击确定时的回调
      */
     public OnOKButtonClickListener onOKButtonClickListener;
-
-    /**
-     * 点击确定时的回调接口
-     */
-    public interface OnOKButtonClickListener {
-        /**
-         * 点击确定时的回调
-         *
-         * @param selectedObj 选择项（从第一级开始）
-         */
-        void onOKButtonClick(List<ISecectedItem> selectedObj);
-
-        /**
-         * 点击清除按钮的回调
-         */
-        void onClearButtonClick();
-    }
 
     /**
      * 父节点
@@ -143,6 +116,11 @@ public class SelectOptionDialog extends Dialog {
     private int row;
 
     /**
+     * 避免级联变更数据时，setCurrentItem引发的onSelectedChangedListener，以及
+     */
+    private boolean isScrollFInished = true;
+
+    /**
      * 构造函数
      *
      * @param context                 上下文
@@ -151,9 +129,8 @@ public class SelectOptionDialog extends Dialog {
      * @param row                     每个可选滚轮（层级）有多少行，奇数
      * @param onOKButtonClickListener 点击确定时的回调
      */
-    public SelectOptionDialog(Context context, SelectTreeNode parent, int depth,
-                              int row,
-                              OnOKButtonClickListener onOKButtonClickListener) {
+    public SelectCascadeOptionsDialog(Context context, SelectTreeNode parent, int depth,
+                                      int row, OnOKButtonClickListener onOKButtonClickListener) {
         super(context, R.style.Dialog);
 
         this.parent = parent;
@@ -182,7 +159,7 @@ public class SelectOptionDialog extends Dialog {
 
                     @Override
                     public void onClick(View v) {
-                        SelectOptionDialog.this.dismiss();
+                        SelectCascadeOptionsDialog.this.dismiss();
                     }
                 });
         okBtn = (Button) findViewById(R.id.btn_ok);
@@ -209,8 +186,6 @@ public class SelectOptionDialog extends Dialog {
 
         initData(0, parent);
     }
-
-    private boolean isScrollFInished = true;
 
     /**
      * 选项改变监听器
@@ -315,7 +290,7 @@ public class SelectOptionDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 if (onOKButtonClickListener != null) {
-                    SelectOptionDialog.this.dismiss();
+                    SelectCascadeOptionsDialog.this.dismiss();
 
                     List<ISecectedItem> result = new ArrayList<>();
                     getReult(result, 0, parent);
@@ -329,7 +304,7 @@ public class SelectOptionDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 if (onOKButtonClickListener != null) {
-                    SelectOptionDialog.this.dismiss();
+                    SelectCascadeOptionsDialog.this.dismiss();
                     onOKButtonClickListener.onClearButtonClick();
                 }
             }
@@ -412,7 +387,7 @@ public class SelectOptionDialog extends Dialog {
             return view;
         }
 
-        public SelectTreeNode<SelectOptionDialog.ISecectedItem> getParentNode() {
+        public SelectTreeNode<ISecectedItem> getParentNode() {
             return parentNode;
         }
     }
