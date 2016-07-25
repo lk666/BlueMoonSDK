@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
+                android:id="@+id/rl_main"
                 android:layout_height="fill_parent">
 
     <LinearLayout
@@ -19,7 +20,7 @@
             android:background="#f0f0f0"
             android:orientation="horizontal">
 
-            <kankan.wheel.widget.WheelView
+            <cn.com.bluemoon.lib.view.kankan.wheel.widget.WheelView
                 android:id="@+id/year_list_scroll"
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
@@ -34,7 +35,7 @@
                 android:textColor="@color/selector_dialog_text_selected"
                 android:textSize="18sp"/>
 
-            <kankan.wheel.widget.WheelView
+            <cn.com.bluemoon.lib.view.kankan.wheel.widget.WheelView
                 android:id="@+id/month_list_scroll"
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
@@ -49,7 +50,7 @@
                 android:textColor="@color/selector_dialog_text_selected"
                 android:textSize="18sp"/>
 
-            <kankan.wheel.widget.WheelView
+            <cn.com.bluemoon.lib.view.kankan.wheel.widget.WheelView
                 android:id="@+id/day_list_scroll"
                 android:layout_width="0dip"
                 android:layout_height="fill_parent"
