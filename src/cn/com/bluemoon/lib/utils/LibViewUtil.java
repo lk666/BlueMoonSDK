@@ -2,13 +2,16 @@ package cn.com.bluemoon.lib.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.IBinder;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.com.bluemoon.lib.qrcode.R;
@@ -135,5 +138,42 @@ public class LibViewUtil {
 
     public static void toast(Context context, String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 解决TextView多行时ellipsize end在字数比满maxLines+1后不起作用的情况
+     *
+     * @param maxLines 要限制的最大行数
+     * @param content  指TextView中要显示的内容
+     */
+    public static void setMaxEcplise(final TextView mTextView, final int maxLines, final String
+            content) {
+
+        ViewTreeObserver observer = mTextView.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                mTextView.setText(content);
+                if (mTextView.getLineCount() > maxLines) {
+                    int lineEndIndex = mTextView.getLayout().getLineEnd(maxLines - 1);
+                    //下面这句代码中：我在项目中用数字3发现效果不好，改成1了
+                    String text = content.subSequence(0, lineEndIndex - 1) + "...";
+                    mTextView.setText(text);
+                } else {
+                    removeGlobalOnLayoutListener(mTextView.getViewTreeObserver(), this);
+                }
+            }
+        });
+    }
+
+    private static void removeGlobalOnLayoutListener(ViewTreeObserver obs, ViewTreeObserver
+            .OnGlobalLayoutListener listener) {
+        if (obs == null)
+            return;
+        if (Build.VERSION.SDK_INT < 16) {
+            obs.removeGlobalOnLayoutListener(listener);
+        } else {
+            obs.removeOnGlobalLayoutListener(listener);
+        }
     }
 }
