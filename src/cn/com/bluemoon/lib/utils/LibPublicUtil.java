@@ -13,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
+import android.hardware.Camera;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -30,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.conn.util.InetAddressUtils;
 
 import java.io.File;
@@ -220,6 +222,16 @@ public class LibPublicUtil {
 		return null;
 	}
 
+	public static String getPhotoPath(String photoPath,String id) {
+		String imageName = System.currentTimeMillis() + ".jpg";
+		if(!StringUtils.isEmpty(id)){
+			imageName = id+"_"+imageName;
+		}
+		File file = new File(photoPath);
+		file.mkdirs();
+		return photoPath + File.separator + imageName;
+	}
+
 
 	public static String getPhoneNumber(Context context) {
 		String phoneNumber = null;
@@ -252,9 +264,14 @@ public class LibPublicUtil {
 	}
 
 	public static void callPhone(Context context, String phone) {
-		Intent intent = new Intent(Intent.ACTION_CALL);
-		intent.setData(Uri.parse("tel:" + phone));
-		context.startActivity(intent);
+		try{
+			Intent intent = new Intent(Intent.ACTION_CALL);
+			intent.setData(Uri.parse("tel:" + phone));
+			context.startActivity(intent);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
 	}
 
 
@@ -633,6 +650,34 @@ public class LibPublicUtil {
 
 	public static void showToastErrorData(Context context) {
 		showToast(context, context.getString(R.string.get_data_busy));
+	}
+
+	public static boolean hasPermission(Context context,String perName){
+		return PackageManager.PERMISSION_GRANTED ==
+				context.checkCallingOrSelfPermission(perName);
+
+	}
+
+	public static boolean checkCameraAuthority(){
+		Camera camera = null;
+		try{
+			camera = Camera.open();
+			if(camera!=null){
+				camera.release();
+				camera = null;
+			}
+			return true;
+		}catch (Exception e){
+			if(camera!=null){
+				camera.release();
+			}
+			return false;
+		}
+	}
+
+	public static void showMessageCameraError(Context context){
+		showMessage(context, context.getString(R.string.error_camera_title),
+				context.getString(R.string.error_camera_content));
 	}
 
 }

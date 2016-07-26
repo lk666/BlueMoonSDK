@@ -162,24 +162,28 @@ public class TakePhotoPopView {
 
     private File out;
 
-    public void takePhoto(Activity act) {
+    public void takePhoto(Activity act,Fragment fragment) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         out = new File(LibPublicUtil.getCameraPath());
         Uri uri = Uri.fromFile(out);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        act.startActivityForResult(intent, TAKE_PIC_RESULT);
+        if(fragment!=null){
+            fragment.startActivityForResult(intent, TAKE_PIC_RESULT);
+        }else{
+            act.startActivityForResult(intent, TAKE_PIC_RESULT);
+        }
+    }
+
+    public void takePhoto(Activity act) {
+        takePhoto(act,null);
+    }
+
+    public void takePhoto(Fragment fragment) {
+        takePhoto(null,fragment);
     }
 
     public void pickPhoto(Activity act) {
         LibImageUtil.pickPhoto(act, CHOSE_PIC_RESULT);
-    }
-
-    public void takePhoto(Fragment fragment) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        out = new File(LibPublicUtil.getCameraPath());
-        Uri uri = Uri.fromFile(out);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        fragment.startActivityForResult(intent, TAKE_PIC_RESULT);
     }
 
     public void pickPhoto(Fragment fragment) {

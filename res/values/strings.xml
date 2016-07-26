@@ -65,4 +65,7 @@
     <string name="empty_click_refresh">点击刷新</string>
 
     <item type="id" name="tag_ori_enable">0x5678</item>
+
+    <string name="error_camera_title">无法拍照</string>
+    <string name="error_camera_content">请检查手机是否有拍照软件，或相机权限是否开启！</string>
 </resources>
