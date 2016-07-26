@@ -171,4 +171,8 @@
  
  <color name="style_red">#ff4c41</color>
  <color name="style_divider_color">#C9C7CD</color>
+
+ <color name="selector_dialog_text_selected">#333333</color>
+ <color name="selector_dialog_text_not_selected">#999999</color>
+ <color name="transparent">#00000000</color>
 </resources>

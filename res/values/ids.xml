@@ -6,4 +6,5 @@
     <item type="id" name="scrollview" />
     <item name="selected_view" type="id"/>
 
+    <item type="id" name="tag_depth">0x556</item>
 </resources>

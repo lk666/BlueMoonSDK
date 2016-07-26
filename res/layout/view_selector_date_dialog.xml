@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:id="@+id/rl_main"
+                android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fefefe"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="144dip"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="15dip"
+            android:background="#f0f0f0"
+            android:orientation="horizontal">
+
+            <cn.com.bluemoon.lib.view.kankan.wheel.widget.WheelView
+                android:id="@+id/year_list_scroll"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="3"/>
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/year"
+                android:textColor="@color/selector_dialog_text_selected"
+                android:textSize="18sp"/>
+
+            <cn.com.bluemoon.lib.view.kankan.wheel.widget.WheelView
+                android:id="@+id/month_list_scroll"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="3"/>
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/month"
+                android:textColor="@color/selector_dialog_text_selected"
+                android:textSize="18sp"/>
+
+            <cn.com.bluemoon.lib.view.kankan.wheel.widget.WheelView
+                android:id="@+id/day_list_scroll"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="3"/>
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/date"
+                android:textColor="@color/selector_dialog_text_selected"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="25dip"
+            android:background="@drawable/btn_red_shape"
+            android:gravity="center"
+            android:text="@string/btn_ok_space"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:layout_marginBottom="15dip"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="25dip"
+            android:background="@drawable/btn_blue_shape"
+            android:gravity="center"
+            android:text="@string/btn_cancel_space"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+</RelativeLayout>
