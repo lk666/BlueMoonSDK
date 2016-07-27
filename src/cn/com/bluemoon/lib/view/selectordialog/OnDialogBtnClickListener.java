@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 点击确定时的回调接口
  */
-public interface OnOKButtonClickListener {
+public interface OnDialogBtnClickListener {
     /**
      * 点击确定时的回调
      *

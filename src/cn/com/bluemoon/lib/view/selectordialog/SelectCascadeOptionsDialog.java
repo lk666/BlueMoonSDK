@@ -63,7 +63,7 @@ import cn.com.bluemoon.lib.view.kankan.wheel.widget.adapters.AbstractWheelTextAd
 //        root.setChildList(iList);
 
 //        s = new SelectCascadeOptionsDialog(this, root, 3, 5, new SelectCascadeOptionsDialog
-//        .OnOKButtonClickListener() {
+//        .OnDialogBtnClickListener() {
 //@Override public void onOKButtonClick(List<ISecectedItem>
 //        selectedObj) {
 //        if (selectedObj !=null) {
@@ -105,7 +105,7 @@ public class SelectCascadeOptionsDialog extends Dialog {
     /**
      * 点击确定时的回调
      */
-    public OnOKButtonClickListener onOKButtonClickListener;
+    public OnDialogBtnClickListener onOKButtonClickListener;
 
     /**
      * 父节点
@@ -130,7 +130,7 @@ public class SelectCascadeOptionsDialog extends Dialog {
      * @param onOKButtonClickListener 点击确定时的回调
      */
     public SelectCascadeOptionsDialog(Context context, SelectTreeNode parent, int depth,
-                                      int row, OnOKButtonClickListener onOKButtonClickListener) {
+                                      int row, OnDialogBtnClickListener onOKButtonClickListener) {
         super(context, R.style.Dialog);
 
         this.parent = parent;

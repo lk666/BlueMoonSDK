@@ -81,14 +81,14 @@
 ////     * @param startTime               开始时间，确保正确，此处不检查
 ////     * @param endTime                 结束时间，确保正确，此处不检查
 ////     * @param currtntTime             当前时间，确保正确，此处不检查
-////     * @param onOKButtonClickListener 点击按钮时的回调
+////     * @param iSelectOptionsDialog 点击按钮时的回调
 ////     */
 ////    public SelectDateDialog(Context context, long startTime, long endTime, long currtntTime,
-////                            OnButtonClickListener onOKButtonClickListener) {
+////                            OnButtonClickListener iSelectOptionsDialog) {
 ////        super();
 ////
 ////        initDate(startTime, endTime, currtntTime);
-////        this.onButtonClickListener = onOKButtonClickListener;
+////        this.onButtonClickListener = iSelectOptionsDialog;
 ////    }
 ////
 ////    private void initDate(long startTime, long endTime, long currtntTime) {
@@ -518,10 +518,10 @@
 //     *
 //     * @param context                 上下文
 //     * @param defaultTIme 默认时间戳(确保正确，不做检查)
-//     * @param onOKButtonClickListener 点击按钮时的回调
+//     * @param iSelectOptionsDialog 点击按钮时的回调
 //     */
 //    public SelectDatesDialog(Context context, long defaultTIme,
-//                             OnButtonClickListener onOKButtonClickListener) {
+//                             OnButtonClickListener iSelectOptionsDialog) {
 //        super(context, R.style.Dialog);
 //
 //        this.curTime = Calendar.getInstance();
@@ -540,7 +540,7 @@
 //        this.endTime.setTimeInMillis(defaultTIme);
 //        this.endTime.add(Calendar.YEAR, 100);
 //
-//        this.onButtonClickListener = onOKButtonClickListener;
+//        this.onButtonClickListener = iSelectOptionsDialog;
 //
 //        initView();
 //        initSelectView();
