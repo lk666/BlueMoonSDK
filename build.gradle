@@ -8,13 +8,13 @@ android {
     compileSdkVersion 21
     buildToolsVersion "23.0.3"
     packagingOptions {
- exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
 
- lintOptions{
-abortOnError false
-}
+    lintOptions {
+        abortOnError false
+    }
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
