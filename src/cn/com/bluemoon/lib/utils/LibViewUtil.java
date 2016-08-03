@@ -140,6 +140,14 @@ public class LibViewUtil {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
+    public static void longToast(Context context, int resId) {
+        Toast.makeText(context, resId, Toast.LENGTH_LONG).show();
+    }
+
+    public static void toast(Context context, int resId) {
+        Toast.makeText(context, resId, Toast.LENGTH_SHORT).show();
+    }
+
     /**
      * 解决TextView多行时ellipsize end在字数比满maxLines+1后不起作用的情况
      *
