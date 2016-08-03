@@ -34,18 +34,10 @@ public class LibDialogUtil {
     /***
      * 获取一个耗时等待对话框
      * @param context context
-     * @param message message
      * @return
      */
-    public static ProgressDialog getWaitDialog(Context context, String message,int viewId) {
-        ProgressDialog waitDialog = new ProgressDialog(context);
-        if (!TextUtils.isEmpty(message)) {
-            waitDialog.setMessage(message);
-            if(viewId!=0) {
-                waitDialog.setContentView(viewId);
-            }
-        }
-        return waitDialog;
+    public static ProgressDialog getWaitDialog(Context context) {
+        return new ProgressDialog(context);
     }
 
     /***
