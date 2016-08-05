@@ -5,6 +5,7 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -749,5 +750,47 @@ public class LibFileUtil {
 
 		return null;
 	}
+
+	/**
+	 * 获得指定文件的byte数组
+	 */
+	public static byte[] getBytes(File file) {
+		byte[] buffer = null;
+		try {
+
+			FileInputStream fis = new FileInputStream(file);
+			ByteArrayOutputStream bos = new ByteArrayOutputStream(1000);
+			byte[] b = new byte[1000];
+			int n;
+			while ((n = fis.read(b)) != -1) {
+				bos.write(b, 0, n);
+			}
+			fis.close();
+			bos.close();
+			buffer = bos.toByteArray();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return buffer;
+	}
+	/**
+	 * 获得bitmap的byte数组
+	 */
+	public static byte[] getBytes(Bitmap bit){
+		byte[] buffer = null;
+		try {
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			bit.compress(Bitmap.CompressFormat.JPEG, 100, out);
+			buffer = out.toByteArray();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return buffer;
+	}
+
 }
   

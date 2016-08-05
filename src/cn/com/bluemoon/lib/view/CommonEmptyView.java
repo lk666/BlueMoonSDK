@@ -70,10 +70,9 @@ public class CommonEmptyView extends RelativeLayout {
                 int icon = typedArray.getResourceId(R.styleable.CommonEmptyView_img_empty, 0);
                 boolean isRefresh = typedArray.getBoolean(R.styleable.CommonEmptyView_refreshable,false);
                 setRefreshable(isRefresh);
-                if(StringUtils.isEmpty(text)){
-                    text = String.format(context.getString(R.string.empty_hint),"");
+                if(!StringUtils.isEmpty(text)){
+                    txtContent.setText(text);
                 }
-                txtContent.setText(text);
                 if(icon != 0){
                     imgEmpty.setImageResource(icon);
                 }
@@ -88,8 +87,9 @@ public class CommonEmptyView extends RelativeLayout {
         return this;
     }
 
-    public CommonEmptyView setContentHit(int resourceId){
-        return setContentText(mContext.getString(R.string.empty_hint, mContext.getString(resourceId)));
+    public CommonEmptyView setContentText(int resourceId){
+        txtContent.setText(resourceId);
+        return this;
     }
 
     public CommonEmptyView setRefreshText(String text){

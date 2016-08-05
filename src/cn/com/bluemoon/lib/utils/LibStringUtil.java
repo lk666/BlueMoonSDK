@@ -147,6 +147,12 @@ public class LibStringUtil {
         return sb.toString();
     }
 
+    /**
+     *用指定连接符号连接多个字符串，忽略空字符串
+     * @param split
+     * @param params
+     * @return
+     */
     public static String getStringParamsByFormat(String split,String... params){
         String format = "%1$s"+split+"%2$s";
         String str = "";

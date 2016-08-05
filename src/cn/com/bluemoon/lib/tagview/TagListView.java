@@ -275,7 +275,7 @@ public class TagListView extends FlowLayout implements OnClickListener {
 	}
 	
 	public void setTextColorChecked(int res) {
-		txtColorChecked = res;;
+		txtColorChecked = res;
 	}
 	
 	
