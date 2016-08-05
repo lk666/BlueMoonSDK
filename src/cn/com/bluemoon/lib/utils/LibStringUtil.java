@@ -2,36 +2,152 @@ package cn.com.bluemoon.lib.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.DecimalFormat;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class LibStringUtil {
 
-    public static final boolean isEmpty(String str) {
-        return str == null || "".equals(str.trim());
-    }
+    private static final Pattern emailer = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
+    private static final Pattern phone = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
 
-    public static final boolean isNotEmpty(String s) {
-        return s != null && s.length() > 0;
-    }
-
-    public static final String appendSemicolon(String... str) {
-        StringBuffer strBuffer = new StringBuffer();
-        return strBuffer.toString();
-    }
-
-    public static String ToDBC(String input) {
-        char[] c = input.toCharArray();
-        for (int i = 0; i < c.length; i++) {
-            if (c[i] == 12288) {
-                c[i] = (char) 32;
-                continue;
+    public static boolean isEmpty(CharSequence input) {
+        if (input != null && !"".equals(input)) {
+            for (int i = 0; i < input.length(); ++i) {
+                char c = input.charAt(i);
+                if (c != 32 && c != 9 && c != 13 && c != 10) {
+                    return false;
+                }
             }
-            if (c[i] > 65280 && c[i] < 65375)
-                c[i] = (char) (c[i] - 65248);
+
+            return true;
+        } else {
+            return true;
         }
-        return new String(c);
     }
 
+    public static boolean isEmpty(CharSequence... strs) {
+        CharSequence[] var4 = strs;
+        int var3 = strs.length;
+
+        for (int var2 = 0; var2 < var3; ++var2) {
+            CharSequence str = var4[var2];
+            if (isEmpty(str)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isEmail(CharSequence email) {
+        return isEmpty(email)?false:emailer.matcher(email).matches();
+    }
+
+    public static boolean isPhone(CharSequence phoneNum) {
+        return isEmpty(phoneNum)?false:phone.matcher(phoneNum).matches();
+    }
+
+    public static int toInt(String str, int defValue) {
+        try {
+            return Integer.parseInt(str);
+        } catch (Exception var3) {
+            return defValue;
+        }
+    }
+
+    public static int toInt(Object obj) {
+        return obj == null?0:toInt(obj.toString(), 0);
+    }
+
+    public static long toLong(String obj) {
+        try {
+            return Long.parseLong(obj);
+        } catch (Exception var2) {
+            return 0L;
+        }
+    }
+
+    public static double toDouble(String obj) {
+        try {
+            return Double.parseDouble(obj);
+        } catch (Exception var2) {
+            return 0.0D;
+        }
+    }
+
+    public static boolean toBool(String b) {
+        try {
+            return Boolean.parseBoolean(b);
+        } catch (Exception var2) {
+            return false;
+        }
+    }
+
+    public static boolean isNumber(CharSequence str) {
+        try {
+            Integer.parseInt(str.toString());
+            return true;
+        } catch (Exception var2) {
+            return false;
+        }
+    }
+
+    public static final String byteArrayToHexString(byte[] data) {
+        StringBuilder sb = new StringBuilder(data.length * 2);
+        byte[] var5 = data;
+        int var4 = data.length;
+
+        for(int var3 = 0; var3 < var4; ++var3) {
+            byte b = var5[var3];
+            int v = b & 255;
+            if(v < 16) {
+                sb.append('0');
+            }
+
+            sb.append(Integer.toHexString(v));
+        }
+
+        return sb.toString().toUpperCase(Locale.getDefault());
+    }
+
+    public static byte[] hexStringToByteArray(String s) {
+        int len = s.length();
+        byte[] d = new byte[len / 2];
+
+        for(int i = 0; i < len; i += 2) {
+            d[i / 2] = (byte)((Character.digit(s.charAt(i), 16) << 4) + Character.digit(s.charAt(i + 1), 16));
+        }
+
+        return d;
+    }
+
+    public static String formatPrice(String price) {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(Double.valueOf(price));
+    }
+
+    public static String formatPrice(double price) {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(price);
+    }
+
+    public static String formatArea(double area) {
+        DecimalFormat df = new DecimalFormat("0.0");
+        return df.format(area);
+    }
+
+    public static String formatPriceByFen(long price) {
+        return String.format("%.2f", (double) price / 100);
+    }
+
+    public static String formatPriceByFen(int price) {
+        return String.format("%.2f", (double) price / 100);
+    }
+
+    public static String formatBoxesNum(double boxes) {
+        return String.format("%.1f", boxes);
+    }
 
     private static boolean isChinese(char c) {
         Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
@@ -116,9 +232,6 @@ public class LibStringUtil {
         return str;
     }
 
-
-//  
-
     public static byte[] hex16StringToByte(String hex) {
         int len = (hex.length() / 2);
         byte[] result = new byte[len];
@@ -148,20 +261,21 @@ public class LibStringUtil {
     }
 
     /**
-     *用指定连接符号连接多个字符串，忽略空字符串
+     * 用指定连接符号连接多个字符串，忽略空字符串
+     *
      * @param split
      * @param params
      * @return
      */
-    public static String getStringParamsByFormat(String split,String... params){
-        String format = "%1$s"+split+"%2$s";
+    public static String getStringParamsByFormat(String split, String... params) {
+        String format = "%1$s" + split + "%2$s";
         String str = "";
-        if(params==null) return str;
-        for (int i=0;i<params.length;i++){
-            if(!StringUtils.isEmpty(params[i])){
-                if(StringUtils.isEmpty(str)){
+        if (params == null) return str;
+        for (int i = 0; i < params.length; i++) {
+            if (!StringUtils.isEmpty(params[i])) {
+                if (StringUtils.isEmpty(str)) {
                     str = params[i];
-                }else{
+                } else {
                     str = String.format(format, str, params[i]);
                 }
             }
