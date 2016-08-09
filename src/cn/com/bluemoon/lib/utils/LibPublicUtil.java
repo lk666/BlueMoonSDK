@@ -377,8 +377,8 @@ public class LibPublicUtil {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmssSSSS",
 				Locale.CHINA);
 		String strDate = df.format(date);
-		String strRand = String.format("%d", (int) (Math.random() * 200));
-		String strRand2 = String.format("%d", (int) (Math.random() * 20));
+		String strRand = String.valueOf((int) (Math.random() * 200));
+		String strRand2 = String.valueOf((int) (Math.random() * 20));
 		if (strRand.length() < 4) {
 			strRand = "0000".substring(strRand.length()) + strRand;
 		}
@@ -397,7 +397,7 @@ public class LibPublicUtil {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss",
 				Locale.CHINA);
 		String strDate = df.format(date);
-		String strRand = String.format("%d", (int) (Math.random() * 100));
+		String strRand = String.valueOf((int) (Math.random() * 100));
 		if (strRand.length() < 4) {
 			strRand = "0000".substring(strRand.length()) + strRand;
 		}
@@ -413,7 +413,7 @@ public class LibPublicUtil {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss",
 				Locale.CHINA);
 		String strDate = df.format(date);
-		String strRand = String.format("%d", (int) (Math.random() * 20));
+		String strRand = String.valueOf((int) (Math.random() * 20));
 		if (strRand.length() < 3) {
 			strRand = "000".substring(strRand.length()) + strRand;
 		}
@@ -444,7 +444,7 @@ public class LibPublicUtil {
 		try {
 			p = Double.parseDouble(price);
 		} catch (Exception e) {
-			p = 0.00;
+
 		}
 		return getPriceFrom(p);
 	}
@@ -458,7 +458,7 @@ public class LibPublicUtil {
 	public static String getCameraPath() {
 		if (!hasSDCard())
 			return null;
-		String fileName = "";
+		String fileName;
 		String pathUrl = LibConstants.PATH_CAMERA;
 		File file = new File(pathUrl);
 		if(!file.exists()){
