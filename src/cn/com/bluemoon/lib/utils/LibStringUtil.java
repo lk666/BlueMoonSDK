@@ -1,5 +1,7 @@
 package cn.com.bluemoon.lib.utils;
 
+import android.annotation.SuppressLint;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.DecimalFormat;
@@ -137,14 +139,17 @@ public class LibStringUtil {
         return df.format(area);
     }
 
+    @SuppressLint("DefaultLocale")
     public static String formatPriceByFen(long price) {
         return String.format("%.2f", (double) price / 100);
     }
 
+    @SuppressLint("DefaultLocale")
     public static String formatPriceByFen(int price) {
         return String.format("%.2f", (double) price / 100);
     }
 
+    @SuppressLint("DefaultLocale")
     public static String formatBoxesNum(double boxes) {
         return String.format("%.1f", boxes);
     }
