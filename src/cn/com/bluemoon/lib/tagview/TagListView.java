@@ -221,7 +221,7 @@ public class TagListView extends FlowLayout implements OnClickListener {
 
 	public void addTags(List<Tag> lists, boolean b) {
 		for (int i = 0; i < lists.size(); i++) {
-			addTag((Tag) lists.get(i), b);
+			addTag(lists.get(i), b);
 		}
 	}
 
@@ -288,7 +288,7 @@ public class TagListView extends FlowLayout implements OnClickListener {
 		removeAllViews();
 		mTags.clear();
 		for (int i = 0; i < lists.size(); i++) {
-			addTag((Tag) lists.get(i), b);
+			addTag(lists.get(i), b);
 		}
 	}
 

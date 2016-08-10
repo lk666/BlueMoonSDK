@@ -165,7 +165,7 @@ public final class ViewfinderView extends View {
 //			paint.setTypeface(Typeface.create("System", Typeface.BOLD));
 			float l = (frame.left+frame.right)/2 - ((Configure.CONTENT_TXT_SIZE*content.length()/2)*density); 
 //			canvas.drawText(Configure.content_txt, (float)(frame.left+(float)TEXT_PADDING_LEFT *density), (float) (frame.top - (float)TEXT_PADDING_BOTTOM *density), paint);
-			canvas.drawText(content, l, (float) (frame.top - (float)TEXT_PADDING_BOTTOM *density), paint);
+			canvas.drawText(content, l,  frame.top - (float)TEXT_PADDING_BOTTOM *density, paint);
 
 			paint.setColor(laserColor);
 			paint.setAlpha(SCANNER_ALPHA[scannerAlpha]);

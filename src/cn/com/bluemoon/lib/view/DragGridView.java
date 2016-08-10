@@ -323,7 +323,7 @@ public class DragGridView extends ViewGroup implements View.OnTouchListener,
 	}
 	
 	public void vibrate(){
-		Vibrator mVibrator = (Vibrator) ((Activity)context).getSystemService(Context.VIBRATOR_SERVICE);
+		Vibrator mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 		mVibrator.vibrate(1000L);
 	}
 	
