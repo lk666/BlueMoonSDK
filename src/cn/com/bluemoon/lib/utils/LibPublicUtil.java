@@ -323,7 +323,7 @@ public class LibPublicUtil {
     }
 
 
-    public static void openUrl(Context context, String url) throws Exception {
+    public static void openUrl(Context context, String url) {
         Uri uri = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         context.startActivity(intent);

@@ -37,7 +37,7 @@ public class LibCacheUtil {
     }
 
 
-    public static long getFolderSize(File file) throws Exception {
+    public static long getFolderSize(File file) {
         long size = 0;
         try {
             File[] fileList = file.listFiles();

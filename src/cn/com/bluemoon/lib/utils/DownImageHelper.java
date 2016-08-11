@@ -17,10 +17,8 @@ import cn.com.bluemoon.lib.callback.DrawableCallback;
 
 public class DownImageHelper {
 
-    private static InputStream download(String urlString) throws MalformedURLException,
-            IOException {
-        InputStream inputStream = (InputStream) new URL(urlString).getContent();
-        return inputStream;
+    private static InputStream download(String urlString) throws IOException {
+        return (InputStream) new URL(urlString).getContent();
     }
 
     public static Map<String, Drawable> cache = new HashMap<String, Drawable>();

@@ -170,16 +170,14 @@ public class BarcodeUtil {
 	}
 
 
-	public static void openUri(Activity thisActivity, String str)
-			throws Exception {
+	public static void openUri(Activity thisActivity, String str) {
 		Uri uri = Uri.parse(str);
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		thisActivity.startActivity(intent);
 	}
 
 
-	public static void searchFromGoogle(Activity thisActivity, String str)
-			throws Exception {
+	public static void searchFromGoogle(Activity thisActivity, String str) {
 		Intent intent = new Intent();
 		intent.setAction(Intent.ACTION_WEB_SEARCH);
 		intent.putExtra(SearchManager.QUERY, str);
