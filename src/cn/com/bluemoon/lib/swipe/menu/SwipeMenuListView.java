@@ -63,9 +63,6 @@ public class SwipeMenuListView extends ListView implements OnScrollListener {
 	private boolean mPullLoading;
 	private boolean mIsFooterReady = false;
 
-	// total list items, used to detect is at the bottom of listview.
-	private int mTotalItemCount;
-
 	// for mScroller, scroll back from header or footer.
 	private int mScrollBack;
 	private final static int SCROLLBACK_HEADER = 0;
@@ -327,7 +324,7 @@ public class SwipeMenuListView extends ListView implements OnScrollListener {
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
 		// send to user's listener
-		mTotalItemCount = totalItemCount;
+		int mTotalItemCount = totalItemCount;
 		if (mScrollListener != null) {
 			mScrollListener.onScroll(view, firstVisibleItem, visibleItemCount,
 					totalItemCount);

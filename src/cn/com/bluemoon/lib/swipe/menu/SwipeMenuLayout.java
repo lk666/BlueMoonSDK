@@ -6,6 +6,7 @@ import android.support.v4.widget.ScrollerCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -29,7 +30,6 @@ public class SwipeMenuLayout extends FrameLayout {
     private int mDownX;
     private int state = STATE_CLOSE;
     private GestureDetectorCompat mGestureDetector;
-    private OnGestureListener mGestureListener;
     private boolean isFling;
     private int MIN_FLING = dp2px(15);
     private int MAX_VELOCITYX = -dp2px(500);
@@ -80,7 +80,7 @@ public class SwipeMenuLayout extends FrameLayout {
     private void init() {
         setLayoutParams(new AbsListView.LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT));
-        mGestureListener = new SimpleOnGestureListener() {
+        OnGestureListener mGestureListener = new SimpleOnGestureListener() {
             @Override
             public boolean onDown(MotionEvent e) {
                 isFling = false;

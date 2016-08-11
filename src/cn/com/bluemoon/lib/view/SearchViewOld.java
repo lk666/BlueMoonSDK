@@ -42,7 +42,6 @@ public class SearchViewOld extends LinearLayout {
     private String hint;
     private int textColor = 0;
     private CommonAdapter adapter;
-    private View emptyView;
     private List<String> listHistory;
     private int maxSize = 5;
     private boolean isSearchEmpty = true;
@@ -111,7 +110,7 @@ public class SearchViewOld extends LinearLayout {
     }
 
     public void setEmptyView(View view) {
-        emptyView = view;
+        View emptyView = view;
         ((ViewGroup) listView.getParent()).addView(emptyView);
         listView.setEmptyView(emptyView);
     }

@@ -15,8 +15,7 @@ import cn.com.bluemoon.lib.qrcode.R;
 
 @SuppressLint({ "InflateParams", "NewApi" })
 public class SettingItemView extends LinearLayout {
-	
-	private ImageView imgLeft;
+
 	private TextView txtHint;
 	private TextView txtContent;
 	private ImageView imgRight;
@@ -49,7 +48,7 @@ public class SettingItemView extends LinearLayout {
 		View view = LayoutInflater.from(context).inflate(R.layout.item_setting, null);
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
 		params.gravity = Gravity.CENTER_VERTICAL;
-		imgLeft = (ImageView) view.findViewById(R.id.img_left);
+		ImageView imgLeft = (ImageView) view.findViewById(R.id.img_left);
 		txtHint = (TextView) view.findViewById(R.id.txt_hint);
 		txtContent = (TextView) view.findViewById(R.id.txt_content);
 		imgRight = (ImageView) view.findViewById(R.id.img_right);

@@ -95,7 +95,7 @@ public class LibStringUtil {
         }
     }
 
-    public static final String byteArrayToHexString(byte[] data) {
+    public static String byteArrayToHexString(byte[] data) {
         StringBuilder sb = new StringBuilder(data.length * 2);
         byte[] var5 = data;
         int var4 = data.length;
@@ -253,7 +253,7 @@ public class LibStringUtil {
         return b;
     }
 
-    public static final String hexBytesTo16String(byte[] bArray) {
+    public static String hexBytesTo16String(byte[] bArray) {
         StringBuffer sb = new StringBuffer(bArray.length);
         String sTemp;
         for (int i = 0; i < bArray.length; i++) {

@@ -89,6 +89,24 @@ public class WheelScroller {
      * @param listener the scrolling listener
      */
     public WheelScroller(Context context, ScrollingListener listener) {
+        SimpleOnGestureListener gestureListener = new SimpleOnGestureListener() {
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float
+                    distanceY) {
+                // Do scrolling in onTouchEvent() since onScroll() are not call immediately
+                //  when user touch and move the wheel
+                return true;
+            }
+
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float
+                    velocityY) {
+                lastScrollY = 0;
+                final int maxY = 0x7FFFFFFF;
+                final int minY = -maxY;
+                scroller.fling(0, lastScrollY, 0, (int) -velocityY, 0, 0, minY, maxY);
+                setNextMessage(MESSAGE_SCROLL);
+                return true;
+            }
+        };
         gestureDetector = new GestureDetector(context, gestureListener);
         gestureDetector.setIsLongpressEnabled(false);
 
@@ -163,24 +181,6 @@ public class WheelScroller {
 
         return true;
     }
-
-    // gesture listener
-    private SimpleOnGestureListener gestureListener = new SimpleOnGestureListener() {
-        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            // Do scrolling in onTouchEvent() since onScroll() are not call immediately
-            //  when user touch and move the wheel
-            return true;
-        }
-
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            lastScrollY = 0;
-            final int maxY = 0x7FFFFFFF;
-            final int minY = -maxY;
-            scroller.fling(0, lastScrollY, 0, (int) -velocityY, 0, 0, minY, maxY);
-            setNextMessage(MESSAGE_SCROLL);
-            return true;
-        }
-    };
 
     // Messages
     private final int MESSAGE_SCROLL = 0;
