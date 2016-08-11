@@ -14,6 +14,7 @@ public abstract class ExRunable implements Runnable {
 
     private static final int FEEDBACK = 0x1;
 
+    @SuppressWarnings("unchecked")
     private static Handler mMainHandler = new Handler(Looper.getMainLooper()) {
         public void handleMessage(android.os.Message msg) {
             if (msg.what == FEEDBACK) {
