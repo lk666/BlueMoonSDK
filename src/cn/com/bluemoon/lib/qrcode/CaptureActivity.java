@@ -296,7 +296,7 @@ public class CaptureActivity extends Activity implements Callback {
 					LibPublicUtil.showToast(main, getString(R.string.get_qrcode_fail));
 					return;
 				}
-				Result rawresult = null;
+				Result rawresult;
 			    try {
 			    	String dirpath = Environment.getExternalStorageDirectory() + "/Temp";
 			    	File file = new File(dirpath);

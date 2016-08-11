@@ -470,7 +470,7 @@ public class LibFileUtil {
 
 
 		public static List<String> listPath(String root) {
-			List<String> allDir = new ArrayList<String>();
+			List<String> allDir = new ArrayList<>();
 			SecurityManager checker = new SecurityManager();
 			File path = new File(root);
 			checker.checkRead(root);
@@ -487,7 +487,7 @@ public class LibFileUtil {
 		
 
 		public static List<File> listPathFiles(String root) {
-			List<File> allDir = new ArrayList<File>();
+			List<File> allDir = new ArrayList<>();
 			SecurityManager checker = new SecurityManager();
 			File path = new File(root);
 			checker.checkRead(root);

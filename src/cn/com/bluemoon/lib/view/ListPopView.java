@@ -22,7 +22,6 @@ import cn.com.bluemoon.lib.qrcode.R;
 public class ListPopView extends PopupWindow {
 
     private Context mContext;
-    private View view;
     private OnSelectListener listener;
     private HistoryListAdapter adapter;
     private ListView listView;
@@ -35,7 +34,7 @@ public class ListPopView extends PopupWindow {
 
     private void init() {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        view = inflater.inflate(R.layout.layout_search_history, null);
+        View view = inflater.inflate(R.layout.layout_search_history, null);
         setWidth(LayoutParams.MATCH_PARENT);
         setHeight(LayoutParams.MATCH_PARENT);
 //        setFocusable(true);

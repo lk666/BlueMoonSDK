@@ -97,7 +97,7 @@ public class CustomViewAbove extends ViewGroup {
 	private OnClosedListener mClosedListener;
 	private OnOpenedListener mOpenedListener;
 
-	private List<View> mIgnoredViews = new ArrayList<View>();
+	private List<View> mIgnoredViews = new ArrayList<>();
 
 	//	private int mScrollState = SCROLL_STATE_IDLE;
 

@@ -204,14 +204,14 @@ public class BarcodeUtil {
 
 
 	public static Result decodeBitmap(String path) {
-		Result rawResult = null;
+		Result rawResult;
 		rawResult = DecodeBimap.decodeFile(path);
 		return rawResult;
 	}
 
 
 	public static Result decodeBitmap(Bitmap bitmap) {
-		Result rawResult = null;
+		Result rawResult;
 		rawResult = DecodeBimap.decodeFile(bitmap);
 		return rawResult;
 	}

@@ -24,7 +24,6 @@ public class CommonEmptyView extends RelativeLayout {
     private TextView txtContent;
     private ImageView imgEmpty;
     private EmptyListener listener;
-    private Context mContext;
 
     public CommonEmptyView(Context context) {
         super(context);
@@ -37,7 +36,6 @@ public class CommonEmptyView extends RelativeLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        mContext = context;
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 

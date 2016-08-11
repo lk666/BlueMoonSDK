@@ -39,7 +39,6 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
     private String search;
     private String hint;
     private int textColor = 0;
-    private View emptyView;
     private List<String> listHistory;
     private int maxSize = 5;
     private boolean isSearchEmpty = true;
@@ -107,9 +106,8 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
     }
 
     public void setEmptyView(View view) {
-        emptyView = view;
-        ((ViewGroup) listView.getParent()).addView(emptyView);
-        listView.setEmptyView(emptyView);
+        ((ViewGroup) listView.getParent()).addView(view);
+        listView.setEmptyView(view);
     }
 
     public String getText() {
@@ -236,7 +234,8 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
             super.onFocusChange(v, hasFocus);
             if (hasFocus) {
                 if (txtSearch.getVisibility() == View.GONE) {
-                    Animation animation = AnimationUtils.loadAnimation(context, R.anim.activity_translate_right);
+                    Animation animation = AnimationUtils.loadAnimation(context, R.anim
+                            .activity_translate_right);
                     txtSearch.setAnimation(animation);
                     txtSearch.setVisibility(View.VISIBLE);
                 }

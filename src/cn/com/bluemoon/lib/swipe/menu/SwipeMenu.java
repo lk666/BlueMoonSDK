@@ -19,7 +19,7 @@ public class SwipeMenu {
 
 	public SwipeMenu(Context context) {
 		mContext = context;
-		mItems = new ArrayList<SwipeMenuItem>();
+		mItems = new ArrayList<>();
 	}
 
 	public Context getContext() {

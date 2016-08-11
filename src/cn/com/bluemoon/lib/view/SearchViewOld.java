@@ -144,7 +144,7 @@ public class SearchViewOld extends LinearLayout {
         }
         etSearch.clearFocus();
         if(listHistory==null){
-            listHistory = new ArrayList<String>();
+            listHistory = new ArrayList<>();
         }
         addHistory(str);
         if(listener!=null) listener.onSearch(str);
@@ -173,7 +173,7 @@ public class SearchViewOld extends LinearLayout {
 
     public List<String> addHistory(String str){
         if(listHistory==null){
-            listHistory = new ArrayList<String>();
+            listHistory = new ArrayList<>();
         }
         if(!StringUtils.isEmpty(str.trim())){
             listHistory.add(0,str);

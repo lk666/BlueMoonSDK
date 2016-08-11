@@ -10,7 +10,7 @@ public abstract class DTBaseAdapter<T> extends BaseAdapter {
 	public long mTime;
 
 	public DTBaseAdapter() {
-		mList = new ArrayList<T>();
+		mList = new ArrayList<>();
 	}
 
 	public long getmTime() {

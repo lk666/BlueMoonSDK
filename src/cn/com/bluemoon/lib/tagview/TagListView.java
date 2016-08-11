@@ -40,7 +40,7 @@ public class TagListView extends FlowLayout implements OnClickListener {
 		readStyleParameters(context, null);
 	}
 
-	private final List<Tag> mTags = new ArrayList<Tag>();
+	private final List<Tag> mTags = new ArrayList<>();
 
 	/**
 	 * @param context
@@ -70,7 +70,7 @@ public class TagListView extends FlowLayout implements OnClickListener {
 				for(int i=0;i<mTags.size();i++){
 					mTags.get(i).setChecked(mTags.get(i).getId()==localTag.getId());
 				}
-				List<Tag> list = new ArrayList<Tag>();
+				List<Tag> list = new ArrayList<>();
 				list.addAll(mTags);
 				setTags(list);
 			}
@@ -230,7 +230,7 @@ public class TagListView extends FlowLayout implements OnClickListener {
 	}
 
 	public List<Tag> getTagsChecked(){
-		List<Tag> list = new ArrayList<Tag>();
+		List<Tag> list = new ArrayList<>();
 		for(int i=0;i<mTags.size();i++){
 			if(mTags.get(i).isChecked()){
 				list.add(mTags.get(i));
