@@ -291,7 +291,7 @@ public class LibDateUtil {
                 m = "0" + minute;
             }
             hm.setmMinute(m);
-            txtTimes.get(selectIndex).setText(hour + ":" + m);
+            txtTimes.get(selectIndex).setText(String.format("%s:%s", hour, m));
         }
     };
 
