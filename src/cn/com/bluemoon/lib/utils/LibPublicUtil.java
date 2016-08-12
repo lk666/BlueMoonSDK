@@ -376,54 +376,54 @@ public class LibPublicUtil {
         return s;
     }
 
-    public static String makePhotoName(Context context) {
-        Date date = new Date();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmssSSSS",
-                Locale.CHINA);
-        String strDate = df.format(date);
-        String strRand = String.valueOf((int) (Math.random() * 200));
-        String strRand2 = String.valueOf((int) (Math.random() * 20));
-        if (strRand.length() < 4) {
-            strRand = "0000".substring(strRand.length()) + strRand;
-        }
-        if (strRand2.length() < 2) {
-            strRand2 = "00".substring(strRand2.length()) + strRand2;
-        }
-        if (context == null) {
-            return strDate + strRand + strRand2 + ".jpg";
-        }
-        String str = "BA" + strDate + strRand + strRand2 + "-00-000000.jpg";
-        return str;
-    }
+	public static String makePhotoName(Context context) {
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmssSSSS",
+				Locale.CHINA);
+		String strDate = df.format(date);
+		String strRand = String.valueOf((int) (Math.random() * 200));
+		String strRand2 = String.valueOf((int) (Math.random() * 20));
+		if (strRand.length() < 4) {
+			strRand = "0000".substring(strRand.length()) + strRand;
+		}
+		if (strRand2.length() < 2) {
+			strRand2 = "00".substring(strRand2.length()) + strRand2;
+		}
+		if (context == null) {
+			return strDate + strRand + strRand2 + ".jpg";
+		}
+		String str = "BA" + strDate + strRand + strRand2 + "-00-000000.jpg";
+		return str;
+	}
 
-    public static String makeSoundName(Context context) {
-        Date date = new Date();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss",
-                Locale.CHINA);
-        String strDate = df.format(date);
-        String strRand = String.valueOf((int) (Math.random() * 100));
-        if (strRand.length() < 4) {
-            strRand = "0000".substring(strRand.length()) + strRand;
-        }
-        if (context == null) {
-            return strDate + strRand + ".mp3";
-        }
-        String str = "MI" + strDate + strRand + "-00-000000.mp3";
-        return str;
-    }
+	public static String makeSoundName(Context context) {
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss",
+				Locale.CHINA);
+		String strDate = df.format(date);
+		String strRand = String.valueOf((int) (Math.random() * 100));
+		if (strRand.length() < 4) {
+			strRand = "0000".substring(strRand.length()) + strRand;
+		}
+		if (context == null) {
+			return strDate + strRand + ".mp3";
+		}
+		String str = "MI" + strDate + strRand + "-00-000000.mp3";
+		return str;
+	}
 
-    public static String makeLocalToken() {
-        Date date = new Date();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss",
-                Locale.CHINA);
-        String strDate = df.format(date);
-        String strRand = String.valueOf((int) (Math.random() * 20));
-        if (strRand.length() < 3) {
-            strRand = "000".substring(strRand.length()) + strRand;
-        }
-        String str = strDate + strRand;
-        return str;
-    }
+	public static String makeLocalToken() {
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss",
+				Locale.CHINA);
+		String strDate = df.format(date);
+		String strRand = String.valueOf((int) (Math.random() * 20));
+		if (strRand.length() < 3) {
+			strRand = "000".substring(strRand.length()) + strRand;
+		}
+		String str = strDate + strRand;
+		return str;
+	}
 
 
     public static boolean isPhone(String phone) {
@@ -443,34 +443,34 @@ public class LibPublicUtil {
     }
 
 
-    public static String getPriceFrom(String price) {
-        double p = 0.00;
-        try {
-            p = Double.parseDouble(price);
-        } catch (Exception e) {
-            p = 0.00;
-        }
-        return getPriceFrom(p);
-    }
+	public static String getPriceFrom(String price) {
+		double p = 0.00;
+		try {
+			p = Double.parseDouble(price);
+		} catch (Exception e) {
 
+		}
+		return getPriceFrom(p);
+	}
+	
 
     public static String getPhotoName(String picFrom) {
         return System.currentTimeMillis() + picFrom;
     }
 
 
-    public static String getCameraPath() {
-        if (!hasSDCard())
-            return null;
-        String fileName = "";
-        String pathUrl = LibConstants.PATH_CAMERA;
-        File file = new File(pathUrl);
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        fileName = pathUrl + File.separator + getPhotoName(".jpg");
-        return fileName;
-    }
+	public static String getCameraPath() {
+		if (!hasSDCard())
+			return null;
+		String fileName;
+		String pathUrl = LibConstants.PATH_CAMERA;
+		File file = new File(pathUrl);
+		if(!file.exists()){
+			file.mkdirs();
+		}
+		fileName = pathUrl + File.separator + getPhotoName(".jpg");
+		return fileName;
+	}
 
     /**********************
      * time and click count
