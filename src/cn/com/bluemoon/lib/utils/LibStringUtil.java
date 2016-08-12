@@ -122,6 +122,10 @@ public class LibStringUtil {
         return d;
     }
 
+    public static String formatByPoint(double number,int size) {
+        return String.format("%."+size+"f", number);
+    }
+
     public static String formatPrice(String price) {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(Double.valueOf(price));
@@ -135,18 +139,6 @@ public class LibStringUtil {
     public static String formatArea(double area) {
         DecimalFormat df = new DecimalFormat("0.0");
         return df.format(area);
-    }
-
-    public static String formatPriceByFen(long price) {
-        return String.format("%.2f", (double) price / 100);
-    }
-
-    public static String formatPriceByFen(int price) {
-        return String.format("%.2f", (double) price / 100);
-    }
-
-    public static String formatBoxesNum(double boxes) {
-        return String.format("%.1f", boxes);
     }
 
     private static boolean isChinese(char c) {
