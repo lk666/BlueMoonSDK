@@ -122,6 +122,10 @@ public class LibStringUtil {
         return d;
     }
 
+    public static String formatByPoint(double number,int size) {
+        return String.format("%."+size+"f", number);
+    }
+
     public static String formatPrice(String price) {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(Double.valueOf(price));
