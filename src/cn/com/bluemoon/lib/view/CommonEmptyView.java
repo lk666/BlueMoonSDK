@@ -3,6 +3,7 @@ package cn.com.bluemoon.lib.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,6 @@ public class CommonEmptyView extends RelativeLayout {
     private TextView txtContent;
     private ImageView imgEmpty;
     private EmptyListener listener;
-    private Context mContext;
 
     public CommonEmptyView(Context context) {
         super(context);
@@ -37,7 +37,6 @@ public class CommonEmptyView extends RelativeLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        mContext = context;
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -98,8 +97,13 @@ public class CommonEmptyView extends RelativeLayout {
     }
 
     public CommonEmptyView setEmptyImage(int imgResid){
+        LibViewUtil.setViewVisibility(imgEmpty, View.VISIBLE);
         imgEmpty.setImageResource(imgResid);
         return this;
+    }
+
+    public void hideEmptyIcon(){
+        LibViewUtil.setViewVisibility(imgEmpty, View.GONE);
     }
 
     public CommonEmptyView setRefreshable(boolean isRefresh){
