@@ -119,6 +119,10 @@ public class CommonEmptyView extends RelativeLayout {
         return this;
     }
 
+    public void setImgVisibility(int visibility) {
+        LibViewUtil.setViewVisibility(imgEmpty, visibility);
+    }
+
     public interface EmptyListener{
         void onRefresh();
     }
