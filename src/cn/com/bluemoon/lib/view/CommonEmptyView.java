@@ -102,10 +102,6 @@ public class CommonEmptyView extends RelativeLayout {
         return this;
     }
 
-    public void hideEmptyIcon(){
-        LibViewUtil.setViewVisibility(imgEmpty, View.GONE);
-    }
-
     public CommonEmptyView setRefreshable(boolean isRefresh){
         if(isRefresh){
             LibViewUtil.setViewVisibility(txtRefresh,View.VISIBLE);
