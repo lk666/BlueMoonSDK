@@ -38,7 +38,7 @@ public class ImageLoaderUtil {
                     .cacheInMemory(true)
                     .imageScaleType(ImageScaleType.EXACTLY)
                     .bitmapConfig(Bitmap.Config.RGB_565)
-                    .showImageOnLoading(R.mipmap.icon_default)
+                    .showImageOnLoading(R.drawable.icon_default)
 //                    .showImageForEmptyUri()
 //                    .showImageOnFail()
                     .build();
@@ -96,6 +96,19 @@ public class ImageLoaderUtil {
 
         mImageLoader.displayImage(requestUrl, view);
     }
+
+    /**
+     * 从assets文件夹中异步加载图片
+     *
+     * @param imageName
+     *            图片名称，带后缀的，例如：1.png
+     * @param imageView
+     */
+    public static void dispalyFromAssets(String imageName, ImageView imageView) {
+        // String imageUri = "assets://image.png"; // from assets
+        ImageLoader.getInstance().displayImage("assets://" + imageName,imageView);
+    }
+
 
     /**
      * 从drawable中异步加载本地图片
