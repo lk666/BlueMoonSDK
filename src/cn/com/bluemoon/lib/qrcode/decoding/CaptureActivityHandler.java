@@ -30,7 +30,7 @@ import com.google.zxing.Result;
 
 import java.util.Vector;
 
-import cn.com.bluemoon.lib.qrcode.CaptureActivity;
+import cn.com.bluemoon.lib.qrcode.BaseCaptureActivity;
 import cn.com.bluemoon.lib.qrcode.camera.CameraManager;
 import cn.com.bluemoon.lib.qrcode.view.ViewfinderResultPointCallback;
 
@@ -57,7 +57,7 @@ private static final int DECODE = 1;
 
 private static final int QUIT = 7;
 
-  private final CaptureActivity activity;
+  private final BaseCaptureActivity activity;
   private final DecodeThread decodeThread;
   private State state;
 
@@ -67,7 +67,7 @@ private static final int QUIT = 7;
     DONE
   }
 
-  public CaptureActivityHandler(CaptureActivity activity, Vector<BarcodeFormat> decodeFormats,
+  public CaptureActivityHandler(BaseCaptureActivity activity, Vector<BarcodeFormat> decodeFormats,
       String characterSet) {
     this.activity = activity;
     decodeThread = new DecodeThread(activity, decodeFormats, characterSet,

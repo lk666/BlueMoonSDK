@@ -200,4 +200,37 @@
         <attr name="img_empty" format="reference"/>
         <attr name="refreshable"  format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="ViewfinderView">
+        <!--扫描框距离屏幕上方的距离 -->
+        <attr name="marginTop" format="dimension"/>
+        <!--扫描框的宽度 -->
+        <attr name="rectWidth" format="dimension"/>
+        <!--扫描框的高度 -->
+        <attr name="rectHeight" format="dimension"/>
+        <!--是否隐藏描述文字 -->
+        <attr name="isHideContent" format="boolean"/>
+        <!--描述文字 -->
+        <attr name="content_text" format="string"/>
+        <!--描述文字的颜色 -->
+        <attr name="content_color" format="color"/>
+        <!--描述文字与扫描框顶部的距离 -->
+        <attr name="content_padding_bottom" format="dimension"/>
+        <!--扫描框外部半透明颜色 -->
+        <attr name="mask_color" format="color"/>
+        <!--扫描框边框颜色-->
+        <attr name="frame_color" format="color"/>
+        <!--激光线颜色-->
+        <attr name="laser_color" format="color"/>
+        <!--激光线每次刷新移动的距离-->
+        <attr name="laser_space" format="dimension"/>
+        <!--激光线与左右两边的距离-->
+        <attr name="laser_padding" format="dimension"/>
+        <!--角边的颜色-->
+        <attr name="corner_color" format="color"/>
+        <!--角边的宽度-->
+        <attr name="corner_width" format="dimension"/>
+        <!--角边的长度-->
+        <attr name="corner_height" format="dimension"/>
+    </declare-styleable>
 </resources>

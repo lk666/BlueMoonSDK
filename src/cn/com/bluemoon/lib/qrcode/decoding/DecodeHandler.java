@@ -31,7 +31,7 @@ import com.google.zxing.common.HybridBinarizer;
 
 import java.util.Hashtable;
 
-import cn.com.bluemoon.lib.qrcode.CaptureActivity;
+import cn.com.bluemoon.lib.qrcode.BaseCaptureActivity;
 import cn.com.bluemoon.lib.qrcode.camera.CameraManager;
 import cn.com.bluemoon.lib.qrcode.camera.PlanarYUVLuminanceSource;
 
@@ -48,10 +48,10 @@ final class DecodeHandler extends Handler {
   private static final int QUIT = 7;
 
 
-  private final CaptureActivity activity;
+  private final BaseCaptureActivity activity;
   private final MultiFormatReader multiFormatReader;
 
-  DecodeHandler(CaptureActivity activity, Hashtable<DecodeHintType, Object> hints) {
+  DecodeHandler(BaseCaptureActivity activity, Hashtable<DecodeHintType, Object> hints) {
     multiFormatReader = new MultiFormatReader();
     multiFormatReader.setHints(hints);
     this.activity = activity;

@@ -168,6 +168,7 @@
  <color name="scan_btn_blue">#995dbfac</color>
  <color name="scan_btn_blue_pressed">#ff5dbfac</color>
  <color name="scan_text_blue">#1fb8ff</color>
+ <color name="code_title_bg">#aa000000</color>
  
  <color name="style_red">#ff4c41</color>
  <color name="style_divider_color">#C9C7CD</color>

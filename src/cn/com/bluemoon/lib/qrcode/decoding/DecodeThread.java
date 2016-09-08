@@ -27,18 +27,18 @@ import java.util.Hashtable;
 import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
 
-import cn.com.bluemoon.lib.qrcode.CaptureActivity;
+import cn.com.bluemoon.lib.qrcode.BaseCaptureActivity;
 
 
 final class DecodeThread extends Thread {
 
   public static final String BARCODE_BITMAP = "barcode_bitmap";
-  private final CaptureActivity activity;
+  private final BaseCaptureActivity activity;
   private final Hashtable<DecodeHintType, Object> hints;
   private Handler handler;
   private final CountDownLatch handlerInitLatch;
 
-  DecodeThread(CaptureActivity activity,
+  DecodeThread(BaseCaptureActivity activity,
                Vector<BarcodeFormat> decodeFormats,
                String characterSet,
                ResultPointCallback resultPointCallback) {
