@@ -27,7 +27,8 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import java.util.Hashtable;
 
 public final class EncodingHandler {
-
+	private static final int BLACK = 0xFF000000;
+	private static final int WHITE = 0xFFFFFFFF;
 	private static final int QRCODE_SIZE = 480;
 	private static final int BARCODE_HEIGHT = 150;
 	private static final int BARCODE_WIDTH = 400;
@@ -37,8 +38,8 @@ public final class EncodingHandler {
 		if(size<=0){
 			size = QRCODE_SIZE;
 		}
-		if(color == -1){
-			color = Color.BLACK;
+		if(color == 0){
+			color = BLACK;
 		}
 		Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
 		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
@@ -58,7 +59,7 @@ public final class EncodingHandler {
 						pixels[y * width + x] = color;
 					}
 				} else {
-					pixels[y * width + x] = Color.WHITE;
+					pixels[y * width + x] = WHITE;
 				}
 			}
 		}
@@ -136,7 +137,7 @@ public final class EncodingHandler {
 		canvas.drawRoundRect(rectF, radius, radius, paint);
 		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 		canvas.drawBitmap(bitmap, rect, rect, paint);
-		paint.setColor(Color.WHITE);
+		paint.setColor(WHITE);
 		paint.setStrokeWidth(3);
 		paint.setStyle(Paint.Style.STROKE);
 		canvas.drawCircle(w / 2, w / 2, w / 2 - 1, paint);
@@ -201,7 +202,7 @@ public final class EncodingHandler {
 		for (int y = 0; y < height; y++) {
 			int offset = y * width;
 			for (int x = 0; x < width; x++) {
-				pixels[offset + x] = result.get(x, y) ? Color.BLACK : Color.WHITE;
+				pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
 			}
 		}
 
@@ -225,11 +226,11 @@ public final class EncodingHandler {
 				LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		tv.setLayoutParams(layoutParams);
 		tv.setText(contents);
-		tv.setBackgroundColor(Color.WHITE);
+		tv.setBackgroundColor(WHITE);
 		tv.setGravity(Gravity.CENTER_HORIZONTAL);
 		tv.setWidth(width);
 		tv.setDrawingCacheEnabled(true);
-		tv.setTextColor(Color.BLACK);
+		tv.setTextColor(BLACK);
 		tv.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
 				View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
 		tv.layout(0, 0, tv.getMeasuredWidth(), tv.getMeasuredHeight());

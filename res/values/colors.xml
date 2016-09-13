@@ -7,7 +7,7 @@
     <color name="white">#ffffffff</color><!--白色 -->
     <color name="gray_light">#fff2f2f2</color>
     <color name="grep">#ffe5e5e5</color>
-    <color name="gray_deep">#ffdddddd</color>
+    <color name="gray_deep">#ffd7d7d7</color>
     <color name="orange_red">#ffff6c47</color>
     <color name="red_light">#ffffe4e1</color>
     <color name="black_light">#ff666666</color>
