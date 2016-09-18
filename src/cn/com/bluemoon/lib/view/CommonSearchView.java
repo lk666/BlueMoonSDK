@@ -3,6 +3,7 @@ package cn.com.bluemoon.lib.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -43,6 +44,7 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
     private List<String> listHistory;
     private int maxSize = 5;
     private boolean isSearchEmpty = true;
+    private boolean hideHistory;
     private ListPopView popupWindow;
     private LinearLayout layoutTitle;
 
@@ -72,6 +74,7 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
             cancel = typedArray.getString(R.styleable.CommonSearchView_text_cancel);
             hint = typedArray.getString(R.styleable.CommonSearchView_text_hint);
             isSearchEmpty = typedArray.getBoolean(R.styleable.CommonSearchView_search_empty, true);
+            hideHistory = typedArray.getBoolean(R.styleable.CommonSearchView_hide_history,false);
         }
         etSearch = (CommonClearEditText) this.findViewById(R.id.et_search);
         txtSearch = (TextView) this.findViewById(R.id.txt_search);
@@ -100,7 +103,7 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
                 }
             }
         });
-        if (popupWindow == null) {
+        if (popupWindow == null&&!hideHistory) {
             popupWindow = new ListPopView(context, this);
         }
 
@@ -124,6 +127,10 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
         etSearch.setHint(hint);
     }
 
+    public void setHideHistory(boolean hideHistory){
+        this.hideHistory = hideHistory;
+    }
+
     public List<String> getListHistory() {
         return listHistory;
     }
@@ -139,9 +146,6 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
             return;
         }
         etSearch.clearFocus();
-        if (listHistory == null) {
-            listHistory = new ArrayList<String>();
-        }
         addHistory(str);
         if (listener != null) {
             listener.onSearch(this, str);
@@ -175,11 +179,12 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
         this.maxSize = maxSize;
     }
 
-    public List<String> addHistory(String str) {
+    public void addHistory(String str) {
+        if(hideHistory) return;
         if (listHistory == null) {
-            listHistory = new ArrayList<String>();
+            listHistory = new ArrayList<>();
         }
-        if (!StringUtils.isEmpty(str.trim())) {
+        if (!TextUtils.isEmpty(str.trim())) {
             listHistory.add(0, str);
             for (int i = 1; i < listHistory.size(); i++) {
                 if (i >= maxSize || listHistory.get(i).equals(str)) {
@@ -188,17 +193,17 @@ public class CommonSearchView extends LinearLayout implements ListPopView.OnSele
                 }
             }
         }
-        return listHistory;
+        return;
     }
 
     public void showHistoryView() {
-        if (popupWindow != null) {
+        if (popupWindow != null&&!hideHistory) {
             popupWindow.showPopwindow(this, listHistory);
         }
     }
 
     public void hideHistoryView() {
-        if (popupWindow != null) {
+        if (popupWindow != null&&!hideHistory) {
             popupWindow.dismiss();
         }
 

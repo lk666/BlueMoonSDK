@@ -67,8 +67,6 @@ public class CommonEmptyView extends RelativeLayout {
             if (typedArray != null) {
                 String text = typedArray.getString(R.styleable.CommonEmptyView_text_content);
                 int icon = typedArray.getResourceId(R.styleable.CommonEmptyView_img_empty, 0);
-                boolean isRefresh = typedArray.getBoolean(R.styleable.CommonEmptyView_refreshable,false);
-                setRefreshable(isRefresh);
                 if(!StringUtils.isEmpty(text)){
                     txtContent.setText(text);
                 }
@@ -104,7 +102,7 @@ public class CommonEmptyView extends RelativeLayout {
 
     public CommonEmptyView setRefreshable(boolean isRefresh){
         if(isRefresh){
-            LibViewUtil.setViewVisibility(txtRefresh,View.VISIBLE);
+            LibViewUtil.setViewVisibility(txtRefresh, View.VISIBLE);
         }else{
             LibViewUtil.setViewVisibility(txtRefresh, View.GONE);
         }
@@ -113,7 +111,9 @@ public class CommonEmptyView extends RelativeLayout {
 
     public CommonEmptyView setEmptyListener(EmptyListener listener){
         this.listener = listener;
-        if(listener!=null){
+        if(listener==null){
+            setRefreshable(false);
+        }else{
             setRefreshable(true);
         }
         return this;
