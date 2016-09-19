@@ -216,7 +216,7 @@ public final class CameraManager {
     private Rect getFramingRect() {
         Point screenResolution = configManager.getScreenResolution();
         if (framingRect==null&&camera!=null&&screenResolution != null) {
-            int width = screenResolution.x * 2 / 3;
+            int width = screenResolution.x * 7 / 12;
             int leftOffset = (screenResolution.x - width) / 2;
             int topOffset = (screenResolution.y - width) / 2;
             framingRect = new Rect(leftOffset, topOffset, leftOffset + width,
