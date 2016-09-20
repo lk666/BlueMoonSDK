@@ -50,6 +50,7 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
     private static final long VIBRATE_DURATION = 200L;
     protected boolean vibrate;
     protected String title;
+    private boolean isPause;
 
 
     public static void actStart(Activity aty, Fragment fragment, Class clazz,String title, int requestCode) {
@@ -81,6 +82,7 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
      */
     public void handleDecode(Result result, Bitmap barcode) {
         playBeepSoundAndVibrate();
+        pauseScan();
         if (result == null) {
             onResult(null, null, barcode);
             return;
@@ -126,6 +128,7 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
     @Override
     protected void onResume() {
         super.onResume();
+        isPause = true;
         resumeScan();
     }
 
@@ -207,9 +210,6 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
             switch (requestCode) {
                 case CHOSE_PIC_RESULT:
                     decodeImage(data);
-                    break;
-
-                default:
                     break;
             }
         }
@@ -311,12 +311,14 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
         if (CameraManager.get() != null) {
             CameraManager.get().closeDriver();
         }
+        isPause = true;
     }
 
     /**
      * 启动扫描
      */
     final protected void resumeScan() {
+        if(!isPause) return;
         inactivityTimer = new InactivityTimer(this);
         if (CameraManager.get() == null) {
             CameraManager.init(this);
@@ -345,7 +347,7 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
      *
      * @param path
      */
-    protected void decodeImage(String path) {
+    final protected void decodeImage(String path) {
         try {
             if (path != null) {
                 String dirpath = Environment.getExternalStorageDirectory() + "/Temp";
@@ -361,7 +363,7 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
         }
     }
 
-    protected void decodeImage(Intent data) {
+    final protected void decodeImage(Intent data) {
         String returnPath = LibImageUtil.returnPickPhotoPath(data, this);
         decodeImage(returnPath);
     }
@@ -372,11 +374,11 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
      * @param resultString
      * @param type
      */
-    protected void finishWithData(String resultString, String type) {
+    final protected void finishWithData(String resultString, String type) {
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
         bundle.putString(LibConstants.SCAN_RESULT, resultString);
-        bundle.putString(LibConstants.SCAN_TYPE, type);
+        bundle.putString(LibConstants.SCAN_TYPE, TextUtils.isEmpty(type)?"TEXT":type);
         intent.putExtras(bundle);
         this.setResult(RESULT_OK, intent);
         finish();
