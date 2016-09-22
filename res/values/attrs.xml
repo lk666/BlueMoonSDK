@@ -222,10 +222,10 @@
         <attr name="frame_color" format="color"/>
         <!--激光线颜色-->
         <attr name="laser_color" format="color"/>
+        <!--激光线半透明颜色-->
+        <attr name="laser_color_light" format="color"/>
         <!--激光线每次刷新移动的距离-->
         <attr name="laser_space" format="dimension"/>
-        <!--激光线与左右两边的距离-->
-        <attr name="laser_padding" format="dimension"/>
         <!--角边的颜色-->
         <attr name="corner_color" format="color"/>
         <!--角边的宽度-->

@@ -28,11 +28,15 @@ public class Configure {
 	/**
 	 * 四个边角的颜色
 	 */
-	public final static int CORNER_COLOR =0xFF00FF00;
+	public final static int CORNER_COLOR =0xCC00FF00;
 	/**
 	 * 激光线颜色
 	 */
-	public final static int LASER_COLOR =0xFF00FF00;
+	public final static int LASER_COLOR =0xDD00FF00;
+	/**
+	 * 激光线颜色半透明
+	 */
+	public final static int LASER_COLOR_LIGHT =0x9900FF00;
 	/**
 	 * 扫描框内闪点的颜色
 	 */
@@ -62,7 +66,7 @@ public class Configure {
 	/**
 	 * 四个边角对应的宽度
 	 */
-	public final static int CORNER_WIDTH = 5;
+	public final static int CORNER_WIDTH = 3;
 	/**
 	 * 字体距离扫描框上面的距离
 	 */

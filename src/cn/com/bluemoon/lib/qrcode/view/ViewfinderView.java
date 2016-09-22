@@ -21,8 +21,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Shader;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -54,7 +57,7 @@ public final class ViewfinderView extends View {
     private int frameColor;
     private int laserColor;
     private int laserSpace;
-    private int laserPadding;
+    private int laserColorLight;
 //    private int scannerAlpha;
     private float top;
     private float width;
@@ -96,7 +99,7 @@ public final class ViewfinderView extends View {
         frameColor = Configure.FRAME_COLOR;
         laserColor = Configure.LASER_COLOR;
         laserSpace = Configure.LASER_SPACE;
-        laserPadding = (int) (Configure.LASER_PADDING * density);
+        laserColorLight = Configure.LASER_COLOR_LIGHT;
         contentColor = Configure.CONTENT_COLOR;
         contentPaddingBottom = Configure.CONTENT_PADDING_BOTTOM * density;
         cornerColor = Configure.CORNER_COLOR;
@@ -119,9 +122,7 @@ public final class ViewfinderView extends View {
                 cornerColor = typedArray.getColor(R.styleable.ViewfinderView_corner_color, Configure.CORNER_COLOR);
                 laserSpace = typedArray.getDimensionPixelOffset(R.styleable.ViewfinderView_laser_space,
                         (int) (Configure.LASER_SPACE * density));
-                laserPadding = typedArray.getDimensionPixelOffset(R.styleable.ViewfinderView_laser_padding,
-                        (int) (Configure.LASER_PADDING * density));
-
+                laserColorLight = typedArray.getColor(R.styleable.ViewfinderView_laser_color_light, Configure.LASER_COLOR_LIGHT);
                 cornerWidth = typedArray.getDimensionPixelOffset(R.styleable.ViewfinderView_corner_width,
                         (int) (Configure.CORNER_WIDTH * density));
                 cornerHeight = typedArray.getDimensionPixelOffset(R.styleable.ViewfinderView_corner_height,
@@ -177,20 +178,6 @@ public final class ViewfinderView extends View {
             canvas.drawRect(frame.left, frame.bottom - 1, frame.right + 1,
                     frame.bottom + 1, paint);
 
-            /*绘画激光扫描线*/
-            paint.setColor(laserColor);
-            paint.setAlpha(Configure.SCANNER_ALPHA);
-            /*透明度动态变化的扫描线paint.setAlpha(Configure.SCANNER_ALPHA[scannerAlpha]);
-            scannerAlpha = (scannerAlpha + 1) % Configure.SCANNER_ALPHA.length;*/
-            if (middle == 0 || middle >= frame.bottom - 10) {
-                middle = frame.top;
-            }
-            middle = middle + laserSpace;
-            canvas.drawRect(frame.left + laserPadding, middle
-                    - Configure.LASER_HEIGHT / 2, frame.right
-                    - laserPadding, middle
-                    + Configure.LASER_HEIGHT / 2, paint);
-
             /*绘制4个边角*/
             paint.setColor(cornerColor);
             canvas.drawRect(frame.left, frame.top, frame.left + cornerHeight,
@@ -244,6 +231,21 @@ public final class ViewfinderView extends View {
                 float l = (frame.left + frame.right) / 2 - (Configure.CONTENT_SIZE * density * contentText.length() / 2);
                 canvas.drawText(contentText, l, (frame.top - contentPaddingBottom), paint);
             }
+
+            /*绘画激光扫描线*/
+            Paint paintLine = new Paint();
+            LinearGradient linearGradient = new LinearGradient(frame.left ,0, frame.right,0,
+                    new int[]{Color.TRANSPARENT, laserColorLight,laserColor, laserColorLight,Color.TRANSPARENT},
+                    new float[]{0f,0.25f,0.5f,0.75f,1f}, Shader.TileMode.CLAMP);
+            paintLine.setShader(linearGradient);
+
+            if (middle == 0 || middle >= frame.bottom - 10) {
+                middle = frame.top;
+            }
+            middle = middle + laserSpace;
+            canvas.drawRect(frame.left, middle
+                    - Configure.LASER_HEIGHT / 2, frame.right, middle
+                    + Configure.LASER_HEIGHT / 2, paintLine);
 
             postInvalidateDelayed(Configure.ANIMATION_DELAY, frame.left, frame.top,
                     frame.right, frame.bottom);
