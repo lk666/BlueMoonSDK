@@ -312,6 +312,7 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
             CameraManager.get().closeDriver();
         }
         isPause = true;
+        inactivityTimer.shutdown();
     }
 
     /**
