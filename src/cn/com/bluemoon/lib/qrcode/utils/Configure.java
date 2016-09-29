@@ -78,12 +78,12 @@ public class Configure {
 	 */
 	public final static long ANIMATION_DELAY = 15L;
 	/**
-	 * 激光扫描线的动态变化值
+	 * 扫描时间控制，超时则自动退出界面
 	 */
-	public final static int SCANNER_ALPHA = 192;
-//	public final static int[] SCANNER_ALPHA = {192};
+	public static final int INACTIVITY_DELAY_SECONDS = 5 * 60;
 
 	/***********************Alpha**************************/
 	public static final int OPAQUE = 0xFF;
+
 
 }
