@@ -1,36 +1,55 @@
 package cn.com.bluemoon.lib.view;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
 
 import cn.com.bluemoon.lib.callback.CodeDialogCallback;
+import cn.com.bluemoon.lib.callback.DrawableCallback;
 import cn.com.bluemoon.lib.qrcode.R;
-import cn.com.bluemoon.lib.qrcode.utils.BarcodeUtil;
-import cn.com.bluemoon.lib.utils.LibViewUtil;
+import cn.com.bluemoon.lib.utils.DownImageHelper;
 
 public class QRCodeDialog extends DialogFragment {
 
     private View view;
+    private Context context;
     private String codeTitle;
+    private String codeUrl;
     private String codeString;
     private String codeContent;
-    private String code;
+    private String savePath;
+    private String loadString;
     private Bitmap bm;
     private ImageView imgView;
+    private TextView txtLoad;
     private CodeDialogCallback cb;
+    private SavePicDialog savePicDialog;
+    private boolean isDecode;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        context = activity;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,17 +59,43 @@ public class QRCodeDialog extends DialogFragment {
         getDialog().getWindow().setBackgroundDrawable(
                 new ColorDrawable(Color.TRANSPARENT));
         view = inflater.inflate(R.layout.dialog_code, container, false);
-        initView();
-        initData();
+        imgView = (ImageView) view.findViewById(R.id.img_code);
+        txtLoad = (TextView) view.findViewById(R.id.txt_load);
+        view.setOnClickListener(onclick);
+        imgView.setOnClickListener(onclick);
+        imgView.setOnLongClickListener(onLongClick);
+
+        doMain();
         return view;
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        return super.onCreateDialog(savedInstanceState);
     }
 
     public void setCallback(CodeDialogCallback cb) {
         this.cb = cb;
     }
 
+
+    public void setLoadString(String loadString) {
+        this.loadString = loadString;
+    }
+
+
     public void setTitle(String codeTitle) {
         this.codeTitle = codeTitle;
+    }
+
+    public void isDecode(boolean isDecode) {
+        this.isDecode = isDecode;
+    }
+
+
+    public void setCodeUrl(String codeUrl) {
+        this.codeUrl = codeUrl;
+        this.bm = null;
     }
 
     public void setString(String codeString) {
@@ -61,85 +106,155 @@ public class QRCodeDialog extends DialogFragment {
         this.codeContent = codeContent;
     }
 
-    public  void setCode(String code){
-        this.code = code;
-        this.bm = null;
-    }
 
     public void setBitmap(Bitmap bm) {
         this.bm = bm;
-        code = null;
+        this.codeUrl = null;
+    }
+
+
+    public void setSavePath(String savePath) {
+        this.savePath = savePath;
     }
 
     OnClickListener onclick = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
+            // TODO Auto-generated method stub
             if (v == view || v == imgView) {
                 dismiss();
             }
         }
     };
 
-    View.OnLongClickListener longClick = new View.OnLongClickListener() {
+    OnLongClickListener onLongClick = new OnLongClickListener() {
+
         @Override
         public boolean onLongClick(View v) {
-            if (cb != null) {
-                return cb.longClick(v,bm);
+            // TODO Auto-generated method stub
+            if (v == imgView) {
+                if (savePath == null || bm == null) {
+                    return false;
+                }
+                if (savePicDialog == null) {
+                    savePicDialog = new SavePicDialog(context, bm, savePath);
+                }
+                try {
+                    savePicDialog.isDecode(isDecode);
+                    savePicDialog.getPic(v);
+                } catch (Exception e) {
+                    // TODO: handle exception
+                    e.printStackTrace();
+                }
+                return true;
             }
-            return false;
+            return true;
         }
     };
 
-    private void initView(){
-        imgView = (ImageView) view.findViewById(R.id.img_code);
-        view.setOnClickListener(onclick);
-        imgView.setOnClickListener(onclick);
-        imgView.setOnLongClickListener(longClick);
-    }
 
-    public void initData(){
-        setCodeImage(code);
-        setTitleTxt(codeTitle);
-        setStringTxt(codeString);
-        setContentTxt(codeContent);
-    }
-
-    private void setCodeImage(String code){
-        if(code !=null){
-            bm = BarcodeUtil.createQRCode(code);
-        }
-        imgView.setImageBitmap(bm);
-    }
-
-    private void setTitleTxt(String codeTitle) {
-        if (!StringUtils.isEmpty(codeTitle)) {
-            TextView txt = (TextView) view.findViewById(R.id.title_code);
-            txt.setText(codeTitle);
-            LibViewUtil.setViewVisibility(txt, View.VISIBLE);
-        }
-    }
-
-    private void setStringTxt(String codeString) {
-        if (!StringUtils.isEmpty(codeString)) {
-            TextView txt = (TextView) view.findViewById(R.id.txt_code);
-            txt.setText(codeString);
-            LibViewUtil.setViewVisibility(txt, View.VISIBLE);
+    private void doMain() {
+        setTitleTxt();
+        setStringTxt();
+        setContentTxt();
+        if (bm != null) {
+            imgView.setImageBitmap(bm);
+        } else {
+            if (codeUrl != null)
+                setImageUrl(codeUrl);
         }
     }
 
 
-    private void setContentTxt(String codeContent) {
-        if (!StringUtils.isEmpty(codeContent)) {
-            TextView txt = (TextView) view.findViewById(R.id.txt_content);
-            txt.setText(codeContent);
-            LibViewUtil.setViewVisibility(txt, View.VISIBLE);
-            view.findViewById(R.id.line).setVisibility(View.VISIBLE);
+    private void setTitleTxt() {
+        TextView txtTitle = (TextView) view.findViewById(R.id.title_code);
+        if (StringUtils.isEmpty(codeTitle)) {
+            txtTitle.setVisibility(View.GONE);
+        } else {
+            txtTitle.setVisibility(View.VISIBLE);
+            txtTitle.setText(codeTitle);
         }
+    }
+
+    private void setStringTxt() {
+        TextView txtView = (TextView) view.findViewById(R.id.txt_code);
+        if (StringUtils.isEmpty(codeString)) {
+            txtView.setVisibility(View.GONE);
+        } else {
+            txtView.setVisibility(View.VISIBLE);
+            txtView.setText(codeString);
+        }
+
+    }
+
+
+    private void setContentTxt() {
+        TextView txtContent = (TextView) view.findViewById(R.id.txt_content);
+        View line = view.findViewById(R.id.line);
+        if (StringUtils.isEmpty(codeContent)) {
+            txtContent.setVisibility(View.GONE);
+            line.setVisibility(View.GONE);
+        } else {
+            txtContent.setVisibility(View.VISIBLE);
+            line.setVisibility(View.VISIBLE);
+            txtContent.setText(codeContent);
+        }
+    }
+
+
+    private void setImageUrl(String url) {
+        if (url == null) {
+            Toast.makeText(context, context.getString(R.string.error_photo_path)
+                    , Toast.LENGTH_SHORT).show();
+            return;
+        }
+        new DownImageHelper().loadImage(imgView, url, true,
+                new DrawableCallback() {
+
+                    @Override
+                    public void onPreExec() {
+                        // TODO Auto-generated method stub
+                        super.onPreExec();
+                        if (loadString != null) {
+                            txtLoad.setVisibility(View.VISIBLE);
+                            txtLoad.setText(loadString);
+                        } else {
+                            txtLoad.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onPostExec() {
+                        // TODO Auto-generated method stub
+                        super.onPostExec();
+                        txtLoad.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onSuccess(Drawable drawable) {
+                        // TODO Auto-generated method stub
+                        try {
+                            bm = ((BitmapDrawable) drawable).getBitmap();
+                        } catch (Exception e) {
+                            Toast.makeText(context, context.getString(R.string.error_get_data),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(String errMsg) {
+                        // TODO Auto-generated method stub
+                        Toast.makeText(context, context.getString(R.string.error_get_data), Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                });
+
     }
 
     @Override
     public void show(FragmentManager manager, String tag) {
+        // TODO Auto-generated method stub
         super.show(manager, tag);
         if (cb != null) {
             cb.showResult();
@@ -148,6 +263,7 @@ public class QRCodeDialog extends DialogFragment {
 
     @Override
     public void dismiss() {
+        // TODO Auto-generated method stub
         super.dismiss();
         clear();
         if (cb != null) {
@@ -158,9 +274,11 @@ public class QRCodeDialog extends DialogFragment {
     private void clear() {
         bm = null;
         codeTitle = null;
+        savePath = null;
         codeString = null;
         codeContent = null;
-        code = null;
+        codeUrl = null;
+        loadString = null;
     }
 
 }
