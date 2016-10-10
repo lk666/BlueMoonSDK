@@ -33,6 +33,9 @@ public class CommonAlertDialog extends Dialog {
         private int txtSize = -1;
         private int positiveButtonTextColor = -1;
         private int negativeButtonTextColor = -1;
+        private int positiveButtonBg = -1;
+        private int negativeButtonBg = -1;
+        private int mainBg = -1;
         private String positiveButtonText;
         private String negativeButtonText;
         private boolean isCancelable = true;
@@ -166,6 +169,35 @@ public class CommonAlertDialog extends Dialog {
             return this;
         }
 
+        /**
+         * 设置左边按钮的背景
+         *
+         * @param bg 如R.drawable.xxx
+         */
+        public Builder setPositiveButtonBg(int bg) {
+            positiveButtonBg = bg;
+            return this;
+        }
+
+        /**
+         * 设置右边按钮的背景
+         *
+         * @param bg 如R.drawable.xxx
+         */
+        public Builder setNegativeButtonBg(int bg) {
+            negativeButtonBg = bg;
+            return this;
+        }
+
+        /**
+         * 设置背景
+         *
+         * @param bg 如R.drawable.xxx
+         */
+        public Builder setMainBg(int bg) {
+            mainBg = bg;
+            return this;
+        }
 
         public Builder setPositiveButton(String positiveButtonText,
                                          DialogInterface.OnClickListener listener) {
@@ -201,6 +233,11 @@ public class CommonAlertDialog extends Dialog {
             dialog.addContentView(layout, new LayoutParams(
                     LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
+            View llMian = layout.findViewById(R.id.ll_main);
+            if (mainBg != -1) {
+                llMian.setBackgroundResource(mainBg);
+            }
+
             if (title != null) {
                 TextView txtTitle = ((TextView) layout.findViewById(R.id.title));
                 txtTitle.setText(title);
@@ -223,6 +260,9 @@ public class CommonAlertDialog extends Dialog {
                 positiveBtn.setText(positiveButtonText);
                 if (positiveButtonTextColor != -1) {
                     positiveBtn.setTextColor(positiveButtonTextColor);
+                }
+                if (positiveButtonBg != -1) {
+                    positiveBtn.setBackgroundResource(positiveButtonBg);
                 }
 
                 if (negativeButtonText == null) {
@@ -254,6 +294,10 @@ public class CommonAlertDialog extends Dialog {
 
                 if (negativeButtonTextColor != -1) {
                     negativeBtn.setTextColor(negativeButtonTextColor);
+                }
+
+                if (negativeButtonBg != -1) {
+                    negativeBtn.setBackgroundResource(negativeButtonBg);
                 }
 
                 if (positiveButtonText == null) {
