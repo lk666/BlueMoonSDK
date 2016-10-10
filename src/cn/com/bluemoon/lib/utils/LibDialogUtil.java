@@ -127,6 +127,42 @@ public class LibDialogUtil {
     public static AlertDialog.Builder getSingleChoiceDialog(Context context, String[] arrays, int selectIndex, DialogInterface.OnClickListener onClickListener) {
         return getSingleChoiceDialog(context, "", arrays, selectIndex, onClickListener);
     }
+    /**
+     * 旧方法
+     */
+    public static QRCodeDialog showCodeDialog(Activity context,String title,
+                                              String codeUrl,String code,String str,String tips,String path,CodeDialogCallback cb)
+    {
+        QRCodeDialog codeDialog = new QRCodeDialog();
+        if(!codeDialog.isVisible())
+        {
+            if(title!=null) codeDialog.setTitle(title);
+            if(str!= null) codeDialog.setString(str);
+            if(code!=null) codeDialog.setCode(code);
+            if(tips!=null) codeDialog.setContent(tips);
+            if(cb!=null) codeDialog.setCallback(cb);
+            codeDialog.show(context.getFragmentManager(), "dialog");
+        }
+        return codeDialog;
+    }
+
+    /**
+     * 旧方法
+     */
+    public static ImageDialog showPictureDialog(Activity context,Bitmap bm,String imgUrl,String path,ImageDialogCallback cb)
+    {
+        ImageDialog picDialog = new ImageDialog();
+        if (!picDialog.isVisible()) {
+            if (imgUrl != null) {
+                picDialog.setCodeUrl(imgUrl);
+            } else {
+                picDialog.setBitmap(bm);
+            }
+            picDialog.setCallback(cb);
+            picDialog.show(context.getFragmentManager(), "dialog");
+        }
+        return picDialog;
+    }
 
     public static QRCodeDialog showCodeDialog(Activity context,String title,
                                               String codeUrl,String code,String str,String tips,String path,CodeDialogCallback cb)
