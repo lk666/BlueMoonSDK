@@ -11,6 +11,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.L;
 
 import java.io.File;
@@ -106,7 +107,7 @@ public class ImageLoaderUtil {
      */
     public static void dispalyFromAssets(String imageName, ImageView imageView) {
         // String imageUri = "assets://image.png"; // from assets
-        ImageLoader.getInstance().displayImage("assets://" + imageName,imageView);
+        ImageLoader.getInstance().displayImage("assets://" + imageName, imageView);
     }
 
 
@@ -157,5 +158,19 @@ public class ImageLoaderUtil {
                 .build();
 
         mImageLoader.displayImage(requestUrl, view, options);
+    }
+
+    /**
+     *
+     * @param requestUrl
+     * @param view
+     * @param listener
+     */
+    public static void displayImage(String requestUrl, ImageView view,ImageLoadingListener listener) {
+        if (mImageLoader == null) {
+            mImageLoader = ImageLoader.getInstance();
+        }
+
+        mImageLoader.displayImage(requestUrl, view,listener);
     }
 }
