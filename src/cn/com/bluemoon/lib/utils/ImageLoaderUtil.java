@@ -11,6 +11,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.L;
 
@@ -161,7 +162,7 @@ public class ImageLoaderUtil {
     }
 
     /**
-     *
+     *加载图片，添加监听
      * @param requestUrl
      * @param view
      * @param listener
@@ -170,7 +171,18 @@ public class ImageLoaderUtil {
         if (mImageLoader == null) {
             mImageLoader = ImageLoader.getInstance();
         }
-
         mImageLoader.displayImage(requestUrl, view,listener);
+    }
+
+    /**
+     *加载图片，可根据尺寸加载
+     * @param requestUrl
+     * @param view
+     */
+    public static void displayImageBySize(String requestUrl, ImageView view,int width,int height) {
+        if (mImageLoader == null) {
+            mImageLoader = ImageLoader.getInstance();
+        }
+        mImageLoader.displayImage(requestUrl, view,new ImageSize(width,height));
     }
 }
