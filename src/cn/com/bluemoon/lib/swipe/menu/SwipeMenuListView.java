@@ -437,7 +437,7 @@ public class SwipeMenuListView extends ListView implements OnScrollListener {
 
 			final float deltaY = ev.getRawY() - mLastY;
 			mLastY = ev.getRawY();
-			if (getFirstVisiblePosition() == 0
+			if (mEnablePullRefresh && getFirstVisiblePosition() == 0
 					&& (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
 				// the first item is showing, header has shown or pull down.
 				updateHeaderHeight(deltaY / OFFSET_RADIO);
