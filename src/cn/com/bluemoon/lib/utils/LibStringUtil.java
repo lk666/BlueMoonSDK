@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class LibStringUtil {
 
     private static final Pattern emailer = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
-    private static final Pattern phone = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
+    private static final Pattern phone = Pattern.compile("^1\\d{10}$");
 
     public static boolean isEmpty(CharSequence input) {
         if (input != null && !"".equals(input)) {
