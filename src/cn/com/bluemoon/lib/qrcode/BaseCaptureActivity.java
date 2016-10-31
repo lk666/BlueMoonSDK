@@ -140,7 +140,9 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
 
     @Override
     protected void onDestroy() {
-        inactivityTimer.shutdown();
+        if(inactivityTimer!=null){
+            inactivityTimer.shutdown();
+        }
         super.onDestroy();
     }
 
