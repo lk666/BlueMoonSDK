@@ -16,7 +16,7 @@ public class FlowLayout extends ViewGroup {
 	public static final int VERTICAL = 1;
 	private int horizontalSpacing = 0;
 	private int verticalSpacing = 0;
-	protected int orientation = 0;
+	private int orientation = 0;
 	private boolean debugDraw = false;
 
 	public FlowLayout(Context context) {
@@ -159,7 +159,7 @@ public class FlowLayout extends ViewGroup {
 		}
 	}
 
-    protected int getVerticalSpacing(LayoutParams lp) {
+	private int getVerticalSpacing(LayoutParams lp) {
 		int vSpacing;
 		if (lp.verticalSpacingSpecified()) {
 			vSpacing = lp.verticalSpacing;
@@ -169,7 +169,7 @@ public class FlowLayout extends ViewGroup {
 		return vSpacing;
 	}
 
-    protected int getHorizontalSpacing(LayoutParams lp) {
+	private int getHorizontalSpacing(LayoutParams lp) {
 		int hSpacing;
 		if (lp.horizontalSpacingSpecified()) {
 			hSpacing = lp.horizontalSpacing;
@@ -308,7 +308,7 @@ public class FlowLayout extends ViewGroup {
 		private int y;
 		private int horizontalSpacing = NO_SPACING;
 		private int verticalSpacing = NO_SPACING;
-        public boolean newLine = false;
+		private boolean newLine = false;
 
 		public LayoutParams(Context context, AttributeSet attributeSet) {
 			super(context, attributeSet);
