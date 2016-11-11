@@ -84,7 +84,7 @@ public class LibFileUtil {
 			if (!destDir.exists()) {
 				destDir.mkdirs();
 			}
-			return new File(folderPath, fileName + fileName);
+			return new File(folderPath, fileName);
 		}
 
 		public static boolean writeFile(byte[] buffer, String folder,
@@ -790,6 +790,30 @@ public class LibFileUtil {
 			e.printStackTrace();
 		}
 		return buffer;
+	}
+
+	/**
+	 * 安装apk
+	 * @param context
+	 * @param filePath
+	 * @return
+	 */
+	public static boolean installApk(Context context,String filePath) {
+		try {
+			File apkfile = new File(filePath);
+			if (!apkfile.exists()) {
+				return false;
+			}
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			i.setDataAndType(Uri.parse("file://" + apkfile.toString()),
+					"application/vnd.android.package-archive");
+			context.startActivity(i);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }
