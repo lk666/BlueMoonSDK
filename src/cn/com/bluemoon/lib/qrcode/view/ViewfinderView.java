@@ -180,22 +180,23 @@ public final class ViewfinderView extends View {
 
             /*绘制4个边角*/
             paint.setColor(cornerColor);
-            canvas.drawRect(frame.left, frame.top, frame.left + cornerHeight,
-                    frame.top + cornerWidth, paint);
-            canvas.drawRect(frame.left, frame.top, frame.left + cornerWidth,
-                    frame.top + cornerHeight, paint);
-            canvas.drawRect(frame.right - cornerHeight, frame.top, frame.right,
-                    frame.top + cornerWidth, paint);
-            canvas.drawRect(frame.right - cornerWidth, frame.top, frame.right,
-                    frame.top + cornerHeight, paint);
-            canvas.drawRect(frame.left, frame.bottom - cornerWidth, frame.left
-                    + cornerHeight, frame.bottom, paint);
-            canvas.drawRect(frame.left, frame.bottom - cornerHeight, frame.left
-                    + cornerWidth, frame.bottom, paint);
-            canvas.drawRect(frame.right - cornerHeight, frame.bottom
-                    - cornerWidth, frame.right, frame.bottom, paint);
-            canvas.drawRect(frame.right - cornerWidth, frame.bottom
-                    - cornerHeight, frame.right, frame.bottom, paint);
+            float w = cornerWidth / (float) 2;
+            canvas.drawRect(frame.left - w, frame.top - w, frame.left + cornerHeight - w,
+                    frame.top + w, paint);
+            canvas.drawRect(frame.left - w, frame.top - w, frame.left + w,
+                    frame.top + cornerHeight - w, paint);
+            canvas.drawRect(frame.right - cornerHeight + w, frame.top - w, frame.right + w,
+                    frame.top + w, paint);
+            canvas.drawRect(frame.right - w, frame.top - w, frame.right + w,
+                    frame.top + cornerHeight - w, paint);
+            canvas.drawRect(frame.left - w, frame.bottom - w, frame.left
+                    + cornerHeight - w, frame.bottom + w, paint);
+            canvas.drawRect(frame.left - w, frame.bottom - cornerHeight + w, frame.left
+                    + w, frame.bottom + w, paint);
+            canvas.drawRect(frame.right - cornerHeight + w, frame.bottom
+                    - w, frame.right + w, frame.bottom + w, paint);
+            canvas.drawRect(frame.right - w, frame.bottom
+                    - cornerHeight + w, frame.right + w, frame.bottom + w, paint);
 
             /*绘制黄色闪点*/
             Collection<ResultPoint> currentPossible = possibleResultPoints;
