@@ -62,13 +62,13 @@ public class LibVersionUtils {
 
         public boolean isNewerRevision(Version testVersion) {
             return (testVersion.majorVersion == majorVersion
-                    && testVersion.minorVersion == testVersion.minorVersion && testVersion.revision > revision);
+                    && testVersion.minorVersion == minorVersion && testVersion.revision > revision);
         }
     }
 
     /**
      * Compare if version2String is a newer major version than version1String
-     * 
+     *
      * @param version1String (in the form of
      *            "majorVersion.minorVersion.revision" or
      *            "majorVersion.minorVersion")
@@ -99,7 +99,8 @@ public class LibVersionUtils {
     }
     
     public static boolean isMustUpdateVersion(String version1String, String version2String, String mustUpdate) {
-        return (new Version(version1String).isNewerMajorVersion(new Version(version2String)) 
+
+        return (new Version(version1String).isNewerMajorVersion(new Version(version2String))
         		|| new Version(version1String).isNewerMinorVersion(new Version(version2String)) 
         		|| new Version(version1String).isNewerRevision(new Version(version2String)))
         		&& "1".equals(mustUpdate);

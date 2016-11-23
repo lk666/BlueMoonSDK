@@ -39,7 +39,7 @@ public class CommonEditText extends EditText {
 
 	private boolean isCleanable = false;
 
-	private int maxLength = 500;
+	private int maxLength = Integer.MAX_VALUE;
 
 	public final static int MODE_NAME = 0;
 
