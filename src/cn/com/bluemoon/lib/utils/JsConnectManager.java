@@ -21,7 +21,11 @@ public class JsConnectManager {
 	private static final String KEY_URL = "url";
 	private static final String KEY_TITLE = "title";
 	private static final String KEY_CALLBACK = "callback";
+	private static final String KEY_TOPIC="topic";
+	private static final String KEY_CONTENT="content";
+	private static final String KEY_PIC="picUrl";
 	private static final String VALUE_WEBVIEW = "webview";
+
 	private static final String VALUE_SCAN = "scan";
 	private static final String VALUE_CLOSEWEBVIEW = "closeWebView";
 	private static final String VALUE_SETTITLE = "setTitle";
@@ -31,7 +35,7 @@ public class JsConnectManager {
 	private static final String VALUE_GET_CACHE = "getCache";
 	private static final String VALUE_CLEAN_CACHE = "cleanCache";
 	private static final String VALUE_LOGOUT = "logout";
-
+	private static final String VALUE_SHARE = "share";
 
 	public static HashMap<String, String> getBMJSParams(String url){
 		String arg = url.substring(url.indexOf("?")+1,url.length());
@@ -119,6 +123,10 @@ public class JsConnectManager {
 			}else if(VALUE_LOGOUT.equals(map.get(KEY_METHOD))){
 				if(callBack!=null){
 					callBack.logout(view);
+				}
+			}if (VALUE_SHARE.equals(map.get(KEY_METHOD))) {
+				if(callBack!=null){
+					callBack.share(view,map.get(KEY_TOPIC),map.get(KEY_CONTENT),map.get(KEY_PIC),map.get(KEY_URL));
 				}
 			}
 			return true;
