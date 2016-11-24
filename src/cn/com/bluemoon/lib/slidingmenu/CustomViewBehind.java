@@ -42,7 +42,28 @@ public class CustomViewBehind extends ViewGroup {
 		mMarginThreshold = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 
 				MARGIN_THRESHOLD, getResources().getDisplayMetrics());
 	}
+	/*****************************设置暗度并绘制遮罩层 start tangqiwei 2016/11/24****************************/
+	private float mOffsetFadeDegree;
 
+	public void setOffsetFadeDegree(float degree) {
+		if (degree > 1.0f || degree < 0.0f)
+			throw new IllegalStateException("The offsetFadeDegree must be between 0.0f and 1.0f");
+		mOffsetFadeDegree = degree;
+	}
+	/**
+	 * 绘制剩余View的淡出淡入
+	 * @param content 主界面
+	 * @param canvas  画布
+	 * @param openPercent 打开了的百分比
+	 */
+	public void drawOffsetFade(View content, Canvas canvas, float openPercent) {
+		if (mWidthOffset <= 0 || mOffsetFadeDegree <= 0) return;   //不开启就返回，不设置 淡入淡出效果
+
+		final int alpha = (int) (mOffsetFadeDegree * 255 * Math.abs(openPercent));
+		mFadePaint.setColor(Color.argb(alpha, 0, 0, 0));
+		canvas.drawRect(content.getLeft(), 0,content.getRight(), getHeight(), mFadePaint);
+	}
+	/*******************************************设置暗度并绘制遮罩层 end*****************************************/
 	public void setCustomViewAbove(CustomViewAbove customViewAbove) {
 		mViewAbove = customViewAbove;
 	}

@@ -828,6 +828,7 @@ public class CustomViewAbove extends ViewGroup {
 		// Draw the margin drawable if needed.
 		mViewBehind.drawShadow(mContent, canvas);
 		mViewBehind.drawFade(mContent, canvas, getPercentOpen());
+		mViewBehind.drawOffsetFade(mContent, canvas, getPercentOpen());//调起绘制遮罩层 tangqiwei 2016/11/24
 		mViewBehind.drawSelector(mContent, canvas, getPercentOpen());
 	}
 

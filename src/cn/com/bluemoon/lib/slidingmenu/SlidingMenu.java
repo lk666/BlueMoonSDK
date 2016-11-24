@@ -75,6 +75,13 @@ public class SlidingMenu extends RelativeLayout {
 	private OnCloseListener mCloseListener;
 
 	/**
+	 * 添加该方法用于设置Menu show出来时MainActivity的暗度 tangqiwei 2016/11/24
+	 * @param f
+	 */
+	public void setOffsetFadeDegree(float f) {
+		mViewBehind.setOffsetFadeDegree(f);
+	}
+	/**
 	 * The listener interface for receiving onOpen events.
 	 * The class that is interested in processing a onOpen
 	 * event implements this interface, and the object created
