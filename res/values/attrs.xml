@@ -84,6 +84,7 @@
         <attr name="paddingLeft" format="dimension"/>
         <attr name="paddingBottom" format="dimension"/>
         <attr name="paddingRight" format="dimension"/>
+        <attr name="txtSize" format="integer"/>
         <attr name="bg" format="reference"/>
         <attr name="txtColor" format="color"/>
         <attr name="bgChecked" format="reference"/>

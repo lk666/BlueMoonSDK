@@ -32,6 +32,7 @@ public class TagListView extends FlowLayout implements OnClickListener {
 	private int paddingLeft = -1;
 	private int paddingBottom = -1;
 	private int paddingRight = -1;
+	private float txtSize = -1;
 	/**
 	 * @param context
 	 */
@@ -97,6 +98,7 @@ public class TagListView extends FlowLayout implements OnClickListener {
 					R.styleable.FlowLayout_paddingBottom,-1);
 			paddingRight = a.getDimensionPixelSize(
 					R.styleable.FlowLayout_paddingRight,-1);
+			txtSize = a.getInt(R.styleable.FlowLayout_txtSize,-1);
 		} finally {
 			a.recycle();
 		}
@@ -113,7 +115,10 @@ public class TagListView extends FlowLayout implements OnClickListener {
 			if(paddingTop==-1) paddingTop = localTagView.getPaddingTop();
 			if(paddingBottom==-1) paddingBottom = localTagView.getPaddingBottom();
 			localTagView.setPadding(paddingLeft,paddingBottom,paddingRight,paddingBottom);
+		}
 
+		if(txtSize!=-1){
+			localTagView.setTextSize(txtSize);
 		}
 
 		localTagView.setText(t.getTitle());
@@ -277,8 +282,18 @@ public class TagListView extends FlowLayout implements OnClickListener {
 	public void setTextColorChecked(int res) {
 		txtColorChecked = res;
 	}
-	
-	
+
+	//只是可是显示文字，不做交互。
+	public void setTagsTitle(List<String> list) {
+		if(list==null) return;
+		List<Tag> mTags = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			Tag tag = new Tag();
+			tag.setTitle(list.get(i));
+			mTags.add(tag);
+		}
+		setTags(mTags);
+	}
 
 	public void setTags(List<? extends Tag> lists) {
 		setTags(lists, true);
