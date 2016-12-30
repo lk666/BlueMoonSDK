@@ -20,6 +20,7 @@ public class JsConnectManager {
 	private static final String KEY_METHOD = "method";
 	private static final String KEY_URL = "url";
 	private static final String KEY_TITLE = "title";
+	private static final String KEY_VERSION = "version";
 	private static final String KEY_CALLBACK = "callback";
 	private static final String KEY_TOPIC="topic";
 	private static final String KEY_CONTENT="content";
@@ -106,6 +107,7 @@ public class JsConnectManager {
 				}
 			}else if(VALUE_SETAPPINFO.equals(map.get(KEY_METHOD))){
 				if(callBack!=null){
+					callBack.cleanCache(view, map.get(KEY_VERSION));
 					loadJavascript(view,map.get(KEY_CALLBACK),callBack.getAppInfo());
 				}
 			} else if (VALUE_GET_LOCATION.equals(map.get(KEY_METHOD))) {
