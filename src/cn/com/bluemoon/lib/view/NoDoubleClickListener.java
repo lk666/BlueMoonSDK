@@ -5,7 +5,7 @@ import android.view.View;
 import java.util.Calendar;
 
 /**
- * 防止toast期间重复点击的点击事件
+ * 防止toast期间重复点击的点击事件，2秒时间间隔
  */
 public abstract class NoDoubleClickListener implements View.OnClickListener {
 
