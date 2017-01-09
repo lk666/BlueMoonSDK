@@ -113,21 +113,32 @@ public final class CameraManager {
     }
 
 
-    public void openDriver(SurfaceHolder holder) throws IOException {
-        if (camera == null) {
-            camera = Camera.open();
+    public boolean openDriver(SurfaceHolder holder) {
+        try {
             if (camera == null) {
-                throw new IOException();
+                camera = Camera.open();
+                if(camera == null){
+                    exit();
+                    return false;
+                }
+                camera.setPreviewDisplay(holder);
+                if (!initialized) {
+                    initialized = true;
+                    configManager.initFromCameraParameters(camera);
+                }
+                configManager.setDesiredCameraParameters(camera);
             }
-            camera.setPreviewDisplay(holder);
-
-            if (!initialized) {
-                initialized = true;
-                configManager.initFromCameraParameters(camera);
-            }
-            configManager.setDesiredCameraParameters(camera);
-
+            return true;
+        } catch (Exception e) {
+//            e.printStackTrace();
+            exit();
+            return false;
         }
+
+    }
+
+    private void exit() {
+        camera = null;
     }
 
     public void closeDriver() {
