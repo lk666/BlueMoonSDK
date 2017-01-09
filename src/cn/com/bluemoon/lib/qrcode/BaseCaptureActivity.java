@@ -94,10 +94,11 @@ public abstract class BaseCaptureActivity extends Activity implements Callback {
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {
-        try {
-            CameraManager.get().openDriver(surfaceHolder);
-        } catch (Exception e) {
-            e.printStackTrace();
+        boolean isOpen = CameraManager.get().openDriver(surfaceHolder);
+        //判断是否成功打开相机
+        if(!isOpen){
+            LibViewUtil.toast(this,R.string.error_open_camera);
+//            finish();
             return;
         }
         if (handler == null) {
