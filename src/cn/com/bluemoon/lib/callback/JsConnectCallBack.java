@@ -15,6 +15,7 @@ public abstract class JsConnectCallBack {
     public void getLoaction(WebView view,String callbackName){}
     public String getCacheSize(WebView view){return "";}
     public void cleanCache(WebView view){}
+    public void cleanCache(WebView view, String version){}
     public void logout(WebView view){}
     public void share(WebView view,String topic,String content,String picUrl,String url){}
 }
