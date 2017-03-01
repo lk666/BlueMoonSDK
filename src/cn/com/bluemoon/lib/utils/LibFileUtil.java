@@ -1,6 +1,7 @@
 package cn.com.bluemoon.lib.utils;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -26,9 +27,13 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import cn.com.bluemoon.lib.common.MIME;
+import cn.com.bluemoon.lib.qrcode.R;
 
 
 public class LibFileUtil {
@@ -165,10 +170,12 @@ public class LibFileUtil {
 
 
     public static String getFileSize(long size) {
-        if (size <= 0)
-            return "0";
+
+        float temp = 0;
         java.text.DecimalFormat df = new java.text.DecimalFormat("##.##");
-        float temp = (float) size / 1024;
+        if (size > 0) {
+            temp = (float) size / 1024;
+        }
         if (temp >= 1024) {
             return df.format(temp / 1024) + "M";
         } else {
@@ -815,6 +822,57 @@ public class LibFileUtil {
             return false;
         }
         return true;
+    }
+
+    /**
+     * 打开文件
+     */
+    public static void openFile(Context context, String filePath) {
+
+        File file = new File(filePath);
+        if (!file.exists()) {
+            return;
+        }
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //设置intent的Action属性
+        intent.setAction(Intent.ACTION_VIEW);
+        //获取文件file的MIME类型
+        String type = getMIMEType(file);
+        //设置intent的data和Type属性。
+        intent.setDataAndType(Uri.fromFile(file), type);
+        try {
+            //跳转
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            LibViewUtil.toast(context,R.string.activity_not_found_exception);
+        }
+    }
+
+    /**
+     * 根据文件后缀名获得对应的MIME类型。
+     */
+    private static String getMIMEType(File file) {
+
+        String type = "*/*";
+        String fName = file.getName();
+        //获取后缀名前的分隔符"."在fName中的位置。
+        int dotIndex = fName.lastIndexOf(".");
+        if (dotIndex < 0) {
+            return type;
+        }
+	/* 获取文件的后缀名 */
+        String end = fName.substring(dotIndex, fName.length()).toLowerCase();
+        if (end == "") {
+            return type;
+        }
+        //在MIME和文件类型的匹配表中找到对应的MIME类型。
+        for (int i = 0; i < MIME.MIME_MapTable.length; i++) { //MIME_MapTable??在这里你一定有疑问，这个MIME_MapTable是什么？
+            if (end.equals(MIME.MIME_MapTable[i][0])) {
+                type = MIME.MIME_MapTable[i][1];
+            }
+        }
+        return type;
     }
 
 }

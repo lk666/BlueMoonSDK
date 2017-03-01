@@ -69,4 +69,6 @@
     <string name="error_camera_title">无法拍照</string>
     <string name="error_camera_content">请检查手机是否有拍照软件，或相机权限是否开启！</string>
     <string name="error_open_camera">打开失败,请检查相机权限是否开启！</string>
+
+    <string name="activity_not_found_exception">没有打开该文件的应用</string>
 </resources>
