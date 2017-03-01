@@ -321,10 +321,15 @@ public class LibPublicUtil {
 	}
 
 
-	public static void openUrl(Context context, String url) throws Exception {
-		Uri uri = Uri.parse(url);
-		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-		context.startActivity(intent);
+	public static void openUrl(Context context, String url) {
+		try{
+			Uri uri = Uri.parse(url);
+			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+			context.startActivity(intent);
+		}catch (Exception e){
+			e.printStackTrace();
+			LibViewUtil.toast(context, R.string.not_found_browser);
+		}
 	}
 
 	/********************** string and byte **********************/

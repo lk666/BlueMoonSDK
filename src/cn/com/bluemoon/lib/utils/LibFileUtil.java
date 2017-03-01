@@ -13,6 +13,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.apache.commons.lang3.StringUtils;
@@ -27,7 +28,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -828,6 +828,13 @@ public class LibFileUtil {
      * 打开文件
      */
     public static void openFile(Context context, String filePath) {
+        openFile(context,filePath);
+    }
+
+    /**
+     * 打开文件(带文件启动类型)
+     */
+    public static void openFile(Context context, String filePath,String mimeType) {
 
         File file = new File(filePath);
         if (!file.exists()) {
@@ -838,14 +845,16 @@ public class LibFileUtil {
         //设置intent的Action属性
         intent.setAction(Intent.ACTION_VIEW);
         //获取文件file的MIME类型
-        String type = getMIMEType(file);
+        if(TextUtils.isEmpty(mimeType)){
+            mimeType = getMIMEType(file);
+        }
         //设置intent的data和Type属性。
-        intent.setDataAndType(Uri.fromFile(file), type);
+        intent.setDataAndType(Uri.fromFile(file), mimeType);
         try {
             //跳转
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            LibViewUtil.toast(context,R.string.activity_not_found_exception);
+            LibViewUtil.toast(context,R.string.not_found_activity);
         }
     }
 

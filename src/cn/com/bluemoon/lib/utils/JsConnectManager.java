@@ -126,7 +126,7 @@ public class JsConnectManager {
 				if(callBack!=null){
 					callBack.logout(view);
 				}
-			}if (VALUE_SHARE.equals(map.get(KEY_METHOD))) {
+			}else if (VALUE_SHARE.equals(map.get(KEY_METHOD))) {
 				if(callBack!=null){
 					callBack.share(view,map.get(KEY_TOPIC),map.get(KEY_CONTENT),map.get(KEY_PIC),map.get(KEY_URL));
 				}
