@@ -64,8 +64,8 @@ public final class ViewfinderView extends View {
     private float height;
     private int middle;
     private Bitmap resultBitmap;
-    private Collection<ResultPoint> possibleResultPoints;
-    private Collection<ResultPoint> lastPossibleResultPoints;
+//    private Collection<ResultPoint> possibleResultPoints;
+//    private Collection<ResultPoint> lastPossibleResultPoints;
 
 
     public ViewfinderView(Context context) {
@@ -91,7 +91,7 @@ public final class ViewfinderView extends View {
         CameraManager.get().clearFramimgRect();
         middle = 0;
 //        scannerAlpha = 0;
-        possibleResultPoints = new HashSet<ResultPoint>(5);
+//        possibleResultPoints = new HashSet<ResultPoint>(5);
     }
 
     private void initData() {
@@ -199,7 +199,7 @@ public final class ViewfinderView extends View {
                     - cornerHeight + w, frame.right + w, frame.bottom + w, paint);
 
             /*绘制黄色闪点*/
-            Collection<ResultPoint> currentPossible = possibleResultPoints;
+            /*Collection<ResultPoint> currentPossible = possibleResultPoints;
             Collection<ResultPoint> currentLast = lastPossibleResultPoints;
             if (currentPossible.isEmpty()) {
                 lastPossibleResultPoints = null;
@@ -220,7 +220,7 @@ public final class ViewfinderView extends View {
                     canvas.drawCircle(frame.left + point.getX(), frame.top
                             + point.getY(), 3.0f, paint);
                 }
-            }
+            }*/
 
             /*绘画描述文字*/
             if (!isHideContent) {
@@ -265,7 +265,7 @@ public final class ViewfinderView extends View {
     }
 
     public void addPossibleResultPoint(ResultPoint point) {
-        possibleResultPoints.add(point);
+//        possibleResultPoints.add(point);
     }
 
 }
