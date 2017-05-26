@@ -2,6 +2,9 @@
 package cn.com.bluemoon.lib.view;
 
 import android.content.Context;
+import android.graphics.Rect;
+import android.os.Build;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -63,9 +66,21 @@ public class ListPopView extends PopupWindow {
 
     }
 
-    public void showPopwindow(View popStart,List<String> list) {
+    public void showPopwindow(View popStart, List<String> list) {
         setData(list);
-        showAsDropDown(popStart);
+        if(Build.VERSION.SDK_INT < 24){
+            showAsDropDown(popStart);
+        }else {
+            int statusBarHeight1 = -1;
+            int resourceId = popStart.getContext().getResources().getIdentifier("status_bar_height","dimen","android");
+            if(resourceId>0){
+                statusBarHeight1 = popStart.getContext().getResources().getDimensionPixelOffset(resourceId);
+            }
+            int startY = popStart.getContext().getResources().getDimensionPixelOffset(R.dimen.title_height)
+                    +(int) (popStart.getY())+popStart.getHeight()+statusBarHeight1;
+            showAtLocation(popStart,Gravity.NO_GRAVITY,0,startY );
+        }
+//        showAsDropDown(popStart);
     }
 
     public interface OnSelectListener {
