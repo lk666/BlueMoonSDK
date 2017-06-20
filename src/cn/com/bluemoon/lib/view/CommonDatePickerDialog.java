@@ -13,6 +13,12 @@ public class CommonDatePickerDialog extends DatePickerDialog {
 		// TODO Auto-generated constructor stub
 	}
 
+	public CommonDatePickerDialog(Context context, int theme, OnDateSetListener callBack,
+								  int year, int monthOfYear, int dayOfMonth) {
+		super(context, theme, callBack, year, monthOfYear, dayOfMonth);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
