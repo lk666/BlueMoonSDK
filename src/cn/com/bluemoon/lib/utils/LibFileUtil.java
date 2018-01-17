@@ -828,7 +828,7 @@ public class LibFileUtil {
      * 打开文件
      */
     public static void openFile(Context context, String filePath) {
-        openFile(context,filePath);
+        openFile(context,filePath,null);
     }
 
     /**
