@@ -32,10 +32,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.conn.util.InetAddressUtils;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -155,6 +155,7 @@ public class LibPublicUtil {
 
 	}
 
+	@SuppressLint("MissingPermission")
 	public static boolean hasIntenet(Context context) {
 		if (context == null)
 			return false;
@@ -171,7 +172,7 @@ public class LibPublicUtil {
 		return false;
 	}
 
-
+	@SuppressLint("MissingPermission")
 	public static boolean isWifi(Context context) {
 		if (context == null)
 			return false;
@@ -208,9 +209,7 @@ public class LibPublicUtil {
 				Enumeration<InetAddress> enumIpAddr = nif.getInetAddresses();
 				while (enumIpAddr.hasMoreElements()) {
 					InetAddress mInetAddress = enumIpAddr.nextElement();
-					if (!mInetAddress.isLoopbackAddress()
-							&& InetAddressUtils.isIPv4Address(mInetAddress
-							.getHostAddress())) {
+					if (!mInetAddress.isLoopbackAddress() && mInetAddress instanceof Inet4Address) {
 						return mInetAddress.getHostAddress().toString();
 					}
 				}
@@ -233,6 +232,7 @@ public class LibPublicUtil {
 	}
 
 
+	@SuppressLint("MissingPermission")
 	public static String getPhoneNumber(Context context) {
 		String phoneNumber = null;
 		TelephonyManager phoneMgr = (TelephonyManager) context
@@ -254,7 +254,7 @@ public class LibPublicUtil {
 		return android.os.Build.MODEL;
 	}
 
-
+	@SuppressLint("MissingPermission")
 	public static String getMachineImei(Context context) {
 		TelephonyManager tm = (TelephonyManager) context
 				.getSystemService(Context.TELEPHONY_SERVICE);
@@ -263,6 +263,7 @@ public class LibPublicUtil {
 		return IMIE;
 	}
 
+	@SuppressLint("MissingPermission")
 	public static void callPhone(Context context, String phone) {
 		try{
 			Intent intent = new Intent(Intent.ACTION_CALL);
