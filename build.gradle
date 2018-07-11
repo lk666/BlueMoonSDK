@@ -1,9 +1,9 @@
 apply plugin: 'com.android.library'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.loopj.android:android-async-http:1.4.9'
+    api fileTree(dir: 'libs', include: '*.jar')
+    implementation "com.android.support:support-v4:$supportVersion"
+    api 'com.loopj.android:android-async-http:1.4.9'
 }
 
 android {
