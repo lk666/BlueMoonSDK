@@ -2,17 +2,16 @@ apply plugin: 'com.android.library'
 
 dependencies {
     api fileTree(dir: 'libs', include: '*.jar')
-    implementation "com.android.support:support-v4:$supportVersion"
-    api 'com.loopj.android:android-async-http:1.4.9'
+    compileOnly rootProject.ext.dependencies["support-v4"]
+    api rootProject.ext.dependencies["android-async-http"]
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode 1
         versionName "1.0"
     }
@@ -37,7 +36,7 @@ android {
         }
 
         // Move the tests to tests/java, tests/res, etc...
-        instrumentTest.setRoot('tests')
+        androidTest.setRoot('tests')
 
         // Move the build types to build-types/<type>
         // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
